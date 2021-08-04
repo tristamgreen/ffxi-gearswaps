@@ -20,8 +20,8 @@
         ammo        = "Fenrir's Stone",
         head        = "Gnole Crown",
         neck        = "Orochi Nodowa +1",
-        left_ear    = "Novia Earring",
-        right_ear   = "Triton Earring",
+        left_ear    = "Triton Earring",
+        right_ear   = "Novia Earring",
         body        = "Scorpion Harness +1",
         hands       = "Denali Wristbands",
         left_ring   = "Patronus Ring",
@@ -78,8 +78,8 @@
     sets.eva = {
         head        = "Gnole Crown",
         neck        = "Evasion Torque",
-        left_ear    = "Novia Earring",
-        right_ear   = "Triton Earring",
+        left_ear    = "Triton Earring",
+        right_ear   = "Novia Earring",
         body        = "Scorpion Harness +1",
 		hands       = "Denali Wristbands",
         left_ring   = "Wivre Ring +1",
@@ -107,13 +107,29 @@
         feet        = "Setanta's Ledelsens"
     }
 	
+	sets.evis = { -- 511 ws acc / 430 atk
+		ammo		= "Black Tathlum",
+	    head		= "Maat's Cap",
+		body		= "Antares Harness",
+		hands		= "Enkidu's Mittens",
+		legs		= "Enkidu's Subligar",
+		feet		= "Etoile Shoes +1",
+		neck		= "Fotia Gorget",
+		waist		= "Cuchulain's Belt",
+		left_ear	= "Pixie Earring",
+		right_ear	= "Brutal Earring",
+		left_ring	= "Rajas Ring",
+		right_ring	= "Adroit Ring +1",
+		back		= "Cuchulain's Mantle",
+	}
+	
 	sets.de = { -- 487 weaponskill acc
 		ammo		= "Black Tathlum",
 		head		= "Maat's Cap",
 		body		= "Enkidu's Harness",
 		hands		= "Enkidu's Mittens",
 		legs		= "Enkidu's Subligar",
-		feet		= "Setanta's Ledelsens",
+		feet		= "Denali Gamashes",
 		neck		= "Fotia Gorget",
 		waist		= "Cuchulain's Belt",
 		left_ear	= "Harmonius Earring",
@@ -126,25 +142,26 @@
      -- mercy set stacks lots of STR for mercy stroke.
     sets.mercy = { --472 ws acc
 		ammo		= "Black Tathlum",
-	    head		= "Gnadbhod's Helm",
+	    head		= "Maat's Cap",
 		body		= "Enkidu's Harness",
 		hands		= "Alkyoneus's Brc.",
 		legs		= "Enkidu's Subligar",
-		feet		= "Setanta's Ledelsens",
+		feet		= "Denali Gamashes",
 		neck		= "Fotia Gorget",
 		waist		= "Warwolf Belt",
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Brutal Earring",
 		left_ring	= "Rajas Ring",
 		right_ring	= "Flame Ring",
-		back		= "Cuchulain's Mantle",
+		back		= "Cerberus Mantle +1",
 	}
 	     
     -- fast cast for ninjutsu
     sets.fc = {
         left_ear    = "Loquac. Earring",
         --legs        = "Homam Cosciales"
-		feet		= "Setanta's Ledelsens",
+		hands		= "Dusk Gloves +1",
+		feet		= "Dusk Ledelsens +1",
     }
     
        
@@ -152,7 +169,7 @@
     sets.utsu = {
         head        = "Walahra Turban",
         neck        = "Tiercel Necklace",
-        left_ear    = "Wyvern Earring",
+        left_ear	= "Triton Earring",
         right_ear   = "Triton Earring",
         body        = "Rapparee Harness",
         hands       = "Dusk Gloves +1",
@@ -258,10 +275,10 @@ end
 			windower.add_to_chat(8,"[Daylight Bonus]")
 			equip({left_ear="Fenrir's Earring"})
 		end
-        --if player.sub_job == "DRG" then
-        --    windower.add_to_chat(8,"[Dragoon Subjob - Wyvern Earring]")
-        --    equip({right_ear="Wyvern Earring"})
-        --end
+        if player.sub_job == "DRG" then
+            windower.add_to_chat(8,"[Dragoon Subjob - Wyvern Earring]")
+            equip({right_ear="Wyvern Earring"})
+        end
     else
         equip_idle()	
     end
@@ -310,6 +327,10 @@ end
      if spell.type == 'Ninjutsu' then
         equip(sets.utsu)
     end
+	if player.sub_job == "DRG" then
+		windower.add_to_chat(8,"[Dragoon Subjob - Wyvern Earring]")
+		equip({right_ear="Wyvern Earring"})
+	end
  end
  
  -- after we JA or WS, we want to return either to our
@@ -352,6 +373,8 @@ function self_command(m)
         if ws == "Mercy Stroke" then
             ws = "Dancing Edge"
         elseif ws == "Dancing Edge" then
+            ws = "Evisceration"
+        elseif ws == "Evisceration" then
             ws = "Mercy Stroke"
         end
         windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
