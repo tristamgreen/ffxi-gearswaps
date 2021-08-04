@@ -56,7 +56,7 @@
         ear2		= "Brutal Earring",
         left_ring   = "Toreador's Ring",
         right_ring  = "Rajas Ring",
-        back        = "Cuchulain's Mantle"
+        back        = "Etoile Cape"
 }
     -- Drain Samba set
     sets.drainsamba={
@@ -196,6 +196,7 @@
         body    =   "Dancer's Casaque",
         legs    =   "Etoile Tights +1",
         feet    =   "Dance Shoes +1",
+		ring1	=	"Corneus Ring",	
         ear1	=   "Roundel Earring",
         ear2	=   "Robust Earring +1",
         back    =   "Etoile Cape",
