@@ -1,5 +1,7 @@
 -- Tristamgreen Ranger LUA, 2019
 -- thanks to Wren and Enedin for bits and pieces of their own LUAs
+-- 08162021: added handler for Beguiling Collar and Regen sets
+--			 realigned handlers for weapons selection to choose_set function
  
  function get_sets()
  
@@ -10,7 +12,7 @@
 		hands		= "Denali Wristbands",
 		legs		= "Blood Cuisses",
 		feet		= "Areion Boots +1",
-		neck		= "Orochi Nodowa +1",
+		neck		= "Beguiling Collar",
 		waist		= "Scouter's Rope",
 		left_ear	= "Novia Earring",
 		right_ear	= "Triton Earring",
@@ -18,26 +20,39 @@
 		right_ring	= "Shadow Ring",
 		back		= "Shadow Mantle",
 	}
+	
+	sets.gun		= {
+		ranged		= "Annihilator",
+		ammo		= "Silver Bullet"
+	}
+	
+	sets.bow		= {
+		ranged		= "Yoichinoyumi",
+		ammo		= "Kabura Arrow"
+	}
+	
+	sets.regen		= {
+		neck		= "Orochi Nodowa +1"
+	}
+	
+	sets.dayregen	= {
+		hands		= "Feronia's Bangles",
+		waist		= "Lycopodium Sash"
+	}
     
     sets.mekki    	= {
         main        = "Mekki Shakki",
-        sub         = "Rose Strap",
-        ranged      = "Annihilator",
-        ammo        = "Silver Bullet"
+        sub         = "Rose Strap"
     }
 	
-	    sets.axes   = {
+	sets.axes   = {
         main        = "Kriegsbeil",
-        sub         = "Fransisca",
-        ranged      = "Annihilator",
-        ammo        = "Silver Bullet"
+        sub         = "Fransisca"
     }
 	
-	    sets.staff   = {
+	sets.staff   = {
         main        = "Vulcan's Staff",
-        sub         = "Axe Grip",
-        ranged      = "Annihilator",
-        ammo        = "Silver Bullet"
+        sub         = "Axe Grip"
     }
 	
 	-- Haste set
@@ -252,13 +267,18 @@
  
  -- equip our idle set
  function equip_idle()
-    if world.time <= 1080 and world.time >= 360 then
-        windower.add_to_chat(8,"[Idle - Daylight Regen ON]")
-        equip(sets.idle,{hands="Feronia's Bangles"},{waist="Lycopodium Sash"})
-	else 
-		windower.add_to_chat(8,'[Idle]')
-		equip(sets.idle)
+	windower.add_to_chat(8,'[Idle]')
+	equip(sets.idle)
+	if player.hpp <= 95 then
+		if world.time <= 1080 and world.time >= 360 then 
+			windower.add_to_chat(8,'[Daylight Bonus Regen]')
+			equip(sets.idle,sets.regen,sets.dayregen)
+		else
+			windower.add_to_chat(8,'[Regen Set]')
+			equip(sets.idle,sets.regen)
+		end
 	end
+	
 end
 
 -- equip our engaged set
@@ -338,6 +358,33 @@ end
     else 
         equip_idle()    
     end
+	-- Weapons select
+	if fivehit == true then
+		windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
+		equip(sets.mekki)
+	elseif kc == true then
+		windower.add_to_chat(8,'[Kclub mode active]')
+		equip({main="Kraken Club"})
+	else
+		equip(sets.staff)
+	end
+	if player.sub_job == "NIN" then
+		if fivehit == true then
+			windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
+			equip(sets.mekki)
+		else
+			windower.add_to_chat(8,'[Five-Hit Ranger: OFF]')
+			if staffmode == true then
+				windower.add_to_chat(8,'[Ninja Staff Mode active]')
+				equip(sets.staff)
+			elseif kc == true then
+				windower.add_to_chat(8,'[Ninja Kclub mode active]')
+				equip({main="Kriegsbeil",sub="Kraken Club"})
+			else
+				equip(sets.axes)
+			end
+		end
+	end
 end
     
  --[[ ******************************************************
@@ -445,7 +492,7 @@ function self_command(m)
             ws = 'Namas Arrow'
             windower.add_to_chat(8,'[Ranged Attack Mode: Archery]')
             windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
-            equip({ranged="Yoichinoyumi",ammo="Kabura Arrow"})
+            equip(sets.bow)
             send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp bow')
             choose_set()
@@ -454,7 +501,7 @@ function self_command(m)
             ws = 'Coronach'
             windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
             windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
-            equip({ranged="Annihilator",ammo="Silver Bullet"})
+            equip(sets.gun)
             send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp gun')
             choose_set()
@@ -470,19 +517,12 @@ function self_command(m)
             choose_set()
         end
 	elseif m == "fivehit" then
-        if fivehit == true then
-            fivehit = false
-			windower.add_to_chat(8,'[Five-Hit Ranger: OFF]')
-			if player.sub_job ~= "NIN" then 
-				equip(sets.staff)
-			else
-				equip(sets.axes)
-			end
+        if fivehit == false then
+			fivehit = true
             choose_set()
         else
-			fivehit = true
-			windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
-			equip(sets.mekki)
+			fivehit = false
+			windower.add_to_chat(8,'[Five-Hit Ranger: OFF]')
             choose_set()
         end
      elseif m == "EVA" then
@@ -498,25 +538,24 @@ function self_command(m)
      elseif m == "kclub" then
 		if kc == false then
 			kc = true
-			if player.sub_job == "NIN" then
-				windower.add_to_chat(8,'[Ninja Kclub mode active]')
-				equip({sub="Kraken Club"})
-			else
-				windower.add_to_chat(8,'[Kclub mode active]')
-				equip({main="Kraken Club"})
-			end
+			choose_set()
 		else
 			kc = false
-			if player.sub_job == "NIN" then
-				windower.add_to_chat(8,'[Ninja Kclub mode inactive]')
-				equip({sub="Fransisca"})
-			elseif player.sub_job == "SAM" then
-				windower.add_to_chat(8,'[SAM Kclub mode inactive]')
-				equip({main="Vulcan's Staff",sub="Axe Grip"})				
+			windower.add_to_chat(8,'[Kclub mode inactive]')
+			choose_set()
+		end
+	 elseif m == "staffmode" then
+		if player.sub_job == "NIN" then
+			if staffmode == false then
+				staffmode = true
+				choose_set()
 			else
-				windower.add_to_chat(8,'[Kclub mode inactive]')
-				equip({main="Mekki Shakki",sub="Rose Strap"})	
+				staffmode = false
+				windower.add_to_chat(8,'[Ninja Staff Mode inactive]')
+				choose_set()
 			end
+		else
+			windower.add_to_chat(8,'[Player not NIN sub job]')
 		end
 	end
  end
@@ -534,6 +573,9 @@ function self_command(m)
  -- set fivehit mode to active or deactive
  fivehit = false
  
+ -- set default staffmode for nin subjob
+ staffmode = false
+ 
  -- ev determines whether we should wear our evasion gear in combat
  ev = false
 
@@ -546,15 +588,15 @@ function self_command(m)
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  if player.sub_job == "NIN" then
-	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip axes')
+	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Sub job select: NINJA')
- elseif player.sub_job == "SAM" then
- 	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff')
-	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
-	send_command('input //dp gun;wait 1;input /echo Sub job select: SAMURAI')
+ -- elseif player.sub_job == "SAM" then
+ --	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip Staff')
+ --	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
+ --	send_command('input //dp gun;wait 1;input /echo Sub job select: SAMURAI')
  else
-	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff')
+	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
