@@ -21,8 +21,8 @@ Tristamgreen RDM Remix - 2020
 		body		= "Dalmatica +1",
 		hands		= "Duelist's Gloves +1",
 		legs		= "Blood Cuisses",
-		feet		= "Hydra Gaiters",
-		neck		= "Orochi Nodowa +1",
+		feet		= "Goliard Clogs",
+		neck		= "Beguiling Collar",
 		waist		= "Steppe Sash",
 		left_ear	= "Novia Earring",
 		right_ear	= "Triton Earring",
@@ -37,6 +37,10 @@ Tristamgreen RDM Remix - 2020
 		sub			= "Magic Strap"
 	}
     
+	sets.regen		= {
+		neck		= "Orochi Nodowa +1"
+	}			
+	
     -- Daylight Regen set
 	sets.dayregen	= {
 		hands		= "Feronia's Bangles",
@@ -67,7 +71,7 @@ Tristamgreen RDM Remix - 2020
 		head		= "Walahra Turban",
 		body		= "Hydra Doublet",
 		hands		= "Dusk Gloves +1",
-		legs		= "Hydra Brayettes",
+		legs		= "Goliard ",
 		feet		= "Dusk Ledelsens +1",
 		neck		= "Peacock Amulet",
 		waist		= "Ninurta's Sash",
@@ -434,10 +438,15 @@ Tristamgreen RDM Remix - 2020
  function equip_idle()
     equip(sets.idle)
     windower.add_to_chat(8,'[Red Mage - Idle]')
-    if world.time <= 1080 and world.time >= 360 then 
-		windower.add_to_chat(8,'[Daylight Bonus Regen]')
-		equip(sets.idle,sets.dayregen)
-    end
+	if player.hpp <= 95 then
+		if world.time <= 1080 and world.time >= 360 then 
+			windower.add_to_chat(8,'[Daylight Bonus Regen]')
+			equip(sets.idle,sets.regen,sets.dayregen)
+		else
+			windower.add_to_chat(8,'[Regen Set]')
+			equip(sets.idle,sets.regen)
+		end
+	end
     if mode == "mage" then
         equip(sets.terra)
     end
@@ -779,6 +788,17 @@ function buff_change(new,old)
 end
 	
 function self_command(m)
+-- mode selectors are run by the macro command /console gs c [modename]
+-- modes included here are:
+-- W+ - cycles selected weaponskill between Vorpal Blade and Knights of Round; extensible for others.
+-- WS - executes currently selected WS defined in W+
+-- EVA - equips Evasion Gearsets
+-- M+ - cycles Elemental Magic Mode between Damage and Accuracy
+-- enfeebPot - cycles between Enfeebling Potency and Accuracy Modes
+-- mode - generic mode that toggles pure mage mode or melee mode for Red Mage
+-- tank - toggles sword/shield for Red Mage.  Must be activated when mode is set to MELEE
+-- defmode - toggles normal Red Mage and Magical Defense Mode
+
     if m == "W+" then
         if ws == "Knights of Round" then
 			ws = "Vorpal Blade"
