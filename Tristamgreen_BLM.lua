@@ -21,7 +21,7 @@ Tristamgreen BLM Remix - 2020
         -- ammo        = "Fenrir's Stone",
 		ranged		= "Aureole",
         head        = "Genie Tiara",
-        neck        = "Orochi Nodowa +1",
+        neck        = "Beguiling Collar",
         left_ear    = "Novia Earring",
         right_ear   = "Triton Earring",
         body        = "Dalmatica +1",
@@ -34,6 +34,9 @@ Tristamgreen BLM Remix - 2020
         feet        = "Herald's Gaiters"
 	}
 	
+	sets.regen 		= {
+		neck		= "Orochi Nodowa +1"
+	}
 
     -- Daylight Regen set
 	sets.dayregen	= {
@@ -232,7 +235,8 @@ Tristamgreen BLM Remix - 2020
         waist       = "Witch Sash",        
         back        = "Ixion Cape",
 		left_ring 	= "Galdr Ring",
-		right_ring  = "Omniscient Ring +1",
+		-- right_ring  = "Sorcerer's Ring",
+		right_ring	= "Omniscient Ring +1",
         legs        = "Valkyrie's Trews",
         feet        = "Shrewd Pumps"
     }
@@ -393,9 +397,14 @@ Tristamgreen BLM Remix - 2020
  function equip_idle()
     equip(sets.idle,sets.terra)
     windower.add_to_chat(8,'[Black Mage - Idle]')
-    if world.time <= 1080 and world.time >= 360 then 
-		windower.add_to_chat(8,'[Daylight Bonus Regen]')
-		equip(sets.dayregen)
+	if player.hpp <= 75 then
+		if world.time <= 1080 and world.time >= 360 then 
+			windower.add_to_chat(8,'[Daylight Bonus Regen]')
+			equip(sets.dayregen)
+		else
+			windower.add_to_chat(8,'[Regen Set]')
+			equip(sets.idle,sets.regen)
+		end
     end
     if defmode == "magical" then
         equip(sets.mdef)
@@ -436,7 +445,7 @@ end
  -- equip our hMP set when resting
  function equip_rest()
      windower.add_to_chat(8,'[Resting]')
-    equip(sets.HPMP)
+    equip(sets.HPMP,sets.staff,{sub="Raptor Strap +1"})
 end
 
 -- pick between our idle set and engaged set, depending on
@@ -584,6 +593,7 @@ end
  -- when we're done with our spell or ability, return to either
  -- our idle or engaged gear.
  function aftercast(spell)
+	-- equip(sets.yellow)
     choose_set()
 end
 
@@ -647,6 +657,15 @@ function buff_change(new,old)
 end
 	
 function self_command(m)
+-- mode selectors are run by the macro command /console gs c [modename]
+-- modes included here are:
+
+-- EVA - equips Evasion Gearsets
+-- meleeMode - toggles weaponry and equipment for melee with staff.
+-- M+ - cycles Elemental Magic Mode between Damage and Accuracy
+-- defmode - toggles normal Red Mage and Magical Defense Mode
+-- Y - toggles "yellow" gear to activate Sorcerer's Ring
+
     if m == "EVA" then
         if ev == false then
             ev = true
