@@ -555,10 +555,10 @@ function choose_set()
 		
 			-- Cancel status effects for spells that don't overwrite themselves
 			if spell.name == "Sneak" then send_command("cancel sneak") end
-			if spell.name == "Stoneskin" then send_command("wait 4;cancel stoneskin") end
+			if spell.name == "Stoneskin" then send_command("cancel stoneskin") end
 			if spell.name == "Reraise" then send_command("cancel reraise") end
-			if spell.name == "Blink" then send_command("wait 4;cancel blink") end
-			if spell.name == "Aquaveil" then send_command("wait 4;cancel aquaveil") end
+			if spell.name == "Blink" then send_command("cancel blink") end
+			if spell.name == "Aquaveil" then send_command("cancel aquaveil") end
 		end		
     end
 	-- Abilities	
