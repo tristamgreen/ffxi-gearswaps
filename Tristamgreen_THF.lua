@@ -438,6 +438,19 @@ function aftercast(spell)
 end
 
 function self_command(m)
+
+-- modes activated in macro by the command /gs console c [modename]
+-- modes listed here:
+-- WS - activates current selected weaponskill
+-- W+ - toggles between Dancing Edge and Mercy Stroke for selected Weaponskill. Extensible for others if desired.
+-- SAWS - Sneak Attack WS (uses ws listed from W+)
+-- TAWS - Trick Attack WS (uses ws listed from W+)
+-- SATAWS - Sneak Attack+Trick Attack+WS (uses ws listed from W+)
+-- TH - toggles Treasure Hunter 4 gear (TH gloves and THF knife)
+-- EVA - toggles Evasion gear
+-- mdt - toggles Magic Defense Gear (useful against mobs like Pandemonium Warden)
+-- photographer - Peter Parker mode - equips/unequips soultrapper and soul plates
+
     if m == "W+" then
         if ws == "Mercy Stroke" then
             ws = "Dancing Edge"
