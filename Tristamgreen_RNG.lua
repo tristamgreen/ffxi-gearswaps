@@ -359,33 +359,32 @@ end
         equip_idle()    
     end
 	-- Weapons select
-	if fivehit == true then
-		windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
-		equip(sets.mekki)
-	elseif kc == true then
-		windower.add_to_chat(8,'[Kclub mode active]')
-		equip({main="Kraken Club"})
-	else
-		equip(sets.staff)
-	end
 	if player.sub_job == "NIN" then
 		if fivehit == true then
 			windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
 			equip(sets.mekki)
+		elseif staffmode == true then 
+			windower.add_to_chat(8,'[Ninja Staff Mode active]')
+			equip(sets.staff)
+		elseif kc == true then
+			windower.add_to_chat(8,'[Ninja Kclub mode active]')
+			equip({main="Kriegsbeil",sub="Kraken Club"})
 		else
-			windower.add_to_chat(8,'[Five-Hit Ranger: OFF]')
-			if staffmode == true then
-				windower.add_to_chat(8,'[Ninja Staff Mode active]')
-				equip(sets.staff)
-			elseif kc == true then
-				windower.add_to_chat(8,'[Ninja Kclub mode active]')
-				equip({main="Kriegsbeil",sub="Kraken Club"})
-			else
-				equip(sets.axes)
-			end
+			equip(sets.axes)
+		end
+	else
+		if fivehit == true then
+			windower.add_to_chat(8,'[Five-Hit Ranger: ON]')
+			equip(sets.mekki)
+		elseif kc == true then
+			windower.add_to_chat(8,'[Kclub mode active]')
+			equip({main="Kraken Club"})
+		else
+			equip(sets.staff)
 		end
 	end
 end
+
     
  --[[ ******************************************************
   Casting functions - these functions run automatically when
@@ -471,6 +470,16 @@ end
 
 
 function self_command(m)
+
+-- modes:
+-- W+ - changes default weaponskill called between Coronach/Slug Shot or Namas Arrow/Sidewinder
+-- rangedtype - changes between gun and bow
+-- accmode - changes between "normal" and "high" ranged accuracy modes
+-- fivehit - equips fivehit/fourhit setup or not
+-- kclub - equips kclub, or if on /nin, equips kclub in offhand
+-- EVA - equips evasion gear
+-- staffmode - /nin only, toggles between staves and axes
+
     if m == "W+" then
         if rangedtype == false then
             if ws == "Coronach" then
