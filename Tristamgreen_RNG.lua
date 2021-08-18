@@ -422,7 +422,7 @@ end
 
 				-- Cancel status effects for spells that don't overwrite themselves
 			if spell.name:contains "Monomi" then send_command("cancel sneak") end
-			if spell.name == 'Utsusemi: Ichi' then send_command('@wait 3;cancel copy image(2)') end
+			if spell.name == 'Utsusemi: Ichi' then send_command('@wait 1.8;cancel copy image(2)') end
 				
  end
  
