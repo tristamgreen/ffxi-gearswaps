@@ -116,7 +116,7 @@
 		left_ear	="Altdorf's Earring",
 		right_ear	="Fenrir's Earring",
 		left_ring	="Bellona's Ring",
-		right_ring	="Bellona's Ring",
+		right_ring	="Jalzahn's Ring",
 		back		="Fowler's Mantle +1",
 	}
 
@@ -419,6 +419,11 @@ end
     elseif spell.name == 'Camouflage' then
         equip(sets.camouflage)
 	end
+
+				-- Cancel status effects for spells that don't overwrite themselves
+			if spell.name:contains "Monomi" then send_command("cancel sneak") end
+			if spell.name == 'Utsusemi: Ichi' then send_command('@wait 3;cancel copy image(2)') end
+				
  end
  
  -- equip haste gear for ninjutsu
