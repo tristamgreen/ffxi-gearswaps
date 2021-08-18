@@ -559,7 +559,7 @@ function choose_set()
 			if spell.name == "Reraise" then send_command("cancel reraise") end
 			if spell.name == "Blink" then send_command("cancel blink") end
 			if spell.name == "Aquaveil" then send_command("cancel aquaveil") end
-			if spell.name == 'Utsusemi: Ichi' then send_command('@wait 1.8;cancel copy image(2)') end
+
 		end		
     end
 	-- Abilities	

@@ -307,12 +307,14 @@ Tristamgreen SCH Remix - 2021
         neck        = "Dark Torque",
         left_ear    = "Dark Earring",
 		right_ear   = "Abyssal Earring",
-        body        = "Nashira Manteel",
-		hands		= "Sorcerer's Gloves +1",
+        body        = "Scholar's Gown +1",
+		hands		= "Bricta's Cuffs",
+		ring1		= "Galdr Ring",
+		ring2		= "Omega Ring",
         back        = "Merciful Cape",
 		waist		= "Crimson Belt",
-        legs        = "Wizard's Tonban",
-        feet        = "Genie Huaraches"
+        legs        = "Argute Pants +1",
+        feet        = "Scholar's Loafers"
     }
     
 
