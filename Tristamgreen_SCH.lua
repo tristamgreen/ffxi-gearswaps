@@ -412,6 +412,7 @@ end
 	else 
 		equip(sets.HPMP)
 	end
+	equip(sets.staff)
 end
 
 -- pick between our idle set and engaged set, depending on
