@@ -235,7 +235,6 @@ Tristamgreen BLM Remix - 2020
         waist       = "Witch Sash",        
         back        = "Ixion Cape",
 		left_ring 	= "Galdr Ring",
-		-- right_ring  = "Sorcerer's Ring",
 		right_ring	= "Omniscient Ring +1",
         legs        = "Valkyrie's Trews",
         feet        = "Shrewd Pumps"
@@ -386,12 +385,31 @@ Tristamgreen BLM Remix - 2020
         feet        = "Zenith Pumps +1"
     }
     
+	initializeNakedHPMP()
+	
 	end
+	
 	
 --[[ ******************************************************
   Equip functions - put on the sets we defined above, and
  echo a note to our chat log so we know it worked.
 ****************************************************** --]]
+
+function initializeNakedHPMP() -- magic numbers because the HP/MP % checks for latents aren't coded properly on topaz. It uses naked HP/MP, no gear, no food, no max HP/MP boost traits, but it does include HP and MP merits. Others will have to figure out these values for themselves for their own character.
+    if player.sub_job == 'RDM' then
+        nakedHP = 792
+        nakedMP = 878
+    elseif player.sub_job == 'WHM' then
+        nakedHP = 774
+        nakedMP = 897
+    elseif player.sub_job == 'SCH' then
+        nakedHP = 774
+        nakedMP = 888
+    else
+        nakedHP = 822
+        nakedMP = 819
+    end
+end
  
  -- equip our idle set
  function equip_idle()
@@ -522,6 +540,10 @@ end
         end
         windower.add_to_chat(8,'[Ele. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
         equip_nuke(spell)
+		if player.hp < math.floor(nakedHP * 0.76) then
+			windower.add_to_chat(8,'[Sorc. Ring MAB]')
+			equip({ring2="Sorcerer's Ring"})
+		end
     elseif spell.skill == 'Dark Magic' then
         equip(sets.dark,sets.staff,{sub="Dark Grip"})
         windower.add_to_chat(8,'[Dark Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
@@ -543,7 +565,7 @@ end
         add_to_chat(8,'[Matching Weather]')
         equip({waist="Hachirin-no-Obi"})
     end
-    if player.mp - spell.mp_cost < 0.45*player.max_mp then
+    if player.mp < math.floor(nakedMP * 0.5) + math.floor(spell.mp_cost * 0.75) then
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
     end
@@ -573,7 +595,7 @@ end
         equip({waist="Hachirin-no-Obi",right_ring="Diabolos's Ring"})
     end
     if spell.english:contains('Bio') then
-        if player.mp - spell.mp_cost < 0.51*player.max_mp then
+        if player.mp < math.floor(nakedMP * 0.5) + math.floor(spell.mp_cost * 0.75) then
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
         end

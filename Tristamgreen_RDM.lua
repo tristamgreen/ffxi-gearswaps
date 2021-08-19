@@ -427,12 +427,30 @@ Tristamgreen RDM Remix - 2020
         sets.ws.knights
     }
     
+	initializeNakedHPMP()
+	
 	end
 	
 --[[ ******************************************************
   Equip functions - put on the sets we defined above, and
  echo a note to our chat log so we know it worked.
 ****************************************************** --]]
+ 
+ function initializeNakedHPMP() -- magic numbers because the HP/MP % checks for latents aren't coded properly on topaz. It uses naked HP/MP, no gear, no food, no max HP/MP boost traits, but it does include HP and MP merits. Others will have to figure out these values for themselves for their own character.
+    if player.sub_job == 'WHM' then
+        nakedHP = 910
+        nakedMP = 775
+    elseif player.sub_job == 'BLM' then
+        nakedHP = 891
+        nakedMP = 794
+    elseif player.sub_job == 'SCH' then
+        nakedHP = 910
+        nakedMP = 776
+    else
+        nakedHP = 958
+        nakedMP = 697
+    end
+end
  
  -- equip our idle set
  function equip_idle()
@@ -648,7 +666,7 @@ end
         add_to_chat(8,'[Matching Weather]')
         equip({waist="Hachirin-no-Obi"})
     end
-    if player.mp - spell.mp_cost < 0.45*player.max_mp then
+    if player.mp < math.floor(nakedMP * 0.5) + math.floor(spell.mp_cost * 0.75) then
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
     end
@@ -708,7 +726,7 @@ end
         add_to_chat(8,'[Matching Weather]')
         equip({waist="Hachirin-no-Obi",right_ring="Diabolos's Ring"})
     end
-    if player.mp - spell.mp_cost < 0.51*player.max_mp then
+    if player.mp < math.floor(nakedMP * 0.5) + math.floor(spell.mp_cost * 0.75) then
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
     end
