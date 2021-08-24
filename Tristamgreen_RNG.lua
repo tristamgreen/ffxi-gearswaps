@@ -131,6 +131,11 @@
         right_ear   ="Wilhelm's Earring",    
 		back		="Mamool Ja Mantle",
     })
+	
+	sets.ranged.daylight = {
+		left_ear	="L.bug Earring +1",
+		right_ear	="L.bug Earring +1"
+	}
 
     sets.archery    = set_combine(sets.ranged,{
         neck        = "Hope Torque",
@@ -312,8 +317,12 @@ end
     end
     if world.time <= 1080 and world.time >= 360 then
         windower.add_to_chat(8,"[Daylight - L.bug Earring +1]")
-        equip({right_ear="L.bug Earring +1"})
+        equip(sets.ranged.daylight)
     end
+	if world.day == "Firesday" then
+		windower.add_to_chat(8,"[Firesday - Fire Ring]")
+		equip({right_ring="Fire Ring"})
+	end
 end
  
  -- equip our ranged set
@@ -331,6 +340,10 @@ end
 			equip(sets.ranged,{legs="Hachiryu Haidate"})
 		else
 			equip(sets.ranged.hybrid,{legs="Hachiryu Haidate"})
+			if world.day == "Firesday" then
+				windower.add_to_chat(8,"[Firesday - Fire Ring]")
+				equip({right_ring="Fire Ring"})
+			end	
 		end
         if rangedtype == true then
             equip({neck="Hope Torque"})
@@ -339,7 +352,7 @@ end
         end
         if world.time <= 1080 and world.time >= 360 then
             windower.add_to_chat(8,"[Daylight - L.bug Earring +1]")
-            equip({right_ear="L.bug Earring +1"})
+            equip(sets.ranged.daylight)
         end
     end
     if (buffactive['barrage'])then
