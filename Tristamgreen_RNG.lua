@@ -1,228 +1,228 @@
 -- Tristamgreen Ranger LUA, 2019
 -- thanks to Wren and Enedin for bits and pieces of their own LUAs
--- patch notes for this file available on github
+-- all patch notes in github history
  
  function get_sets()
  
-    sets.idle = {
+	sets.idle = {
     -- Prioritize Evasion, Regen, Movement Speed
-	head		= "Blood Mask",
-	body		= "Kyudogi +1",
-	hands		= "Denali Wristbands",
-	legs		= "Blood Cuisses",
-	feet		= "Areion Boots +1",
-	neck		= "Beguiling Collar",
-	waist		= "Scouter's Rope",
-	left_ear	= "Novia Earring",
-	right_ear	= "Triton Earring",
-	left_ring	= "Patronus Ring",
-	right_ring	= "Shadow Ring",
-	back		= "Shadow Mantle",
+		head		= "Blood Mask",
+		body		= "Kyudogi +1",
+		hands		= "Denali Wristbands",
+		legs		= "Blood Cuisses",
+		feet		= "Areion Boots +1",
+		neck		= "Beguiling Collar",
+		waist		= "Scouter's Rope",
+		left_ear	= "Novia Earring",
+		right_ear	= "Triton Earring",
+		left_ring	= "Patronus Ring",
+		right_ring	= "Shadow Ring",
+		back		= "Shadow Mantle",
 	}
 	
-    sets.gun		= {
-	ranged		= "Annihilator",
-	ammo		= "Silver Bullet"
+	sets.gun		= {
+		ranged		= "Annihilator",
+		ammo		= "Silver Bullet"
 	}
 	
-    sets.bow		= {
-	ranged		= "Yoichinoyumi",
-	ammo		= "Kabura Arrow"
+	sets.bow		= {
+		ranged		= "Yoichinoyumi",
+		ammo		= "Kabura Arrow"
 	}
 	
-    sets.regen		= {
-	neck		= "Orochi Nodowa +1"
+	sets.regen		= {
+		neck		= "Orochi Nodowa +1"
 	}
 	
-    sets.dayregen	= {
-	hands		= "Feronia's Bangles",
-	waist		= "Lycopodium Sash"
+	sets.dayregen	= {
+		hands		= "Feronia's Bangles",
+		waist		= "Lycopodium Sash"
 	}
     
     sets.mekki    	= {
-        main       	= "Mekki Shakki",
-        sub         	= "Rose Strap"
+        main        = "Mekki Shakki",
+        sub         = "Rose Strap"
     }
 	
-    sets.axes   	= {
-        main        	= "Kriegsbeil",
-        sub         	= "Fransisca"
-    }
-
-    sets.staff	   	= {
-        main        	= "Vulcan's Staff",
-        sub         	= "Axe Grip"
+	sets.axes   = {
+        main        = "Kriegsbeil",
+        sub         = "Fransisca"
     }
 	
-    -- Haste set
-    sets.engaged    	= {
-        head        	= "Walahra Turban",
-	body        	= "Cobra Harness",
-	neck        	= "Chivalrous Chain",
-	hands       	= "Enkidu's Mittens",
-	legs        	= "Byakko's Haidate",
-        waist       	= "Ninurta's Sash",
-	left_ring   	= "Rajas Ring",
-	right_ring  	= "Toreador's Ring",
-	left_ear    	= "Brutal Earring",
-	right_ear   	= "Merman's Earring",
-	back        	= "Cuchulain's Mantle"
+	sets.staff   = {
+        main        = "Vulcan's Staff",
+        sub         = "Axe Grip"
+    }
+	
+	-- Haste set
+    sets.engaged    = {
+        head        = "Walahra Turban",
+		body        = "Cobra Harness",
+		neck        = "Chivalrous Chain",
+		hands       = "Enkidu's Mittens",
+		legs        = "Byakko's Haidate",
+        waist       = "Ninurta's Sash",
+		left_ring   = "Rajas Ring",
+		right_ring  = "Toreador's Ring",
+		left_ear    = "Brutal Earring",
+		right_ear   = "Merman's Earring",
+		back        = "Cuchulain's Mantle",
     }
     
-    sets.eva        	= {
-        head        	= "Denali Bonnet",
-	neck        	= "Evasion Torque",
-        left_ear	= "Triton Earring",
-        right_ear   	= "Triton Earring",
-        body        	= "Kyudogi +1",
-	hands       	= "Scout's Bracers +1",
-        left_ring   	= "Wivre Ring +1",
-        right_ring  	= "Wivre Ring +1",
-        back        	= "Boxer's Mantle",
-        waist       	= "Scouter's Rope",
-        legs        	= "Scout's Braccae +1",
-        feet        	= "Hunter's Socks"
+    sets.eva        = {
+        head        = "Denali Bonnet",
+        neck        = "Evasion Torque",
+        left_ear    = "Triton Earring",
+        right_ear   = "Triton Earring",
+        body        = "Kyudogi +1",
+		hands       = "Scout's Bracers +1",
+        left_ring   = "Wivre Ring +1",
+        right_ring  = "Wivre Ring +1",
+        back        = "Boxer's Mantle",
+        waist       = "Scouter's Rope",
+        legs        = "Scout's Braccae +1",
+        feet        = "Hunter's Socks"
     }
     
-    sets.ranged     	= {
-    -- Gun: R.Acc 452 / R.attk 554 / 20 sTP with Mekki-Shakki
-    -- 5-hit
+   	sets.ranged     = {
+        -- Gun: R.Acc 452 / R.attk 554 / 20 sTP with Mekki-Shakki
+		-- 5-hit
 		
-	head		= "Zha'Go's Barbut",
-	body		= "Kyudogi +1",
-	hands		= "Blood Fng. Gnt.",
-	legs		= "Enkidu's Subligar",
-	feet		= "Scout's Socks +1"
-	waist		= "Scout's Belt",
-        left_ear    	= "Brutal Earring",
-        right_ear   	= "Fenrir's Earring",
-	left_ring	= "Bellona's Ring",
-	right_ring	= "Rajas Ring",
-	back		= "Fowler's Mantle +1"
+        head		="Zha'Go's Barbut",
+		body		="Kyudogi +1",
+		hands		="Blood Fng. Gnt.",
+		legs		="Enkidu's Subligar",
+		feet		="Scout's Socks +1",
+		waist		="Scout's Belt",
+        left_ear    ="Brutal Earring",
+        right_ear   ="Fenrir's Earring",
+		left_ring	="Bellona's Ring",
+		right_ring	="Rajas Ring",
+		back		="Fowler's Mantle +1",
     }
 	
-    sets.ranged.hybrid = {
-	-- R.Acc 491 / R.Attk 553 / 0 sTP - on /nin with dual axes
-	-- R.Acc 476 / R.Attk 554 / 0 sTP - on /nin with staff/axe grip
-	-- 
-	head		= "Zha'Go's Barbut",
-	body		= "Kyudogi +1",
-	hands		= "Blood Fng. Gnt.",
-	legs		= "Dusk Trousers +1",
-	feet		= "Sct. Socks +1",
-	waist		= "Scout's Belt",
-	left_ear	= "Altdorf's Earring",
-	right_ear	= "Fenrir's Earring",
-	left_ring	= "Bellona's Ring",
-	right_ring	= "Jalzahn's Ring",
-	back		= "Fowler's Mantle +1"
-    }
+	sets.ranged.hybrid = {
+		-- R.Acc 491 / R.Attk 553 / 0 sTP - on /nin with dual axes
+		-- R.Acc 476 / R.Attk 554 / 0 sTP - on /nin with staff/axe grip
+		-- 
+		head		="Zha'Go's Barbut",
+		body		="Kyudogi +1",
+		hands		="Blood Fng. Gnt.",
+		legs		="Dusk Trousers +1",
+		feet		="Sct. Socks +1",
+		waist		="Scout's Belt",
+		left_ear	="Altdorf's Earring",
+		right_ear	="Fenrir's Earring",
+		left_ring	="Bellona's Ring",
+		right_ring	="Jalzahn's Ring",
+		back		="Fowler's Mantle +1",
+	}
 
     sets.ranged.acc = set_combine(sets.ranged,{
         -- R.Acc 489 / R.Attk 530 / 0 sTP native
-	body		= "Kyudogi +1",
-        legs		= "Dusk Trousers +1",
-        feet        	= "Scout's Socks +1",
-	left_ring	= "Dragon Ring +1",
-	right_ring	= "Dragon Ring +1",
-        left_ear  	= "Altdorf's Earring",
-        right_ear   	= "Wilhelm's Earring",    
-	back		= "Mamool Ja Mantle"
+		body		="Kyudogi +1",
+        legs		="Dusk Trousers +1",
+        feet        ="Scout's Socks +1",
+		left_ring	="Dragon Ring +1",
+		right_ring	="Dragon Ring +1",
+        left_ear    ="Altdorf's Earring",
+        right_ear   ="Wilhelm's Earring",    
+		back		="Mamool Ja Mantle",
     })
 	
-    sets.ranged.daylight = {
-	left_ear	="L.bug Earring +1",
-	right_ear	="L.bug Earring +1"
-    }
+	sets.ranged.daylight = {
+		left_ear	="L.bug Earring +1",
+		right_ear	="L.bug Earring +1"
+	}
 
-    sets.archery    	= set_combine(sets.ranged,{
-        neck        	= "Hope Torque"
+    sets.archery    = set_combine(sets.ranged,{
+        neck        = "Hope Torque",
     })
 
-    sets.marksman   	= set_combine(sets.ranged,{
-        neck        	= "Faith Torque"
+    sets.marksman   = set_combine(sets.ranged,{
+        neck        = "Faith Torque",
     })
     
     -- Weapon Skill sets
     
     sets.ws         = {
     -- Generic WS set for Rampage
-    	head		= "Maat's Cap",
-    	body        	= "Enkidu's Harness",
-    	hands       	= "Enkidu's Mittens",
-    	legs        	= "Hachiryu Haidate",
-    	feet        	= "Denali Gamashes",
-    	neck   		= "Fotia Gorget",
-    	left_ear    	= "Merman's Earring",
-    	right_ear   	= "Merman's Earring",
-    	left_ring   	= "Harmonius Ring",
-    	right_ring  	= "Rajas Ring",
-    	back        	= "Cerberus Mantle +1",
-    	waist       	= "Virtuoso Belt"
+        head        = "Maat's Cap",
+        body        = "Enkidu's Harness",
+        hands       = "Enkidu's Mittens",
+        legs        = "Hachiryu Haidate",
+        feet        = "Denali Gamashes",
+        neck        = "Fotia Gorget",
+        left_ear    = "Merman's Earring",
+		right_ear   = "Merman's Earring",
+        left_ring   = "Harmonius Ring",
+        right_ring  = "Rajas Ring",
+        back        = "Cerberus Mantle +1",
+        waist       = "Virtuoso Belt",
     }
             
     sets.sidewinder = { -- RACC 524 with Fotia, RATTK 492
-    	head        	= "Zha'Go's Barbut",
-        body        	= "Kyudogi +1",
-	hands       	= "Blood Fng. Gnt.",
-	legs        	= "Hachiryu Haidate",
-	feet        	= "Scout's Socks +1",
-        neck        	= "Fotia Gorget",
-	waist       	= "Scout's Belt",
-	left_ring   	= "Dragon Ring +1",
-	right_ring  	= "Bellona's Ring",
-	left_ear    	= "Brutal Earring",
-	right_ear   	= "Fenrir's Earring",
-	back        	= "Amemet Mantle +1"
+		head        = "Zha'Go's Barbut",
+        body        = "Kyudogi +1",
+		hands       = "Blood Fng. Gnt.",
+		legs        = "Hachiryu Haidate",
+		feet        = "Scout's Socks +1",
+        neck        = "Fotia Gorget",
+		waist       = "Scout's Belt",
+		left_ring   = "Dragon Ring +1",
+		right_ring  = "Bellona's Ring",
+		left_ear    = "Brutal Earring",
+		right_ear   = "Fenrir's Earring",
+		back        = "Amemet Mantle +1",
     }
     
     sets.namas = {  -- RACC 517 with Fotia, RATTK 471
-	head        	= "Zha'Go's Barbut",
-        body        	= "Denali Jacket",
-	hands       	= "Seiryu's Kote",
-	legs        	= "Hachiryu Haidate",
-	feet        	= "Enkidu's Leggings",
-        neck        	= "Fotia Gorget",
-	waist       	= "Scout's Belt",
-	left_ring   	= "Bellona's Ring",
-	right_ring  	= "Rajas Ring",
-	left_ear    	= "Brutal Earring",
-	right_ear   	= "Fenrir's Earring",
-	back        	= "Fowler's Mantle +1"
+		head        = "Zha'Go's Barbut",
+        body        = "Denali Jacket",
+		hands       = "Seiryu's Kote",
+		legs        = "Hachiryu Haidate",
+		feet        = "Enkidu's Leggings",
+        neck        = "Fotia Gorget",
+		waist       = "Scout's Belt",
+		left_ring   = "Bellona's Ring",
+		right_ring  = "Rajas Ring",
+		left_ear    = "Brutal Earring",
+		right_ear   = "Fenrir's Earring",
+		back        = "Fowler's Mantle +1",
     }
     
     sets.slugshot = {  -- RACC 506 with Fotia, RATTK 489
-        head        	= "Zha'Go's Barbut",
-        body        	= "Kirin's Osode",
-        hands       	= "Seiryu's Kote",
-        legs        	= "Hachiryu Haidate",
-        feet        	= "Sct. Socks +1",
-        neck        	= "Fotia Gorget",
-        waist       	= "Scout's Belt",
-        left_ear    	= "Brutal Earring",
-        right_ear   	= "Fenrir's Earring",
-        left_ring   	= "Bellona's Ring",
-        right_ring  	= "Rajas Ring",
-        back        	= "Amemet Mantle +1"
+        head        = "Zha'Go's Barbut",
+        body        = "Kirin's Osode",
+        hands       = "Seiryu's Kote",
+        legs        = "Hachiryu Haidate",
+        feet        = "Sct. Socks +1",
+        neck        = "Fotia Gorget",
+        waist       = "Scout's Belt",
+        left_ear    = "Brutal Earring",
+        right_ear   = "Fenrir's Earring",
+        left_ring   = "Bellona's Ring",
+        right_ring  = "Rajas Ring",
+        back        = "Amemet Mantle +1",
     }
     
-    sets.coronach = {  -- RACC 492 with Fotia, RATTK 484
-        head        	= "Maat's Cap",
-        body        	= "Kirin's Osode",
-        hands       	= "Blood Fng. Gnt.",
-        legs        	= "Hachiryu Haidate",
-        feet        	= "Sct. Socks +1",
-        neck        	= "Fotia Gorget",
-        waist       	= "Scout's Belt",
-        left_ear    	= "Brutal Earring",
-        right_ear   	= "Fenrir's Earring",
-        left_ring   	= "Bellona's Ring",
-        right_ring  	= "Rajas Ring",
-        back        	= "Fowler's Mantle +1"
+     sets.coronach = {  -- RACC 492 with Fotia, RATTK 484
+        head        = "Maat's Cap",
+        body        = "Kirin's Osode",
+        hands       = "Blood Fng. Gnt.",
+        legs        = "Hachiryu Haidate",
+        feet        = "Sct. Socks +1",
+        neck        = "Fotia Gorget",
+        waist       = "Scout's Belt",
+        left_ear    = "Brutal Earring",
+        right_ear   = "Fenrir's Earring",
+        left_ring   = "Bellona's Ring",
+        right_ring  = "Rajas Ring",
+        back        = "Fowler's Mantle +1",
     }
      
 	
-    sets.shadowbind = {
+	sets.shadowbind = {
 		hands		= "Hunter's Bracers +1",
     }
 
@@ -334,16 +334,16 @@ end
             equip(sets.ranged.acc,{neck="Faith Torque"})
         end
     else 
-	if fivehit == true then
-		equip(sets.ranged,{legs="Hachiryu Haidate"})
-	else
-		equip(sets.ranged.hybrid,{legs="Hachiryu Haidate"})
-		if world.day == "Firesday" then
-			windower.add_to_chat(8,"[Firesday - Fire Ring]")
-			equip({right_ring="Fire Ring"})
-		end	
-	end
-	if rangedtype == true then
+		if fivehit == true then
+			equip(sets.ranged,{legs="Hachiryu Haidate"})
+		else
+			equip(sets.ranged.hybrid,{legs="Hachiryu Haidate"})
+			if world.day == "Firesday" then
+				windower.add_to_chat(8,"[Firesday - Fire Ring]")
+				equip({right_ring="Fire Ring"})
+			end	
+		end
+        if rangedtype == true then
             equip({neck="Hope Torque"})
         else 
             equip({neck="Faith Torque"})
@@ -421,7 +421,7 @@ end
             equip({ammo="Hightail Bullet"})
             disable('ammo')
         end
-    elseif spell.action_type == 'Ranged Attack' then
+	elseif spell.action_type == 'Ranged Attack' then
         equip_racc()
     elseif spell.name == 'Sharpshot' then
         equip(sets.sharpshot)
@@ -431,8 +431,8 @@ end
         equip(sets.camouflage)
 	end
 
--- Cancel status effects for spells that don't overwrite themselves
-    if spell.name:contains "Monomi" then send_command("cancel sneak") end	
+				-- Cancel status effects for spells that don't overwrite themselves
+			if spell.name:contains "Monomi" then send_command("cancel sneak") end	
  end
  
  -- equip haste gear for ninjutsu
@@ -611,11 +611,11 @@ function self_command(m)
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  if player.sub_job == "NIN" then
-	send_command('wait 2;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun')
+	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Sub job select: NINJA')
  else
-	send_command('wait 2;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
+	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
