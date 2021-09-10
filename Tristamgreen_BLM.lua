@@ -569,10 +569,10 @@ end
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
     end
-    if spell.element == 'Ice' then
-        windower.add_to_chat(8,"[Ice Magic - Aquilo's Staff]")
-        equip({main="Aquilo's Staff"})
-    end
+    -- if spell.element == 'Ice' then
+    --    windower.add_to_chat(8,"[Ice Magic - Aquilo's Staff]")
+    --    equip({main="Aquilo's Staff"})
+    -- end
     if spell.english == 'Flash' then
         windower.add_to_chat(8,'[Casting ' .. spell.english .. ' with ' .. player.mp .. ' MP remaining]')
         equip(sets.divaccuracy)

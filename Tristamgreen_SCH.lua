@@ -578,10 +578,10 @@ end
             windower.add_to_chat(8,'[Uggalepih Pendant boost]')
             equip({neck="Uggalepih Pendant"})
     end
-    if spell.element == 'Ice' then
-        windower.add_to_chat(8,"[Ice Magic - Aquilo's Staff]")
-        equip({main="Aquilo's Staff"})
-    end
+    -- if spell.element == 'Ice' then
+    --    windower.add_to_chat(8,"[Ice Magic - Aquilo's Staff]")
+    --    equip({main="Aquilo's Staff"})
+    -- end
 	-- if buffactive['Dark Arts'] then
 	--		equip({body="Scholar's Gown +1"})
 	-- end
