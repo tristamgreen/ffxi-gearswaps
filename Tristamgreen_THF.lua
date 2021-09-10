@@ -317,6 +317,9 @@ end
         windower.add_to_chat(8,'[Daylight Regen]')                      -- Lycopodium Sash + Feronia's Bangles
         equip(sets.daylight)
     end
+	if mdt == true then
+		equip(sets.mdt)
+	end
  end
  
  function buff_change(name,gain)
