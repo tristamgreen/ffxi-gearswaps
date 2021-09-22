@@ -11,7 +11,7 @@ function get_sets()
 	-- Also adds +2 Regen
 	
     sets.idle = {
-		ammo		= "Koga Shuriken",
+		ammo		= "Fenrir's Stone",
         head        = "Gnole Crown",
         neck        = "Orochi Nodowa +1",
         left_ear    = "Novia Earring",
@@ -29,7 +29,6 @@ function get_sets()
     sets.initial    = {
         main        = "Kikoku",
         sub         = "Perdu Blade",
-        -- ammo        = "Fenrir's Stone"
         }
 	
 	--idle during daylight - adds +regen during daylight
@@ -43,7 +42,7 @@ function get_sets()
 	-- balanced set.  Balance haste and attack for engaging mobs
  
     sets.balance    = {
-		-- ammo		= "Fire Bomblet",
+		ammo		= "Fire Bomblet",
 		head        = "Walahra Turban",
         neck        = "Hope Torque",
         left_ear   	= "Brutal Earring",
@@ -62,6 +61,7 @@ function get_sets()
     -- all-out evasion.
 	
     sets.eva = {
+		ammo		= "Fenrir's Stone",
         head        = "Gnole Crown",
         neck        = "Evasion Torque",
         left_ear    = "Novia Earring",
@@ -88,6 +88,7 @@ function get_sets()
 	
 	-- set for ranged attack
 	sets.rattk = {
+		ammo		= "Koga Shuriken",
 		head		= "Zha'Go's Barbut",
 		body		= "Koga Chainmail +1",
 		hands		= "Ninja Tekko +1",
@@ -111,14 +112,13 @@ function get_sets()
 	sets.eva.night	= {
 		legs		= "Koga Hakama +1",
 		head		= "Koga Hatsuburi +1",
-		-- ammo		= "Fenrir's Stone"
 	}
 	 
      -- WS gear for Blade Metsu: DEX 80%
      -- base str = 110
      -- base dex = 96
     sets.ws = {
-		-- ammo		= "Fire Bomblet",
+		ammo		= "Fire Bomblet",
         head        = "Gnadbhod's Helm",
         neck        = "Fotia Gorget",
         left_ear    = "Brutal Earring",
@@ -132,6 +132,22 @@ function get_sets()
         legs        = "Hachiryu Haidate",
 		feet        = "Rutter Sabatons"
     }
+	
+	sets.metsu = {
+		ammo		= "Bomb Core",
+		head		= "Gnadbhod's Helm",
+		body		= "Hachiryu Haramaki",
+		hands		= "Hachiryu Kote",
+		legs		= "Byakko's Haidate",
+		feet		= "Rutter Sabatons",
+		neck		= "Fotia Gorget",
+		waist		= "Cuchulain's Belt",
+		left_ear	= "Brutal Earring",
+		right_ear	= "Harmonius Earring",
+		left_ring	= "Rajas Ring",
+		right_ring	= "Flame Ring",
+		back		= "Cerb. Mantle +1",
+}
 	
 	-- SPELL CASTING SETS
 	
@@ -157,7 +173,7 @@ function get_sets()
     sets.elemental = {
         head        = "Maat's Cap",
         neck        = "Ninjutsu Torque",
-		-- ranged		= "Aureole",
+		ammo		= "Phantom Tathlum",
         left_ear    = "Incubus Earring +1",
         right_ear   = "Incubus Earring +1",
         body        = "Ninja Chainmail +1",
@@ -230,10 +246,10 @@ end
 	windower.add_to_chat(8,'[Weapon Skill]')
     if world.time <= 1020 and world.time >= 420 then
         windower.add_to_chat(8,'[Daylight: Attack +10]')
-        equip(sets.ws,{right_ear="Fenrir's Earring"})
+        equip({right_ear="Fenrir's Earring"})
     else
         windower.add_to_chat(8,'[Dusk to Dawn: DEX+7, STR+14]')
-        equip(sets.ws,{feet="Koga Kyahan +1",hands="Koga Tekko+1"})
+        equip({feet="Koga Kyahan +1",hands="Koga Tekko+1",right_ear="Pixie Earring"})
     end
 end
 	
@@ -306,6 +322,10 @@ function choose_set()
             equip(sets.rattk)			
 		end
     elseif spell.type == 'WeaponSkill' then
+		if spell.name == 'Blade: Metsu' then
+			equip(sets.metsu)
+		else equip(sets.ws)
+		end	
         equip_ws()
     elseif spell.type == 'Ninjutsu' then
         local spell_recasts = windower.ffxi.get_spell_recasts()
@@ -316,6 +336,14 @@ function choose_set()
             equip({right_ear = "Loquac. Earring"})
         end
     end
+	
+				-- Cancel status effects for spells that don't overwrite themselves
+			if spell.name == "Sneak" then send_command("cancel sneak") end
+			if spell.name == "Stoneskin" then send_command("wait 4;cancel stoneskin") end
+			if spell.name == "Reraise" then send_command("cancel reraise") end
+			if spell.name == "Blink" then send_command("wait 4;cancel blink") end
+			if spell.name == "Aquaveil" then send_command("wait 4;cancel aquaveil") end
+	
  end
  
   -- as a NIN we don't do anything mid-cast, because all
