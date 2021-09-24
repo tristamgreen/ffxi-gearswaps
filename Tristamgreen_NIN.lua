@@ -151,35 +151,50 @@ function get_sets()
 	
 	-- SPELL CASTING SETS
 	
-	-- Utsusemi set.  Haste prioritized
+	-- Enhancing set.  Haste prioritized
 		  
-    sets.utsu = {
+    sets.enhancing  = {
         head        = "Walahra Turban",
         neck        = "Tiercel Necklace",
         left_ear    = "Novia Earring",
         right_ear   = "Triton Earring",
-        body        = "Scorpion Harness +1",
+        body        = "Ninja Chainmail +1",
         hands       = "Dusk Gloves +1",
         left_ring   = "Wivre Ring +1",
         right_ring  = "Wivre Ring +1",
-        back        = "Boxer's Mantle",
+        back        = "Shadow Mantle",
         waist       = "Ninurta's Sash",
         legs        = "Byakko's Haidate",
         feet        = "Fuma Sune-Ate"
     }
+	
+	-- Enfeebling set. Magic Accuracy and Ninjutsu Skill prioritized
+	sets.enfeebling	= {
+		head        = "Ree's Headgear",
+        neck        = "Tiercel Necklace",
+        left_ear    = "Novia Earring",
+        right_ear   = "Ninjutsu Earring",
+        body        = "Ninja Chainmail +1",
+        hands       = "Dusk Gloves +1",
+        left_ring   = "Antica Ring",
+        right_ring  = "Omega Ring",
+        back        = "Boxer's Mantle",
+        waist       = "Ninurta's Sash",
+        legs        = "Denali kecks",
+        feet        = "Kog. Kyahan +1"
+    }
      
 	-- Elemental Wheel spells.  Prioritizes Ninjutsu, INT, and MAB.
-	 
     sets.elemental = {
-        head        = "Maat's Cap",
+        head        = "Koga Hatsuburi +1",
         neck        = "Ninjutsu Torque",
 		ammo		= "Phantom Tathlum",
-        left_ear    = "Incubus Earring +1",
-        right_ear   = "Incubus Earring +1",
-        body        = "Ninja Chainmail +1",
+        body        = "Kirin's Osode",
         hands       = "Koga Tekko +1",
         left_ring   = "Galdr Ring",
         right_ring  = "Omega Ring",
+		left_ear	= "Novio Earring",
+		right_ear	= "Moldavite Earring",
         back        = "Astute Cape",
         waist       = "Koga Sarashi",
         legs        = "Denali Kecks",
@@ -252,30 +267,7 @@ end
         equip({feet="Koga Kyahan +1",hands="Koga Tekko+1",right_ear="Pixie Earring"})
     end
 end
-	
-	--equip Utsusemi (Haste) gear for Utsusemi cast
-	
-function equip_utsu()
---	if spell.name:contains('Ni') then
---		windower.add_to_chat(8,'[Utsusemi: San - 4 Shadows]')
---	elseif spell.name:contains('Ichi') then
---		windower.add_to_chat(8,'[Utsusemi: Ichi - 3 Shadows]')
---	end
-	equip(sets.utsu)
-end
 
-function equip_elemental(spell)
-    if spell.element == world.day_element then
-        windower.add_to_chat(8,'[Elemental - on matching day]')
-        equip(sets.elemental,{waist="Hachirin-no-Obi"})
-    elseif spell.element == world.weather_element then
-        windower.add_to_chat(8,'[Elemental - with matching weather]')
-        equip(sets.elemental,{waist="Hachirin-no-Obi"})
-    else
-        windower.add_to_chat(8,'[Elemental]')
-        equip(sets.elemental)
-    end    
-end
 
 -- a catchall equip function that puts on the correct set
 -- whether we are engaged or idle, and sepending on our stance.
@@ -351,13 +343,32 @@ function choose_set()
  
  function midcast(spell)
 	if spell.type == 'Ninjutsu' then
-		if spell.name:contains('Utsusemi') then
-			equip_utsu()
-		else
+	local magictype = get_magic_type(spell)
+        if magictype == 'ninBuff' then
+-- debug			windower.add_to_chat(8,'[CHANGING TO ENHANCING SET FOR SPELL ' .. spell.english .. ']')
+			equip(sets.enhancing)
+        elseif magictype == 'ninEnfeeb' then
+-- debug			windower.add_to_chat(8,'[CHANGING TO ENFEEBLING SET FOR SPELL ' .. spell.english .. ']')
+			equip(sets.enfeebling)
+		elseif magictype == 'ninElemental' then
+-- debug			windower.add_to_chat(8,'[CHANGING TO ELEMENTAL SET FOR SPELL ' .. spell.english .. ']')
 			equip_elemental(spell)
-		end
+        end
 	end
  end
+ 
+ function equip_elemental(spell)
+    if spell.element == world.day_element then
+        windower.add_to_chat(8,'[Elemental - on matching day]')
+        equip(sets.elemental,{waist="Hachirin-no-Obi"})
+    elseif spell.element == world.weather_element then
+        windower.add_to_chat(8,'[Elemental - with matching weather]')
+        equip(sets.elemental,{waist="Hachirin-no-Obi"})
+    else
+        windower.add_to_chat(8,'[Elemental]')
+        equip(sets.elemental)
+    end    
+end
 
  
  -- after our ws or ability, call the choose_set function
@@ -370,6 +381,33 @@ end
 -- correct gear.
 function status_change(new,old)
     choose_set()
+end
+
+-- Get ninjutsu type to determine set
+function get_magic_type(spell)
+	if ninElemental:contains(spell.english) then
+		windower.add_to_chat(8,'[Elemental Ninjutsu - ' .. spell.english .. ']')
+		return 'ninElemental'
+	elseif ninEnhancing:contains(spell.english) then
+		windower.add_to_chat(8,'[Enhancing Ninjutsu - ' .. spell.english .. ']')
+		return 'ninBuff'
+	elseif ninEnfeebling:contains(spell.english) then
+		windower.add_to_chat(8,'[Enfeebling Ninjutsu - ' .. spell.english .. ']')
+		return 'ninEnfeeb'
+	end
+end
+
+function setup_job()
+    ninElemental = S{
+        'Doton: Ichi','Huton: Ichi','Hyoton: Ichi','Katon: Ichi','Raiton: Ichi','Suiton: Ichi',
+	    'Doton: Ni','Huton: Ni','Hyoton: Ni','Katon: Ni','Raiton: Ni','Suiton: Ni',
+	    'Doton: San','Huton: San','Hyoton: San','Katon: San','Raiton: San','Suiton: San',}
+        
+    ninEnfeebling = S{
+        'Dokumori: Ichi','Hojo: Ichi','Hojo: Ni','Jubaku: Ichi','Kurayami: Ichi','Kurayami: Ni'}
+        
+    ninEnhancing = S{
+		'Utsusemi: Ichi','Utsusemi: Ni','Monomi: Ichi','Tonko: Ichi','Tonko: Ni'}
 end
 
 function buff_change(new,old)
@@ -465,6 +503,8 @@ end
  mdef = false
  eva = false
  photographer = false
+ 
+ setup_job()
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  send_command('wait 1;input /lockstyleset 13;wait 1;gs equip idle;wait 1;gs equip initial')
