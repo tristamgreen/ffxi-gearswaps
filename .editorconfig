@@ -1,0 +1,20 @@
+# top-most EditorConfig file
+# created by Tristam Green 09242021
+root = true
+
+# Visual Studio comes bundled with native support for EditorConfig
+# For other code editors:  https://editorconfig.org/#download
+
+[*.lua]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+trim_trailing_whitespace = true
+
+[*.{cpp,h}]
+charset = utf-8-bom
+indent_style = space
+indent_size = 4
+end_of_line = lf
+trim_trailing_whitespace = true
+indent_brace_style = allman # This is unfortunately ignored in Visual Studio
