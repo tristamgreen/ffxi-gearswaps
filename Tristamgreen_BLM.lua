@@ -53,7 +53,7 @@ Tristamgreen BLM Remix - 2020
 	sets.meleeStaff = set_combine(
 		sets.staff,{
 		sub			= "Pole Grip",
-		-- ammo		= "White Tathlum",
+    -- ammo		= "White Tathlum",
 	})
 	
 	-- terra's staff for damage mitigation
