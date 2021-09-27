@@ -53,7 +53,7 @@ Tristamgreen BLM Remix - 2020
 	sets.meleeStaff = set_combine(
 		sets.staff,{
 		sub			= "Pole Grip",
-    -- ammo		= "White Tathlum",
+		-- ammo		= "White Tathlum",
 	})
 	
 	-- terra's staff for damage mitigation
@@ -707,6 +707,7 @@ function self_command(m)
 		else
 			melee = false
 			enable('main','sub','range')
+			choose_set()
 			windower.add_to_chat(8,'[Melee Mode: Inactive]')
 		end
     elseif m == "M+" then
