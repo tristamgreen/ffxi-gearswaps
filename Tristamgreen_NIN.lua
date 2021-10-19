@@ -92,7 +92,7 @@ function get_sets()
 		head		= "Zha'Go's Barbut",
 		body		= "Koga Chainmail +1",
 		hands		= "Ninja Tekko +1",
-		legs		= "Ninja Hakama",
+		legs		= "Ninja Hakama +1",
 		feet		= "Enkidu's Leggings",
 		neck		= "Qiqirn Collar",
 		waist		= "Hurling Belt",
@@ -471,21 +471,27 @@ function self_command(m)
     elseif m == "castElemental" then
         if (nextElement=='thunder') then
             send_command('input /ma "Raiton: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against earth]')
             nextElement = 'earth'
         elseif (nextElement=='earth')   then
             send_command('input /ma "Doton: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against wind]')
             nextElement = 'wind'
         elseif (nextElement=='wind')    then
             send_command('input /ma "Huton: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against ice]')
             nextElement = 'ice'
         elseif (nextElement=='ice')     then
             send_command('input /ma "Hyoton: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against fire]')			
             nextElement = 'fire'
         elseif (nextElement=='fire')    then
             send_command('input /ma "Katon: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against water]')			
             nextElement = 'water'
         elseif (nextElement=='water')   then
             send_command('input /ma "Suiton: San" <t>')
+			windower.add_to_chat(8,'[lowers resistance against thunder]')			
             nextElement = 'thunder'
         end
 	elseif m == "resetWheel" then
