@@ -128,7 +128,7 @@
         body        =   "Kirin's Osode",
         hands       =   "Alkyoneus's Bracelets",
         legs        =   "Hachiryu Haidate",
-        feet        =   "Denali Gamashes",
+        feet        =   "Agrona's Leggings",
         neck        =   "Fotia Gorget",
         waist       =   "Black Belt",
         left_ear    =   "Brutal Earring",

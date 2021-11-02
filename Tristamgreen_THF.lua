@@ -258,6 +258,11 @@
         legs        = "Homam Cosciales",
         feet        = "Homam Gambieras"
     } 
+	
+	sets.soultrapper = {
+		ranged		= "Soultrapper 2000",
+		ammo		= "H.S. Soul Plate"
+	}
  end
  
  -- functions
