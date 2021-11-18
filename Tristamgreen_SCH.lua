@@ -34,7 +34,7 @@ Tristamgreen SCH Remix - 2021
 	
 	sets.sublimation = {
 		sub			= "Raptor Strap +1",
-		head		= "Scholar's Mortarboard",
+		head		= "Scholar's Mortarboard +1",
 		neck		= "Bloodbead Gorget",
 		left_ear	= "Bloodbead Earring",
 		right_ear	= "Harmonius Earring",

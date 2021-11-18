@@ -166,7 +166,7 @@ function get_sets()
 		ammo		= "Hedgehog Bomb",
 		head		= "Spurrer Beret",
 		hands		= "Smn. Bracers +1",
-		legs		= "Evoker's Spats",
+		legs		= "Evoker's Spats +1",
 		feet		= "Smn. Pigaches +1",
 	}
 	sets.perp.endurance = { -- Perp cost- (only this, since it overwrites perp.engaged)
@@ -220,7 +220,7 @@ function get_sets()
 	sets.midcast = {}
 	sets.midcast.bpragephys = set_combine(sets.siphon,{  -- BP potency (Summoning magic skill + acc/atk)
 		body = "Smn. Doublet +1",
-		legs = "Evoker's Spats",
+		legs = "Evoker's Spats +1",
 		feet = "Smn. Pigaches +1",
 	})
     sets.midcast.bprageclaws = set_combine({sets.bpragephys,  -- Garuda-specific
@@ -391,7 +391,7 @@ sets.midcast.bpragestrike = set_combine({sets.bpragemag, -- Heavenly Strike-spec
 	}	
 	sets.weapons.staff = {
 		main		= "Claustrum",
-		sub			= "Pole Grip",
+		-- sub			= "Pole Grip",
 		ammo		= "White Tathlum",
 	}
 	
