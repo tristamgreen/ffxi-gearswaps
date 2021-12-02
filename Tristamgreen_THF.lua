@@ -462,7 +462,9 @@ function self_command(m)
     if m == "W+" then
         if ws == "Mercy Stroke" then
             ws = "Dancing Edge"
-        else
+        elseif ws == "Dancing Edge" then
+			ws = "Shark Bite"
+		else
 			ws = "Mercy Stroke"
         end
         windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')

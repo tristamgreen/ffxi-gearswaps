@@ -1258,7 +1258,7 @@ function setup_job()
 		'Ecliptic Growl','Glittering Ruby','Earthen Ward','Spring Water','Hastega','Noctoshield','Ecliptic Howl','Dream Shroud','Healing Ruby II'}
 
     pacts = {}
-	pacts.lowlv ={['Carbuncle']='Poison Nails', ['Ifrit']='Double Punch', ['Garuda']='Claw', ['Titan']='Rock Throw', ['Shiva']='Double Slap', ['Ramuh']='Shock Strike', ['Fenrir']='Crescent Fang', ['Diabolos']='Camisado'}
+	pacts.lowlv ={['Carbuncle']='Poison Nails', ['Ifrit']='Double Punch', ['Garuda']='Claw', ['Titan']='Rock Buster', ['Shiva']='Double Slap', ['Ramuh']='Shock Strike', ['Fenrir']='Crescent Fang', ['Diabolos']='Camisado'}
     pacts.cure = {['Carbuncle']='Healing Ruby'}
     pacts.curaga = {['Carbuncle']='Healing Ruby II', ['Garuda']='Whispering Wind', ['Leviathan']='Spring Water'}
     pacts.buffoffense = {['Carbuncle']='Glittering Ruby', ['Ifrit']='Crimson Howl', ['Garuda']='Hastega', ['Ramuh']='Rolling Thunder',
