@@ -37,7 +37,7 @@
 		neck		= "Orochi Nodowa +1",
 		waist		= "Steppe Sash",
 		left_ear	= "Ethereal Earring",
-		right_ear	= "Triton Earring",
+		right_ear	= "Novia Earring",
 		left_ring	= "Shadow Ring",
 		right_ring	= "Patronus Ring",
 		back		= "Shadow Mantle",
@@ -81,8 +81,7 @@
 	})
     
     sets.dayidle    =   {
-		waist		= "Lycopodium Sash",
-		hands		= "Feronia's Bangles"
+		waist		= "Lycopodium Sash"
 	}
      
 	-- if its latent is procced, we'd rather wear the
@@ -103,7 +102,7 @@
         left_ear    = "Hades Earring +1",
         right_ear   = "Hades Earring +1",
         left_ring   = "Hercules' Ring",
-        right_ring  = "Patronus Ring",
+        right_ring  = "Corneus Ring",
         back        = "Cerb. Mantle +1",
     }
 	
@@ -132,16 +131,27 @@
 		feet		= "Askar Gambieras",
 		neck		= "Harmonia's Torque",
 		waist		= "Resolute Belt",
-		left_ear	= "Merman's Earring",
+		left_ear	= "Ethereal Earring",
 		right_ear	= "Merman's Earring",
 		left_ring	= "Shadow Ring",
 		back		= "Lamia Mantle +1",
-		right_ring	= "Patronus Ring",
+		right_ring	= "Merman's Ring",
 	}	
 
 	sets.breath = set_combine(sets.mdt,{
 	-- breath damage down
-		body		= "Blood Scale Mail"
+		head		=	"Blood Mask",
+		body		=	"Blood Scale Mail",
+		hands		=	"Creek M Mitts",
+		legs		=	"Kaiser Diechlings",
+		feet		=	"Askar Gambieras",
+		neck		=	"Bloodbead Gorget",
+		waist		=	"Resolute Belt",
+		left_ear	=	"Harmonius Earring",
+		right_ear	=	"Harmonius Earring",
+		left_ring	=	"Gobniu's Ring",
+		right_ring	=	"Gobniu's Ring",
+		back		=	"Lamia Mantle +1"
 	})
  
      -- our resting set is for hMP.
@@ -162,8 +172,8 @@
     sets.kor = {
         head        = "Nocturnus Helm",
         neck        = "Fotia Gorget",
-        ear1        = "Celestial Earring",
-        ear2        = "Tmph. Earring +1",
+        ear1        = "Harmonius Earring",
+        ear2        = "Harmonius Earring",
         body        = "Hct. Harness +1",
         hands       = "Hct. Mittens +1",
         ring1       = "Celestial Ring",
@@ -178,8 +188,8 @@
     sets.str = {
         head        = "Hecatomb Cap +1",
         neck        = "Fotia Gorget",
-        ear1        = "Tmph. Earring +1",
-        ear2        = "Tmph. Earring +1",
+        ear1        = "Harmonius Earring",
+        ear2        = "Harmonius Earring",
         body        = "Hct. Harness +1",
         hands       = "Hct. Mittens +1",
         ring1       = "Flame Ring",
@@ -196,7 +206,8 @@
 		neck		= "Shield Torque",
 		ear1		= "Buckler Earring",
         hands       = "Vlr. Gauntlets +1",
-		feet		= "Gallant Leggings"
+		feet		= "Gallant Leggings",
+		
     }
 	
 	-- chivalry set maximizes MND
@@ -226,6 +237,11 @@
 	
 	sets.holycircle	= {
 		feet		= "Gallant Leggings"
+	}
+	
+	sets.cover		= {
+		head		= "Gallant Coronet",
+		body		= "Valor Surcoat"
 	}
  
      -- our base haste set for flash and utsu
@@ -397,6 +413,9 @@ function equip_engaged()
 	if player.hpp >= 85 and player.mpp <= 70 then
 		equip(sets.parade)
     end
+	if buffactive['Cover'] then
+ 		equip(sets.cover)
+    end
  end
  
  -- equip our WS set
@@ -463,6 +482,14 @@ end
     else
          equip(sets.enmity)
     end
+	
+				-- Cancel status effects for spells that don't overwrite themselves
+			if spell.name == "Sneak" then send_command("cancel sneak") end
+			if spell.name == "Stoneskin" then send_command("wait 4;cancel stoneskin") end
+			if spell.name == "Reraise" then send_command("cancel reraise") end
+			if spell.name == "Blink" then send_command("wait 4;cancel blink") end
+			if spell.name == "Aquaveil" then send_command("wait 4;cancel aquaveil") end
+			
  end
  
  -- most of our abilities are either insta-cast or require
