@@ -206,7 +206,7 @@
 		neck		= "Shield Torque",
 		ear1		= "Buckler Earring",
         hands       = "Vlr. Gauntlets +1",
-		feet		= "Gallant Leggings",
+		feet		= "Glt. Leggings +1",
 		
     }
 	
@@ -236,7 +236,7 @@
     }
 	
 	sets.holycircle	= {
-		feet		= "Gallant Leggings"
+		feet		= "Glt. Leggings +1"
 	}
 	
 	sets.cover		= {
