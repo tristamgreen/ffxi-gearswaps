@@ -203,8 +203,9 @@
      -- shield bash set
     sets.bash = {
         ear2        = "Knightly Earring",
-		neck		= "Shield Torque",
-		ear1		= "Buckler Earring",
+		ring2		= "Fenian Ring",
+		-- neck		= "Shield Torque",
+		-- ear1		= "Buckler Earring",
         hands       = "Vlr. Gauntlets +1",
 		feet		= "Glt. Leggings +1",
 		
@@ -388,11 +389,16 @@ end
 -- procced and we need mp, throw that on as well.
 function equip_engaged()
     windower.add_to_chat(8,'[Engaged]')
+	windower.add_to_chat(8,'[Defense Mode: ' .. defmsg .. ']')
 	equip(sets.idle,sets.engaged)
 	if pdt == true then
 		equip(sets.pdt)
 		if world.time <= 1080 and world.time >= 360 then
 			equip({head="Louhi's Mask"})
+		end
+		if buffactive['Reprisal'] then
+			windower.add_to_chat(8, '[Reprisal Mode active]')
+			equip(sets.pdt,sets.enhancing.reprisal)
 		end
 	elseif mdt == true then
 		if world.time <= 1080 and world.time >= 360 then
@@ -415,7 +421,7 @@ function equip_engaged()
     end
 	if buffactive['Cover'] then
  		equip(sets.cover)
-    end
+	end
  end
  
  -- equip our WS set
@@ -472,6 +478,12 @@ end
 		--	equip({head="Horror Head II"})
 		--end
     elseif spell.type:contains('Magic') or spell.type == 'Ninjutsu' then
+		if spell.english == 'Reprisal' then
+			if mdt then
+				add_to_chat(122,'in MDT mode, cancelling Reprisal.')
+				cancel_spell()
+			end
+		end
         local spell_recasts = windower.ffxi.get_spell_recasts()
         if spell_recasts[spell.recast_id] > 60 then -- 1s margin
 			add_to_chat(167,spell.english .. ' is still on cooldown!')
@@ -480,7 +492,7 @@ end
             equip(sets.fc)
         end
     else
-         equip(sets.enmity)
+		equip(sets.enmity)
     end
 	
 				-- Cancel status effects for spells that don't overwrite themselves
@@ -507,7 +519,7 @@ end
 		elseif spell.name == 'Blink' then
 			equip(sets.enhancing.blink)
 		elseif spell.name == 'Reprisal' then
-			equip(sets.enhancing.reprisal)
+				equip(sets.enhancing.reprisal)
 		end
     elseif spell.skill == 'Divine Magic' then
 		equip(sets.divine)
@@ -518,6 +530,15 @@ end
 				equip({head="Horror Head II"})
 			end
 		end
+	elseif spell.name == 'Shield Bash' then
+        windower.add_to_chat(8,'[Shield Bash]')
+        equip(sets.enmity,sets.bash)
+		--if world.moon_pct <= 10 and world.moon_pct >= 5 and world.day == "Lightsday" and world.time <= 1080 and world.time >= 360 then
+		--	equip({head="Horror Head II"})
+		--end
+        if player.hpp <= 75 and player.tp <=1000 then
+            equip({ring1="Guardian's Ring"})
+        end
 	else
         equip(sets.enmity)
     end
@@ -583,14 +604,15 @@ function self_command(m)
 		if kiting == false then
 			kiting = true
 			kitemsg = "ACTIVE"
-			windower.add_to_chat(8,'[' .. kitemsg .. ']')
+			-- windower.add_to_chat(8,'[' .. kitemsg .. ']')
 		else 
 			kiting = false
 			kitemsg = "INACTIVE"
-			windower.add_to_chat(8,'[' .. kitemsg .. ']')
+			-- windower.add_to_chat(8,'[' .. kitemsg .. ']')
 		end
 		choose_set()
 	elseif m == "hybrid" then
+		defmsg = "HYBRID"
 		hybrid = true
         pdt = false
 		mdt = false
@@ -598,24 +620,27 @@ function self_command(m)
             windower.add_to_chat(8,'[Tank mode: Hybrid]')
             choose_set()
 	elseif m == "pdt" then
-		hybrid = false
+		defmsg = "PDT"
 		pdt = true
+		hybrid = false
 		mdt = false
 		breath = false
             windower.add_to_chat(8,'[Tank Mode: Physical Def.]')
             choose_set()
 	elseif m == "mdt" then
+		defmsg = "MDT"
+		mdt = true
 		hybrid = false
 		pdt = false
-		mdt = true
 		breath = false
             windower.add_to_chat(8,'[Tank Mode: Magic Def.]')
             choose_set()
 	elseif m == "breath" then
+		defmsg = "BREATH"
+		breath = true
 		hybrid = false
 		pdt = false
 		mdt = false
-		breath = true
             windower.add_to_chat(8,'[Tank Mode: Breath Dmg. Reduction]')
             choose_set()
 	elseif m == "highAcc" then
@@ -641,10 +666,12 @@ hybrid = true
 pdt = false
 mdt = false
 breath = false
+defmsg = "HYBRID"
 
 highAcc = false
 
 kiting = false
+kitemsg = "INACTIVE"
 
 -- set initial weapon skill
 ws = "Atonement"
