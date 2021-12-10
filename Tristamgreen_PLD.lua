@@ -48,15 +48,15 @@
 		head		= "Wivre Mask +1",
 		body		= "Valhalla Brstplate",
 		neck		= "Evasion Torque",
-		ring1		= "Wivre Ring +1",
-		ring2		= "Wivre Ring +1",
+		left_ring	= "Wivre Ring +1",
+		right_ring	= "Wivre Ring +1",
 		back		= "Boxer's Mantle",
 		waist		= "Trance Belt",		
 	})
  
 	-- we throw on our engaged set when we engage a mob
-    sets.engaged = {
-	    head		= "Walahra Turban",
+    sets.engaged 	= {
+	    head		= "Nocturnus Helm",
 		body		= "Askar Korazin",
 		hands		= "Dusk Gloves +1",
 		legs		= "Homam Cosciales",
@@ -86,12 +86,12 @@
      
 	-- if its latent is procced, we'd rather wear the
     -- parade gorget than the shield 
-    sets.parade = {
+    sets.parade		= {
         neck        = "Parade Gorget"
     }
  
 	-- our enmity set stacks enmity
-    sets.enmity = {
+    sets.enmity 	= {
         head        = "Hydra Salade",
 		body        = "Hydra Haubert",
 		hands       = "Hydra Moufles",
@@ -106,23 +106,23 @@
         back        = "Cerb. Mantle +1",
     }
 	
-	sets.pdt	= {
+	sets.pdt		= {
 	-- maximize Phys. Dmg down and VIT
-		--head	= "Valhalla Helm",
+		head		= "Nocturnus Helm",
 		--neck	= "",
-		body	= "Valhalla Breastplate",
-		hands	= "Darksteel Mittens +1",
-		legs	= "Kaiser Diechlings",
-		feet	= "Askar Gambieras",
-		ring1	= "Jelly Ring",
-		ring2	= "Patronus Ring",
-		ear1	= "Ethereal Earring",
-		ear2	= "Robust Earring",
-		back	= "Shadow Mantle",
-		waist	= "Warwolf Belt"
+		body		= "Valhalla Breastplate",
+		hands		= "Darksteel Mittens +1",
+		legs		= "Kaiser Diechlings",
+		feet		= "Askar Gambieras",
+		left_ring	= "Jelly Ring",
+		right_ring	= "Patronus Ring",
+		left_ear	= "Ethereal Earring",
+		right_ear	= "Robust Earring",
+		back		= "Shadow Mantle",
+		waist		= "Warwolf Belt"
 	}
 	
-	sets.mdt	= {
+	sets.mdt		= {
 	-- maximize MDT and Magic Defense Bonus
 		--head		= "Valhalla Helm",
 		hands		= "Coral Fng. Gnt. +1",
@@ -172,12 +172,12 @@
     sets.kor = {
         head        = "Nocturnus Helm",
         neck        = "Fotia Gorget",
-        ear1        = "Harmonius Earring",
-        ear2        = "Harmonius Earring",
+        left_ear    = "Harmonius Earring",
+        right_ear   = "Harmonius Earring",
         body        = "Hct. Harness +1",
         hands       = "Hct. Mittens +1",
-        ring1       = "Celestial Ring",
-        ring2       = "Rajas Ring",
+        left_ring   = "Celestial Ring",
+        right_ring  = "Rajas Ring",
         back        = "Cuchulain's Mantle",
         waist       = "Warwolf Belt",
         legs        = "Hecatomb Subligar +1",
@@ -188,12 +188,12 @@
     sets.str = {
         head        = "Hecatomb Cap +1",
         neck        = "Fotia Gorget",
-        ear1        = "Harmonius Earring",
-        ear2        = "Harmonius Earring",
+        left_ear    = "Harmonius Earring",
+        right_ear   = "Harmonius Earring",
         body        = "Hct. Harness +1",
         hands       = "Hct. Mittens +1",
-        ring1       = "Flame Ring",
-        ring2       = "Rajas Ring",
+        left_ring   = "Flame Ring",
+        right_ring  = "Rajas Ring",
         back        = "Cuchulain's Mantle",
         waist       = "Warwolf Belt",
         legs        = "Hct. Subligar +1",
@@ -202,10 +202,8 @@
      
      -- shield bash set
     sets.bash = {
-        ear2        = "Knightly Earring",
-		ring2		= "Fenian Ring",
-		-- neck		= "Shield Torque",
-		-- ear1		= "Buckler Earring",
+        right_ear   = "Knightly Earring",
+		right_ring	= "Fenian Ring",
         hands       = "Vlr. Gauntlets +1",
 		feet		= "Glt. Leggings +1",
 		
@@ -215,8 +213,8 @@
 	sets.chivalry	= {
 		head		= "Maat's Cap",
 		body		= "Blood Scale Mail",
-		-- hands		= "Dvt. Mitts +1",
-		-- legs		= "Jet Seraweels",
+		-- hands	= "Dvt. Mitts +1",
+		legs		= "Jet Seraweels",
 		feet		= "Vlr. Leggings +1",
 		neck		= "Gnole Torque",
 		waist		= "Pythia Sash +1",
@@ -246,7 +244,7 @@
 	}
  
      -- our base haste set for flash and utsu
-    sets.haste = {
+    sets.haste 		= {
 		head		= "Walahra Turban",
 		body		= "Hydra Haubert",
 		hands		= "Homam Manopolas",
@@ -265,19 +263,19 @@
     -- skill because shield blocks prevent interruption.
     sets.utsu = {
         neck        = "Shield Torque",
-        ear1        = "Buckler Earring",
-        ear2        = "Knightly Earring"
+        left_ear    = "Buckler Earring",
+        right_ear   = "Knightly Earring"
     }
  
      sets.fc = {
         head        = "Walahra Turban",
-        ear2        = "Loquac. Earring",
+        right_ear   = "Loquac. Earring",
         feet        = "Dusk Ledelsens +1",
         hands       = "Dusk Gloves +1",
-        ring2       = "Blitz Ring"
+        right_ring  = "Blitz Ring"
     }
 	
-	sets.enhancing = {
+	sets.enhancing 	= {
 		back		= "Merciful Cape",
 		left_ear	= "Augment. Earring",
 	}
@@ -285,7 +283,6 @@
 	-- With 231 (210+16merits+5cape) skill and 450 being SN cap, you need 133 MND on PLD to get cap 
 		head		= "Maat's Cap",
 		body		= "Blood Scale Mail",
-		-- hands		= "Dvt. Mitts +1",
 		hands		= "Stone Mufflers",
 		legs		= "Jet Seraweels",
 		feet		= "Vlr. Leggings +1",
@@ -310,7 +307,7 @@
 		head		= "Walahra Turban",
 		body		= "Blood Scale Mail",
 		hands		= "Dusk Gloves +1",
-		legs		= "Homam Cosciales",
+		legs		= "Vlr. Breeches +1",
 		feet		= "Homam Gambieras",
 		neck		= "Harmonia's Torque",
 		waist		= "Ninurta's Sash",
@@ -319,6 +316,15 @@
 		left_ring	= "Blitz Ring",
 		right_ring  = "Patronus Ring",
 		back		= "Gigant Mantle",
+	}
+	
+	sets.reprisal 	= { -- Reprisal Maintenance set - mostly Shield Skill
+		head		= "Kaiser Schaller",
+		legs		= "Vlr. Breeches +1",
+		feet		= "Gallant Leggings +1",
+		neck		= "Fortified Chain",
+		right_ear	= "Buckler Earring",	
+		back		= "Boxer's Mantle",
 	}
 	
 	sets.healing = {
@@ -334,12 +340,12 @@
 		right_ear	= "Knightly Earring",
 		left_ring	= "Hercules' Ring",
 		right_ring  = "Celestial Ring",
-		back		= "Dew Silk Cape +1",
+		back		= "Cerb. Mantle +1",
 	}
 	
-	sets.divine = {
-		ear2		= "Celestial Earring",
-		ear1		= "Divine Earring",
+	sets.divine 	= {
+		right_ear	= "Celestial Earring",
+		left_ear	= "Divine Earring",
 		neck		= "Divine Torque",
 		body		= "Gallant Surcoat",
 		hands		= "Dusk Gloves +1",
@@ -393,12 +399,12 @@ function equip_engaged()
 	equip(sets.idle,sets.engaged)
 	if pdt == true then
 		equip(sets.pdt)
-		if world.time <= 1080 and world.time >= 360 then
-			equip({head="Louhi's Mask"})
-		end
 		if buffactive['Reprisal'] then
 			windower.add_to_chat(8, '[Reprisal Mode active]')
-			equip(sets.pdt,sets.enhancing.reprisal)
+			equip(sets.reprisal)
+		end
+		if world.time <= 1080 and world.time >= 360 then
+			equip({head="Louhi's Mask"})
 		end
 	elseif mdt == true then
 		if world.time <= 1080 and world.time >= 360 then
@@ -463,7 +469,7 @@ end
 		--	equip({head="Horror Head II"})
 		--end
         if player.hpp <= 75 and player.tp <=1000 then
-            equip({ring1="Guardian's Ring"})
+            equip({left_ring="Guardian's Ring"})
         end
     elseif spell.name == 'Sentinel' then
         windower.add_to_chat(8,'[Sentinel]')
@@ -488,13 +494,14 @@ end
         if spell_recasts[spell.recast_id] > 60 then -- 1s margin
 			add_to_chat(167,spell.english .. ' is still on cooldown!')
 			cancel_spell()
+		elseif spell.name:contains('Utsusemi') then
+			equip(sets.eva,sets.fc)
 		else
             equip(sets.fc)
         end
     else
 		equip(sets.enmity)
     end
-	
 				-- Cancel status effects for spells that don't overwrite themselves
 			if spell.name == "Sneak" then send_command("cancel sneak") end
 			if spell.name == "Stoneskin" then send_command("wait 4;cancel stoneskin") end
@@ -507,7 +514,7 @@ end
  -- most of our abilities are either insta-cast or require
  -- gearswaps at the start, so we don't do much mid-cast.
  function midcast(spell)
-	if spell.name == 'Utsusemi: Ni' or spell.name == 'Utsusemi: Ichi' then
+	if spell.name:contains('Utsusemi') then
         windower.add_to_chat(8,'[Utsusemi]')
         equip(sets.enmity,sets.haste,sets.utsu)
 	elseif spell.skill == 'Healing Magic' then
@@ -537,7 +544,7 @@ end
 		--	equip({head="Horror Head II"})
 		--end
         if player.hpp <= 75 and player.tp <=1000 then
-            equip({ring1="Guardian's Ring"})
+            equip({left_ring="Guardian's Ring"})
         end
 	else
         equip(sets.enmity)
