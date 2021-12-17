@@ -258,7 +258,7 @@ Tristamgreen BLU v2 - 2021
 	-- 1617 HP @ lv75 without food
 	
 	sets.breath		= {
-		ranged		= "White Tathlum",
+		ammo		= "Verthandi's Gem",
 		head		= "Saurian Helm", 			-- (more HP, same breath % boost)
 		body		= "Blood Scale Mail",
 		hands		= "Creek M Mitts",

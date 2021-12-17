@@ -64,7 +64,7 @@ sets.fastcast       = {
 sets.Breath         = {
         main        = "",
         sub         = "",
-        ammo        = "White Tathlum",
+        ammo        = "Verthandi's Gem",
         head        = "Drachen Armet +1",
         neck        = "Bloodbead Gorget",
         left_ear    = "Harmonius Earring",
@@ -264,6 +264,22 @@ sets.mpdown         = {
         right_ear   = "Intruder Earring",
         left_ring   = "Bloodbead Ring"
     }
+	
+sets.Stoneskin		= {
+		head		= "Maat's Cap",
+		ammo		= "Jasper Tathlum",
+		neck		= "Stone Gorget",
+		left_ear	= "Celestial Earring",
+		right_ear	= "Celestial Earring",
+		body		= "Blood Scale Mail",
+		hands		= "Stone Mufflers",
+		left_ring	= "Celestial Ring",
+		right_ring	= "Celestial Ring",
+		back		= "Merciful Cape",
+		waist		= "Ninurta's Sash",
+		legs		= "Homam Cosciales",
+		feet		= "Homam Gambieras"
+	}
        
 end
          
@@ -314,9 +330,15 @@ end
 			add_to_chat(167,spell.english .. ' is still on cooldown!')
 			cancel_spell()
 		else
-            windower.add_to_chat(8,'[- Pre-Cast Set Active -]')
-            equip(sets.Breath)
+			if spell.name == 'Stoneskin' then
+				windower.add_to_chat(8,'[Fast Cast]')
+				equip(sets.fastcast)
+			else
+				windower.add_to_chat(8,'[- Pre-Cast Set Active -]')
+				equip(sets.Breath)
+			end
         end
+		
     end
 
     if spell.type:contains('Angon') then
@@ -364,9 +386,14 @@ end
  
 function midcast(spell)
     if spell.action_type == 'Magic' then
-        windower.add_to_chat(8,'[Wyvern Breath Activation Set in-use]')
-        equip(sets.Breath)            
-        end
+		if spell.name == 'Stoneskin' then
+			windower.add_to_chat(8,'[Stoneskin Midcast]')
+			equip(sets.Stoneskin)
+		else
+			windower.add_to_chat(8,'[Wyvern Breath Activation Set in-use]')
+			equip(sets.Breath) 
+		end
+	end
 end
 
 function pet_midcast(spell)

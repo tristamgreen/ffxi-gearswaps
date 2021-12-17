@@ -34,6 +34,7 @@ Tristamgreen SCH Remix - 2021
 	
 	sets.sublimation = {
 		sub			= "Raptor Strap +1",
+		ammo		= "Verthandi's Gem",
 		head		= "Scholar's Mortarboard +1",
 		neck		= "Bloodbead Gorget",
 		left_ear	= "Bloodbead Earring",
@@ -443,7 +444,7 @@ end
  
  function equip_sublimation()
 	windower.add_to_chat(8,"[Scholar Super-Charging Sublimation]")
-	equip(sets.sublimation)
+	equip(sets.sublimation,sets.staff)
  end
 
  
