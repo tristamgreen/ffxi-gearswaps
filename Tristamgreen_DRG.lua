@@ -352,7 +352,7 @@ end
          elseif spell.name == 'Drakesbane' then
              windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
              equip(sets.drakesbane)
-        end
+	end
        
     if spell.name == 'Geirskogul' and world.time <= 1080 and world.time >= 360 then
         windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
@@ -360,27 +360,31 @@ end
          elseif spell.name == 'Geirskogul' then
              windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
              equip(sets.geirskogul)
-        end
+	end
    
     if spell.name == 'Ancient Circle' then
         windower.add_to_chat(8,"[- No dragons allowed... -]")
         equip(sets.Circle)
-        end
+	end
    
     if spell.name == 'Spirit Link' then
         windower.add_to_chat(8,'[- Hungry fella? There ya go! -]')
         equip(sets.Spirit)
-        end
+	end
  
-    if spell.name == 'Jump' or spell.name == 'Super Jump' then
-        windower.add_to_chat(8,'[- UP! -]')
-        equip(sets.Jump)
-        elseif spell.name == 'High Jump' then
+    if spell.name:contains('Jump') then
+		if windower.ffxi.get_ability_recasts()[spell.recast_id] > 0 then
+			windower.add_to_chat(8,'[-Selected Jump is not ready for use!-]')
+		else
+			windower.add_to_chat(8,'[- UP! -]')
+			equip(sets.Jump)
+			if spell.name == 'High Jump' then
 				windower.add_to_chat(8,'[- HIGHER!! -]')
 				equip(sets.Jump,{legs="Wyrm Brais +1"})
-		end
-   
-end    
+			end
+		end 
+	end
+end   
  
 ------- Midcast Section -------
  
