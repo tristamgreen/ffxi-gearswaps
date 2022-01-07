@@ -327,7 +327,7 @@ function self_command(m)
         else
 			ws = "Coronach"
         end
-        windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+        windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
     elseif m == "WS" then
         send_command('input /ws "' .. ws .. '" <t>')
     elseif m == "accmode" then

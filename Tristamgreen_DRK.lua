@@ -462,7 +462,7 @@ end
             else ws = "Ground Strike"
             end
         end
-        windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+        windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
         
     -- initiates the weaponskill defined above.
     
@@ -477,7 +477,7 @@ end
             weapontype = "scythe"
             ws = 'Guillotine'
             windower.add_to_chat(8,'[Weapon: Scythe]')
-            windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+            windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip({main="Apocalypse"})
             send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
             choose_set()
@@ -485,7 +485,7 @@ end
             weapontype = "gsword"
             ws = 'Ground Strike'
             windower.add_to_chat(8,'[Weapon Type: Great Sword]')
-            windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+            windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip({main="Algol"})
             send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
             choose_set()

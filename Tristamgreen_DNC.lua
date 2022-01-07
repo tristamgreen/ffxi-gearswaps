@@ -52,8 +52,8 @@
         feet        = "Dusk Ledelsens +1",
         neck        = "Love Torque",
         waist       = "Ninurta's Sash",
-        ear1		= "Pixie Earring",
-        ear2		= "Brutal Earring",
+        left_ear	= "Brutal Earring",
+        right_ear	= "Pixie Earring",
         left_ring   = "Toreador's Ring",
         right_ring  = "Rajas Ring",
         back        = "Etoile Cape"
@@ -68,7 +68,7 @@
         feet        = "Dusk Ledelsens +1",
         neck        = "Chivalrous Chain",
         waist       = "Ninurta's Sash",
-        left_ear    = "Wyvern Earring",
+        -- left_ear    = "Wyvern Earring",
         right_ear   = "Pixie Earring",
         left_ring   = "Toreador's Ring",
         right_ring  = "Rajas Ring",
@@ -116,8 +116,8 @@
 		feet		= "Etoile Shoes +1",
 		neck		= "Fotia Gorget",
 		waist		= "Cuchulain's Belt",
-		left_ear	= "Pixie Earring",
-		right_ear	= "Brutal Earring",
+		left_ear	= "Brutal Earring",
+		right_ear	= "Pixie Earring",
 		left_ring	= "Rajas Ring",
 		right_ring	= "Adroit Ring +1",
 		back		= "Cuchulain's Mantle",
@@ -132,8 +132,8 @@
 		feet		= "Denali Gamashes",
 		neck		= "Fotia Gorget",
 		waist		= "Cuchulain's Belt",
-		left_ear	= "Harmonius Earring",
-		right_ear	= "Brutal Earring",
+		left_ear	= "Brutal Earring",
+		right_ear	= "Harmonius Earring",
 		left_ring	= "Rajas Ring",
 		right_ring	= "Flame Ring",
 		back		= "Cerb. Mantle +1",
@@ -149,8 +149,8 @@
 		feet		= "Denali Gamashes",
 		neck		= "Fotia Gorget",
 		waist		= "Warwolf Belt",
-		left_ear	= "Harmonius Earring",
-		right_ear	= "Brutal Earring",
+		left_ear	= "Brutal Earring",
+		right_ear	= "Harmonius Earring",
 		left_ring	= "Rajas Ring",
 		right_ring	= "Flame Ring",
 		back		= "Cerberus Mantle +1",
@@ -170,7 +170,7 @@
         head        = "Walahra Turban",
         neck        = "Tiercel Necklace",
         left_ear	= "Triton Earring",
-        right_ear   = "Triton Earring",
+        right_ear   = "Novia Earring",
         body        = "Rapparee Harness",
         hands       = "Dusk Gloves +1",
         left_ring   = "Wivre Ring +1",
@@ -191,16 +191,16 @@
         feet    =   "Dancer's Shoes"
 	}
     
-    sets.waltz  =   { -- stack chr+vit for maximum healage
-        head    =   "Etoile Tiara +1",
-        body    =   "Dancer's Casaque",
-        legs    =   "Etoile Tights +1",
-        feet    =   "Dance Shoes +1",
-		ring1	=	"Corneus Ring",	
-        ear1	=   "Roundel Earring",
-        ear2	=   "Robust Earring +1",
-        back    =   "Etoile Cape",
-        waist   =   "Warwolf Belt"
+    sets.waltz  	=   { -- stack chr+vit for maximum healage
+        head    	=   "Etoile Tiara +1",
+        body    	=   "Dancer's Casaque",
+        legs    	=   "Etoile Tights +1",
+        feet    	=   "Dance Shoes +1",
+		ring1		=	"Corneus Ring",	
+        left_ear	=   "Roundel Earring",
+        right_ear	=   "Robust Earring +1",
+        back    	=   "Etoile Cape",
+        waist   	=   "Warwolf Belt"
     }
     
     sets.violent_flourish   =   {
@@ -244,6 +244,10 @@ function equip_engaged()
     else
 		equip(sets.haste)
 	end
+	if player.sub_job == "DRG" then
+            windower.add_to_chat(8,"[Dragoon Subjob - Wyvern Earring]")
+            equip({right_ear="Wyvern Earring"})
+	end
 end
  
  
@@ -276,10 +280,6 @@ end
 			windower.add_to_chat(8,"[Daylight Bonus]")
 			equip({left_ear="Fenrir's Earring"})
 		end
-        if player.sub_job == "DRG" then
-            windower.add_to_chat(8,"[Dragoon Subjob - Wyvern Earring]")
-            equip({right_ear="Wyvern Earring"})
-        end
     else
         equip_idle()	
     end
@@ -378,7 +378,7 @@ function self_command(m)
         elseif ws == "Evisceration" then
             ws = "Mercy Stroke"
         end
-        windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+        windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
     elseif m == "WS" then
         send_command('input /ws "' .. ws .. '" <t>')
     elseif m == "samba+" then

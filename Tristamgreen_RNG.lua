@@ -58,7 +58,7 @@
     sets.engaged    = {
         head        = "Walahra Turban",
 		body        = "Cobra Harness",
-		neck        = "Chivalrous Chain",
+		neck        = "Peacock Amulet",
 		hands       = "Enkidu's Mittens",
 		legs        = "Byakko's Haidate",
         waist       = "Ninurta's Sash",
@@ -242,14 +242,16 @@
         body        = "Kirin's Osode",
         back        = "Amemet Mantle +1",
         left_ring   = "Cerberus Ring +1",
+		right_ring	= "Cerberus Ring +1",
+		hands		= "Blood Fng. Gnt."
     }
         
     -- utsusemi haste
     sets.utsu = {
         head        = "Walahra Turban",
         neck        = "Tiercel Necklace",
-        left_ear    = "Triton Earring",
-        right_ear   = "Triton Earring",
+		left_ear	= "Novia Earring",
+		right_ear	= "Triton Earring",
         body        = "Antares Harness",
         hands       = "Dusk Gloves +1",
         left_ring   = "Wivre Ring +1",
@@ -357,6 +359,11 @@ end
         equip(sets.ranged.acc,{hands="Hunter's Bracers +1"})
         disable('hands')
     end
+	if player.sub_job == "NIN" then
+		if staffmode == false then
+			equip({feet="Hachiryu Sune-ate"})
+		end
+	end
     enable('ammo','hands')
 end
  
@@ -429,10 +436,13 @@ end
         equip(sets.shadowbind)
     elseif spell.name == 'Camouflage' then
         equip(sets.camouflage)
+	elseif spell.name:contains('Corsair') or spell.name:contains('Monk') or spell.name:contains('Healer') or spell.name:contains('Chaos') or spell.name:contains('Choral') or spell.name:contains('Drachen') or spell.name:contains('Hunter') or spell.name:contains('Ninja') or spell.name:contains('Magus') or spell.name:contains('Beast') or spell.name:contains('Samurai') or spell.name:contains('Wizard') or spell.name:contains('Warlock') or spell.name:contains('Rogue') or spell.name:contains('Gallant') or spell.name:contains('Evoker') or spell.name:contains('Puppet') or spell.name:contains('Dancer') or spell.name:contains('Scholar') then
+        equip({left_ring="Luzaf's Ring"})
 	end
 
 				-- Cancel status effects for spells that don't overwrite themselves
-			if spell.name:contains "Monomi" then send_command("cancel sneak") end	
+			if spell.name:contains "Monomi" then send_command("cancel sneak") 
+	end	
  end
  
  -- equip haste gear for ninjutsu
@@ -506,7 +516,7 @@ function self_command(m)
             else ws = "Namas Arrow"
             end
         end
-        windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+        windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
     elseif m == "WS" then
         send_command('input /ws "' .. ws .. '" <t>')
     elseif m == "rangedtype" then
@@ -514,7 +524,7 @@ function self_command(m)
             rangedtype = true
             ws = 'Namas Arrow'
             windower.add_to_chat(8,'[Ranged Attack Mode: Archery]')
-            windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+            windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip(sets.bow)
             send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp bow')
@@ -523,7 +533,7 @@ function self_command(m)
             rangedtype = false
             ws = 'Coronach'
             windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
-            windower.add_to_chat(8,'[Current WS: ' .. ws .. ']')
+            windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip(sets.gun)
             send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp gun')
