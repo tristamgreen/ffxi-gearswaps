@@ -601,6 +601,7 @@ end
         end
     end
     if spell.english == 'Drain' or spell.english == 'Aspir' then
+		equip({left_ear="Hirudinea Earring"})
         if spell.element == world.weather_element then
             windower.add_to_chat(8,"[Diabolos's Pole enhanced effect]")
             equip({main="Diabolos's Pole"})
