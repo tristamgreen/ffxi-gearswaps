@@ -406,15 +406,8 @@ function equip_engaged()
 			windower.add_to_chat(8, '[Reprisal Mode active]')
 			equip(sets.reprisal)
 		end
-		if world.time <= 1080 and world.time >= 360 then
-			equip({head="Louhi's Mask"})
-		end
 	elseif mdt == true then
-		if world.time <= 1080 and world.time >= 360 then
-			equip(sets.mdt)
-		else
-			equip(sets.mdt,{head="Louhi's Mask"})
-		end
+		equip(sets.mdt)
 	elseif breath == true then
 		equip(sets.breath)
 	end
