@@ -29,7 +29,7 @@
     -- nothing.  we want auto-refresh, movement
     sets.idle = {
 		ranged		= "Lamian Kaman +1",
-		head		= "Blood Mask",
+		head		= "Valhalla Helm",
 		body		= "Valhalla Breastplate",
 		hands		= "Kaiser Handschuhs",
 		legs		= "Blood Cuisses",
@@ -108,7 +108,7 @@
 	
 	sets.pdt		= {
 	-- maximize Phys. Dmg down and VIT
-		head		= "Nocturnus Helm",
+		head		= "Valhalla Helm",
 		--neck	= "",
 		body		= "Valhalla Breastplate",
 		hands		= "Darksteel Mittens +1",
@@ -124,7 +124,7 @@
 	
 	sets.mdt		= {
 	-- maximize MDT and Magic Defense Bonus
-		--head		= "Valhalla Helm",
+		head		= "Valhalla Helm",
 		hands		= "Coral Fng. Gnt. +1",
 		body		= "Valhalla Brstplate",
 		legs		= "Coral Cuisses +1",
@@ -140,7 +140,7 @@
 
 	sets.breath = set_combine(sets.mdt,{
 	-- breath damage down
-		head		=	"Blood Mask",
+		head		=	"Valhalla Helm",
 		body		=	"Blood Scale Mail",
 		hands		=	"Creek M Mitts",
 		legs		=	"Kaiser Diechlings",
