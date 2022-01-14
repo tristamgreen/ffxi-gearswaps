@@ -47,7 +47,8 @@ Tristamgreen BLM Remix - 2020
 	-- **** STAFF SETS ****
    
 	sets.staff		= {
-		main		= "Claustrum"
+		main		= "Claustrum",
+		sub			= "Raptor Strap +1"
 	}
 	
 	sets.meleeStaff = set_combine(
@@ -413,7 +414,7 @@ end
  
  -- equip our idle set
  function equip_idle()
-    equip(sets.idle,sets.terra)
+    equip(sets.idle,sets.staff)
     windower.add_to_chat(8,'[Black Mage - Idle]')
 	if player.hpp <= 75 then
 		if world.time <= 1080 and world.time >= 360 then 
@@ -768,7 +769,7 @@ melee = false
 --Set Macro Book
  send_command('input /macro book 4; wait 0.1; input /macro set 1')
 -- Puts on lockstyle set, lockstyle it, then switch to idle
- send_command('wait 1; input /lockstyleset 4; wait 1; gs equip idle; wait 1; gs equip terra')
+ send_command('wait 1; input /lockstyleset 4; wait 1; gs equip idle; wait 1; gs equip staff')
  send_command('input //dp magic; wait 1; input //dp height')
 	windower.add_to_chat(8,'[Magic Casting Mode: ' .. magicmode .. ']')
     windower.add_to_chat(8,'[Defense Mode: ' .. defmode .. ']')
