@@ -170,7 +170,7 @@
         right_ring  = "Harmonius Ring",
         legs		= "Enkidu's Subligar",
 		waist		= "Potent Belt",
-        feet        = "Creek M Clomps"
+        feet        = "Agrona's Leggings"
     }
 -- FINAL HEAVEN set with max STR
     sets.final = {
@@ -215,7 +215,7 @@
         back        = "Pantin Cape",
         waist       = "Virtuoso Belt",
         legs        = "Enkidu's Subligar",
-        feet        = "Creek M Clomps"
+        feet        = "Agrona's Leggings"
     }
 -- fast cast for ninjutsu
     sets.fc = {
