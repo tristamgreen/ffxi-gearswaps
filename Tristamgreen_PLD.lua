@@ -164,7 +164,7 @@
         right_ear   = "Sanative Earring",
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
-        waist       = "Qiqirn Sash +1",
+        waist       = "Hierarch Belt",
 		back		= "Gigant Mantle"
     }
      
@@ -322,7 +322,7 @@
 		head		= "Kaiser Schaller",
 		legs		= "Vlr. Breeches +1",
 		feet		= "Gallant Leggings +1",
-		neck		= "Fortified Chain",
+		neck		= "Shield Torque",
 		right_ear	= "Buckler Earring",	
 		back		= "Boxer's Mantle",
 	}
@@ -334,7 +334,7 @@
 		hands		= "Hydra Moufles",
 		legs		= "Vlr. Breeches +1",
 		feet		= "Vlr. Leggings +1",
-		neck		= "Gnole Torque",
+		neck		= "Bloodbead Gorget",
 		waist		= "Ninurta's Sash",
 		left_ear	= "Hospitaler Earring",
 		right_ear	= "Knightly Earring",
