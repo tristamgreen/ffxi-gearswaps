@@ -331,6 +331,24 @@ Tristamgreen RDM Remix - 2020
         legs        = "Wlk. Tights +1",
         feet        = "Goliard Clogs"
     }
+
+	-- Interrupt down for Blink
+	
+	sets.enhancing.blink = {
+		head		= "Nashira Turban",
+		body		= "Warlock's Tabard +1",
+		neck        = "Dusk Gloves +1",
+		waist       = "Resolute Belt",
+		legs	    = "Goliard Trews",
+		left_ear	= "Ethereal Earring",		
+		right_ear	= "Novia Earring",
+		left_ring	= "Merman's Ring",
+		right_ring	= "Merman's Ring",
+		feet		= "Karasutengu",
+		back		= "Umbra Cape",
+		neck		= "Beguiling Collar",
+		
+	}
     
     -- stack MND for Stoneskin potency
     
@@ -589,7 +607,7 @@ end
 -- Midcast is for all Magic Spells
  function midcast(spell)
     if spell.skill == 'Enfeebling Magic' then
-		windower.add_to_chat(8,'[Enf. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
+		-- windower.add_to_chat(8,'[Enf. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
         local magictype = get_magic_type(spell)
         if magictype == 'mndEnf' then
             if mode == 'mage' then
@@ -613,6 +631,12 @@ end
                 equip({main="Alkalurops",sub="Reign Grip"})
             end
         end
+		if spell.name == 'Blink' then
+			equip(sets.enhancing.blink)
+			if mode == 'mage' then
+			    equip({main="Terra's Staff",sub="Reign Grip"})
+			end
+		end
         if spell.english:contains('Spikes') then
             equip({legs="Dls. Tights +1"})
         end
