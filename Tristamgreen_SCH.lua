@@ -185,7 +185,7 @@ Tristamgreen SCH Remix - 2021
 	
 	sets.int		= {
         sub         = "Dark Grip",
-        head        = "Elite Beret +1",
+        head        = "Ree's Headgear",
         neck        = "Enfeebling Torque",
         left_ear    = "Enfeebling Earring",
 		right_ear   = "Abyssal Earring",

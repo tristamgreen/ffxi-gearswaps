@@ -138,21 +138,22 @@
 		right_ring	= "Merman's Ring",
 	}	
 
-	sets.breath = set_combine(sets.mdt,{
+	sets.breath = {
 	-- breath damage down
-		head		=	"Valhalla Helm",
-		body		=	"Blood Scale Mail",
-		hands		=	"Creek M Mitts",
-		legs		=	"Kaiser Diechlings",
-		feet		=	"Askar Gambieras",
-		neck		=	"Bloodbead Gorget",
-		waist		=	"Resolute Belt",
-		left_ear	=	"Harmonius Earring",
-		right_ear	=	"Harmonius Earring",
-		left_ring	=	"Gobniu's Ring",
-		right_ring	=	"Gobniu's Ring",
-		back		=	"Lamia Mantle +1"
-	})
+		ammo		= "Verthandi's Gem",
+		head		= "Valhalla Helm",
+		body		= "Blood Scale Mail",
+		hands		= "Kaiser Handschuhs",
+		legs		= "Kaiser Diechlings",
+		feet		= "Askar Gambieras",
+		neck		= "Bloodbead Gorget",
+		waist		= "Steppe Sash",
+		left_ear	= "Harmonius Earring",
+		right_ear	= "Harmonius Earring",
+		left_ring	= "Gobniu's Ring",
+		right_ring	= "Gobniu's Ring",
+		back		= "Gigant Mantle",
+	}
  
      -- our resting set is for hMP.
     sets.rest = {
@@ -240,7 +241,7 @@
 	
 	sets.cover		= {
 		head		= "Gallant Coronet",
-		body		= "Valor Surcoat"
+		body		= "Valor Surcoat +1"
 	}
  
      -- our base haste set for flash and utsu
@@ -330,8 +331,8 @@
 	sets.healing = {
 	-- cure potency, enmity+, interruption down, haste
 		head		= "Maat's Cap",
-		body		= "Hydra Haubert",
-		hands		= "Hydra Moufles",
+		-- body		= "Hydra Haubert",
+		-- hands		= "Hydra Moufles",
 		legs		= "Vlr. Breeches +1",
 		feet		= "Vlr. Leggings +1",
 		neck		= "Bloodbead Gorget",

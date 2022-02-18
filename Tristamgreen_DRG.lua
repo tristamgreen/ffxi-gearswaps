@@ -179,7 +179,7 @@ sets.evasion        = {
         back        = "Boxer's Mantle",
         waist       = "Steppe Sash",
         legs        = "Askar Dirs",
-        feet        = "Wyrm Greaves"
+        feet        = "Wyrm Greaves +1"
     }  
     
 	-- HMP set

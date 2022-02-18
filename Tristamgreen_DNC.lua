@@ -198,7 +198,7 @@
         feet    	=   "Dance Shoes +1",
 		ring1		=	"Corneus Ring",	
         left_ear	=   "Roundel Earring",
-        right_ear	=   "Robust Earring +1",
+        right_ear	=   "Robust Earring",
         back    	=   "Etoile Cape",
         waist   	=   "Warwolf Belt"
     }
