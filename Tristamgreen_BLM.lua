@@ -220,7 +220,7 @@ Tristamgreen BLM Remix - 2020
         left_ring	= "Galdr Ring",
 		right_ring  = "Omega Ring",
         back        = "Merciful Cape",
-        legs        = "Druid's Slops",
+        legs        = "Valkyrie's Trews",
         feet        = "Shrewd Pumps"
     }
   
@@ -250,9 +250,8 @@ Tristamgreen BLM Remix - 2020
 		hands		= "Mahatma Cuffs",
 		legs		= "Mahatma Slops",
 		feet		= "Goliard Clogs",
-		neck		= "Lmg. Medallion +1",
 		waist		= "Witch Sash",
-		left_ear	= "Omn. Earring",
+		left_ear	= "Omn. Earring +1",
 		right_ear	= "Omn. Earring +1",
 		left_ring	= "Galdr Ring",
 		right_ring	= "Omega Ring",

@@ -122,7 +122,7 @@
 		ammo		= "Automat. Oil +2",
         head        = "Maat's Cap",
         body        = "Mahatma Hpl.",
-        left_ear    = "Omn. Earring",
+        left_ear    = "Omn. Earring +1",
         right_ear   = "Omn. Earring +1",
 --        left_ring   = "Omn. Ring +1",
         right_ring  = "Omn. Ring +1",
