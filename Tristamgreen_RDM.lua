@@ -195,7 +195,7 @@ Tristamgreen RDM Remix - 2020
         left_ear    = "Roundel Earring",
         right_ear   = "Celestial Earring",
         body        = "Blood Scale Mail",
-        hands       = "Bricta's Cuffs",
+        hands       = "Devotee's Mitts +1",
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
         back        = "Dew Silk Cape +1",
@@ -237,7 +237,7 @@ Tristamgreen RDM Remix - 2020
 		neck		= "Lmg. Medallion +1",
 		waist		= "Witch Sash",
 		left_ear	= "Omn. Earring +1",
-		right_ear	= "Omn. Earring",
+		right_ear	= "Omn. Earring +1",
 		left_ring	= "Galdr Ring",
 		right_ring	= "Omn. Ring +1",
 		back		= "Prism Cape"
@@ -545,6 +545,7 @@ end
 -- whether we're currently engaged with a mob.
 function choose_set()
     if mode == "mage" then
+		enable('main','sub')
         equip(sets.terra)
     elseif mode == "melee" then
         if tank == true then
@@ -558,6 +559,7 @@ function choose_set()
                 equip(sets.sword.shield)
             end
         end
+		disable('main','sub')
     end
     if player.status == "Engaged" then
         equip_engaged()
@@ -770,7 +772,6 @@ end
  -- when we're done with our spell or ability, return to either
  -- our idle or engaged gear.
  function aftercast(spell)
-    enable('main','sub')
     choose_set()
 end
 

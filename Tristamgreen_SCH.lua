@@ -171,7 +171,7 @@ Tristamgreen SCH Remix - 2021
         left_ear    = "Roundel Earring",
         right_ear   = "Celestial Earring",
         body        = "Mahatma Hpl.",
-        hands       = "Bricta's Cuffs",
+        hands       = "Devotee's Mitts +1",
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
         back        = "Dew Silk Cape +1",
