@@ -61,7 +61,7 @@
         left_ear    =   "Brutal Earring",
         right_ear   =   "Merman's Earring",
         left_ring   =   "Rajas Ring",
-        right_ring  =   "Toreador's Ring",
+        right_ring  =   "Mars's Ring",
         back        =   "Cerb. Mantle +1"
     }
     
@@ -78,7 +78,7 @@
         left_ear    =   "Pixie Earring",
         right_ear   =   "Brutal Earring",
         left_ring   =   "Toreador's Ring",
-        right_ring  =   "Toreador's Ring",
+        right_ring  =   "Mars's Ring",
         back        =   "Cuchulain's Mantle"
 }   
 
@@ -134,7 +134,7 @@
         left_ear    =   "Brutal Earring",
         right_ear   =   "Harmonius Earring",
         left_ring   =   "Rajas Ring",
-        right_ring  =   "Flame Ring",
+        right_ring  =   "Mars's Ring",
         back        =   "Cerb. Mantle +1"
 }
     
@@ -151,7 +151,7 @@
         left_ear    =   "Brutal Earring",
         right_ear   =   "Harmonius Earring",
         left_ring   =   "Rajas Ring",
-        right_ring  =   "Flame Ring",
+        right_ring  =   "Mars's Ring",
         back        =   "Cerb. Mantle +1",
 
     }
@@ -170,7 +170,7 @@
         left_ear    =   "Harmonius Earring",
         right_ear   =   "Harmonius Earring",
         left_ring   =   "Harmonius Ring",
-        right_ring  =   "Flame Ring",
+        right_ring  =   "Mars's Ring",
         back        =   "Cerb. Mantle +1"
     }
  

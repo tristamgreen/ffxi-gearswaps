@@ -71,7 +71,7 @@ Tristamgreen BLU v2 - 2021
 		waist		= "Ninurta's Sash",
 		left_ear	= "Brutal Earring",
 		right_ear	= "Ethereal Earring",
-		right_ring	= "Toreador's Ring",
+		right_ring	= "Mars's Ring",
 		left_ring	= "Toreador's Ring",
 		back		= "Cuchulain's Mantle"
 	}
@@ -214,7 +214,7 @@ Tristamgreen BLU v2 - 2021
 		waist		= "Warwolf Belt",
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Harmonius Earring",
-		left_ring	= "Flame Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Harmonius Ring",
 		back		= "Cuchulain's Mantle"
 	}
@@ -369,7 +369,7 @@ Tristamgreen BLU v2 - 2021
         left_ear    = "Brutal Earring",
         right_ear   = "Harmonius Earring",
         left_ring   = "Rajas Ring",
-        right_ring  = "Toreador's Ring",
+        right_ring  = "Mars's Ring",
         waist       = "Virtuoso Belt"
     }
     

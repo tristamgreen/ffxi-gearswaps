@@ -53,7 +53,7 @@
         waist       = "Ninurta's Sash",
         left_ear    = "Pixie Earring",
         right_ear   = "Brutal Earring",
-        left_ring   = "Toreador's Ring",
+        left_ring   = "Mars's Ring",
         right_ring  = "Rajas Ring",
         back        = "Cuchulain's Mantle"
 	}
@@ -105,7 +105,7 @@
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Brutal Earring",
 		left_ring	= "Rajas Ring",
-		right_ring	= "Flame Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Cerb. Mantle +1",
 	}
 	
@@ -122,7 +122,7 @@
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Brutal Earring",
 		left_ring	= "Rajas Ring",
-		right_ring	= "Flame Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Cerb. Mantle +1",
 	} 
 	
@@ -224,7 +224,7 @@
 		left_ear	= "Wilhelm's Earring",
 		right_ear	= "Altdorf's Earring",
 		left_ring	= "Rajas Ring",
-		right_ring	= "Flame Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Cerb. Mantle +1",
     }
 	

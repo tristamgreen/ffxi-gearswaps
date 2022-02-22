@@ -43,7 +43,7 @@
         body        = "Enkidu's Harness",
         hands       = "Pantin Dastanas +1",
         left_ring   = "Rajas Ring",
-        right_ring  = "Toreador's Ring",
+        right_ring  = "Mars's Ring",
         back        = "Pantin Cape",
         waist       = "Ninurta's Sash",
         legs        = "Enkidu's Subligar",

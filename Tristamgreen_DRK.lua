@@ -16,7 +16,7 @@
         ammo		= "Fenrir's Stone",
         neck        = "Orochi Nodowa +1",
         left_ear    = "Novia Earring",
-        right_ear   = "Triton Earring",
+        right_ear   = "Ethereal Earring",
 		head		= "Blood Mask",
         body        = "Plastron +1",
         hands       = "Askar Manopolas",
@@ -30,52 +30,55 @@
 	
 	-- daylight idle set with lycopodium sash and feronia's bangles for super regen
 	
-	sets.dayidle = {
+	sets.dayidle 	= {
 		waist		= "Lycopodium Sash",
 		hands		= "Feronia's Bangles"
 	}
 	 
-     sets.weapons   = {
-        main        = "Apocalypse",
-        sub         = "Pole Grip"
+	sets.scythe   	= {
+        main        = "Apocalypse"
     }
+	
+	sets.greatsword = {
+		main		= "Ragnarok"
+	}
      
     -- we throw on our engaged set when we engage a mob
     -- stacks a balance of haste and attack
     sets.engaged = {}
 
-    --sets.engaged.fivehit = {
---      sub         = "Rose Strap",
---	    ammo		= "White Tathlum",
---      head        = "Nocturnus Helm",
---      neck        = "Chivalrous Chain",
---      body        = "Aurum Cuirass",
---      hands		= "Homam Manopolas",
---      back        = "Abyss Mantle",
---      legs        = "Homam Cosciales",
---      waist		= "Ninurta's Sash",
---      feet		= "Homam Gambieras",
---      ring1		= "Rajas Ring",
---      ring2		= "Blitz Ring",
---      ear1		= "Brutal Earring",
---      ear2		= "Abyssal Earring"
---  }
+    sets.engaged.fivehit = {
+		sub         = "Rose Strap",
+	    ammo		= "White Tathlum",
+		head        = "Nocturnus Helm",
+		neck        = "Chivalrous Chain",
+		body        = "Aurum Cuirass",
+		hands		= "Homam Manopolas",
+		back        = "Abyss Mantle",
+		legs        = "Homam Cosciales",
+		waist		= "Ninurta's Sash",
+		feet		= "Homam Gambieras",
+		ring1		= "Rajas Ring",
+		ring2		= "Blitz Ring",
+		ear1		= "Brutal Earring",
+		ear2		= "Abyssal Earring"
+	}
     
     sets.engaged.haste = {
         sub         = "Pole Grip",
 		ammo		= "Fire Bomblet",
         head        = "Nocturnus Helm",
-        neck        = "Ancient Torque",
+        neck        = "Justice Torque",
         body        = "Nocturnus Mail",
 		hands		= "Homam Manopolas",
-        back        = "Cerberus Mantle +1",
+        back        = "Abyss Cape",
         legs        = "Homam Cosciales",
 		waist	    = "Ninurta's Sash",
 		feet		= "Homam Gambieras",
-		ring1	    = "Toreador's Ring",
+		ring1	    = "Mars's Ring",
 		ring2	    = "Blitz Ring",
 		ear1	    = "Brutal Earring",
-		ear2	    = "Abyssal Earring"
+		ear2	    = "Ethereal Earring"
     }
     
     sets.evasion = {
@@ -123,7 +126,7 @@
         right_ear   = "Harmonius Earring",
         body        = "Armada Hauberk",
         hands       = "Hct. Mittens +1",
-        left_ring   = "Flame Ring",
+        left_ring   = "Mars's Ring",
         right_ring  = "Rajas Ring",
         back        = "Abyss Cape",
         waist       = "Warwolf Belt",
@@ -141,9 +144,9 @@
         right_ear   = "Harmonius Earring",
         body        = "Armada Hauberk",
         hands       = "Alkyoneus's Bracelets",
-        left_ring   = "Flame Ring",
+        left_ring   = "Mars's Ring",
         right_ring  = "Rajas Ring",
-        back        = "Cerberus Mantle",
+        back        = "Cerberus Mantle +1",
         waist       = "Warwolf Belt",
         legs        = "Aurum Cuisses",
         feet        = "Hct. Leggings +1"

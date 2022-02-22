@@ -63,7 +63,7 @@
 		legs        = "Byakko's Haidate",
         waist       = "Ninurta's Sash",
 		left_ring   = "Rajas Ring",
-		right_ring  = "Toreador's Ring",
+		right_ring  = "Mars's Ring",
 		left_ear    = "Brutal Earring",
 		right_ear   = "Merman's Earring",
 		back        = "Cuchulain's Mantle",

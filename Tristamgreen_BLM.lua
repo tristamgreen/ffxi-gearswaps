@@ -93,7 +93,7 @@ Tristamgreen BLM Remix - 2020
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
 		left_ring	= "Toreador's Ring",
-		right_ring	= "Toreador's Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Umbra Cape",
 	}
     
@@ -355,7 +355,7 @@ Tristamgreen BLM Remix - 2020
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Defending Ring",
 		back		= "Umbra Cape",
     }

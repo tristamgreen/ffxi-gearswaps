@@ -33,7 +33,7 @@
         feet        = "Dusk Ledelsens +1",
         waist       = "Ninurta's Sash",
 		left_ring   = "Rajas Ring",
-		right_ring  = "Toreador's Ring",
+		right_ring  = "Mars's Ring",
 		left_ear    = "Brutal Earring",
 		right_ear   = "Merman's Earring",
 		back        = "Cuchulain's Mantle",
@@ -131,7 +131,7 @@
         left_ear    = "Brutal Earring",
         right_ear   = "Fenrir's Earring",
         left_ring   = "Dragon Ring +1",
-        right_ring  = "Flame Ring",
+        right_ring  = "Mars's Ring",
         back        = "Amemet Mantle +1",
     }
     

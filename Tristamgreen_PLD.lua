@@ -76,7 +76,7 @@
 		body		= "Nocturnus Mail",
 		hands		= "Homam Manopolas",
 		neck		= "Ancient Torque",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		back		= "Cuchulain's Mantle",
 	})
     
@@ -193,7 +193,7 @@
         right_ear   = "Harmonius Earring",
         body        = "Hct. Harness +1",
         hands       = "Hct. Mittens +1",
-        left_ring   = "Flame Ring",
+        left_ring   = "Mars's Ring",
         right_ring  = "Rajas Ring",
         back        = "Cuchulain's Mantle",
         waist       = "Warwolf Belt",

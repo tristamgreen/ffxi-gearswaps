@@ -102,7 +102,7 @@ Tristamgreen SCH Remix - 2021
 		waist		= "Ninurta's Sash",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Toreador's Ring",
 		back		= "Umbra Cape",
 	}
@@ -333,7 +333,7 @@ Tristamgreen SCH Remix - 2021
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Defending Ring",
 		back		= "Umbra Cape",
     }
@@ -348,7 +348,7 @@ Tristamgreen SCH Remix - 2021
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Defending Ring",
 		back		= "Umbra Cape",
     }    

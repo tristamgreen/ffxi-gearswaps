@@ -146,7 +146,7 @@ function get_sets()
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		right_ring	= "Toreador's Ring",
+		right_ring	= "Mars's Ring",
 	})
 	
 	sets.perp.carbuncle = { -- Carbuncle-specific items (Mitts and Claustrum/Chatoyant is enough to get free carby, so fill up other perp slots with useful gear)
@@ -187,7 +187,7 @@ function get_sets()
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		right_ring	= "Toreador's Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Umbra Cape",
 	}
 
@@ -378,7 +378,7 @@ sets.midcast.bpragestrike = set_combine({sets.bpragemag, -- Heavenly Strike-spec
 		waist		= "Virtuoso Belt",
 		left_ear	= "Pixie Earring",
 		right_ear	= "Brutal Earring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		right_ring	= "Patronus Ring",
 		back		= "Umbra Cape",
 	}
@@ -397,7 +397,7 @@ sets.midcast.bpragestrike = set_combine({sets.bpragemag, -- Heavenly Strike-spec
 	
 	sets.ws = {}
 	sets.ws.gateoftartarus = set_combine(sets.melee.staff,{ -- Accuracy
-		right_ring	= "Toreador's Ring",
+		right_ring	= "Mars's Ring",
 	})
 	sets.ws.blackhalo = { -- 30%STR, 50%MND
 	    head		= "Maat's Cap",
@@ -410,7 +410,7 @@ sets.midcast.bpragestrike = set_combine({sets.bpragemag, -- Heavenly Strike-spec
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Harmonius Earring",
 		left_ring	= "Rajas Ring",
-		right_ring	= "Flame Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Dew Silk Cape +1",
 	}
 	sets.ws.spirittaker = { -- 50%INT, 50%MND

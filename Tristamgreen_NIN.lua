@@ -126,7 +126,7 @@ function get_sets()
         body        = "Hachiryu Haramaki",
         hands       = "Hachiryu Kote",
         left_ring   = "Rajas Ring",
-        right_ring  = "Flame Ring",
+        right_ring  = "Mars's Ring",
         back        = "Cerberus Mantle +1",
         waist       = "Warwolf Belt",
         legs        = "Hachiryu Haidate",
@@ -145,7 +145,7 @@ function get_sets()
 		left_ear	= "Brutal Earring",
 		right_ear	= "Harmonius Earring",
 		left_ring	= "Rajas Ring",
-		right_ring	= "Flame Ring",
+		right_ring	= "Mars's Ring",
 		back		= "Cerb. Mantle +1",
 }
 	
@@ -514,5 +514,5 @@ end
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  send_command('wait 1;input /lockstyleset 13;wait 1;gs equip idle;wait 1;gs equip initial')
- send_command('input /macro book 13; wait 0.1; input /macro set 1')
+ send_command('input /macro book 13; wait 0.1; input /macro set 1; wait .5; input /u !myth')
  send_command('input //dp magic')

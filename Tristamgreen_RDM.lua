@@ -78,7 +78,7 @@ Tristamgreen RDM Remix - 2020
 		left_ear	= "Brutal Earring",
 		right_ear	= "Merman's Earring",
 		right_ring	= "Rajas Ring",
-		left_ring	= "Toreador's Ring",
+		left_ring	= "Mars's Ring",
 		back		= "Cuchulain's Mantle"
 	}
     
