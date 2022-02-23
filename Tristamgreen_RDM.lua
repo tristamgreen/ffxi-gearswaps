@@ -559,7 +559,6 @@ function choose_set()
                 equip(sets.sword.shield)
             end
         end
-		disable('main','sub')
     end
     if player.status == "Engaged" then
         equip_engaged()
@@ -576,6 +575,11 @@ function choose_set()
  -- the precast function runs automatically BEFORE we
  -- begin casting a spell or job ability.
  function precast(spell)
+	if mode == 'melee' then
+        disable('main','sub')
+	else
+		enable('main','sub')
+    end
  if spell.action_type == 'Magic' then
 	
 		-- Cancel magic when it is not up yet
@@ -678,9 +682,6 @@ end
  -- equip nuke sets, with considerations for Uggalepih Pendant and Hachirin-no-Obi
  
  function equip_nuke(spell)
-    if mode == 'melee' then
-        disable('main','sub')
-    end
     if spell.element == world.day_element then
         equip({waist="Hachirin-no-Obi"})
         if spell.element == world.weather_element then
@@ -737,9 +738,6 @@ end
  -- equip dark sets, considerations for Diabolos's Ring for Dark Magic, 
  -- Diabolos's Pole for Drain/Aspir during Dark Weather, and Thunder Grip for Stun
  function equip_dark(spell)
-    if mode == 'melee' then
-        disable('main','sub')
-    end
     if spell.element == world.day_element then
         equip({waist="Hachirin-no-Obi"})
         if spell.element == world.weather_element then
@@ -789,7 +787,9 @@ end
 -- swap into hMP gear when we /heal, and return to idle gear
 -- when we stand up.
 function status_change(new,old)
-    enable('sub','main')
+    if mode == 'mage' then
+		enable('sub','main')
+	end
     if new == 'Resting' then
         equip_rest()
     else
@@ -883,6 +883,7 @@ function self_command(m)
             windower.add_to_chat(8,'[Combat mode: MELEE]')
             mode = "melee"
             choose_set()
+			send_command('wait 1;input /u !myth')
         else
             windower.add_to_chat(8,'[Combat mode: MAGE]')
             mode = "mage"
@@ -895,6 +896,7 @@ function self_command(m)
                 windower.add_to_chat(8,'[Tank mode: ACTIVE]')
                 tank = true
                 choose_set()
+				send_command('wait 1;input /u !myth')
             else
                 windower.add_to_chat(8,'[Tank mode: DEACTIVATED]')
                 tank = false
