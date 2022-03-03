@@ -42,32 +42,38 @@
 	sets.greatsword = {
 		main		= "Ragnarok"
 	}
-     
+	
+	sets.rosestrap	= {
+		sub			= "Rose Strap"
+	}
+
+    sets.polegrip	= {
+		sub			= "Pole Grip"
+	}
+		
     -- we throw on our engaged set when we engage a mob
     -- stacks a balance of haste and attack
     sets.engaged = {}
 
     sets.engaged.fivehit = {
-		sub         = "Rose Strap",
 	    ammo		= "White Tathlum",
-		head        = "Nocturnus Helm",
+		head        = "Ace's Helm",
 		neck        = "Chivalrous Chain",
 		body        = "Aurum Cuirass",
 		hands		= "Homam Manopolas",
-		back        = "Abyss Mantle",
+		back        = "Abyss Cape",
 		legs        = "Homam Cosciales",
 		waist		= "Ninurta's Sash",
 		feet		= "Homam Gambieras",
-		ring1		= "Rajas Ring",
-		ring2		= "Blitz Ring",
+		ring1		= "Blitz Ring",
+		ring2		= "Rajas Ring",
 		ear1		= "Brutal Earring",
 		ear2		= "Abyssal Earring"
 	}
     
     sets.engaged.haste = {
-        sub         = "Pole Grip",
 		ammo		= "Fire Bomblet",
-        head        = "Nocturnus Helm",
+        head        = "Ace's Helm",
         neck        = "Justice Torque",
         body        = "Nocturnus Mail",
 		hands		= "Homam Manopolas",
@@ -75,8 +81,8 @@
         legs        = "Homam Cosciales",
 		waist	    = "Ninurta's Sash",
 		feet		= "Homam Gambieras",
-		ring1	    = "Mars's Ring",
-		ring2	    = "Blitz Ring",
+		ring1	    = "Blitz Ring",
+		ring2	    = "Mars's Ring",
 		ear1	    = "Brutal Earring",
 		ear2	    = "Ethereal Earring"
     }
@@ -88,12 +94,12 @@
         body        = "Scorpion Harness +1",
         hands       = "Homam Manopolas",
         back        = "Boxer's Mantle",
-        legs        = "Chaos Flanchard",
+        legs        = "Chaos Flanchard +1",
         feet        = "Askar Gambieras",
         ring1       = "Wivre Ring +1",
         ring2       = "Wivre Ring +1",
         ear1        = "Triton Earring",
-        ear2        = "Triton Earring"
+        ear2        = "Triton Earring"	
     }
      
     -- if its latent is procced, we'd rather wear the
@@ -143,12 +149,12 @@
         left_ear    = "Brutal Earring",
         right_ear   = "Harmonius Earring",
         body        = "Armada Hauberk",
-        hands       = "Alkyoneus's Bracelets",
+        hands       = "Hct. Mittens +1",
         left_ring   = "Mars's Ring",
         right_ring  = "Rajas Ring",
         back        = "Cerberus Mantle +1",
         waist       = "Warwolf Belt",
-        legs        = "Aurum Cuisses",
+        legs        = "Onyx Cuisses",
         feet        = "Hct. Leggings +1"
     }
      -- weapon bash set
@@ -253,7 +259,7 @@
         right_ear   =   "Loquac. Earring",
         feet        =   "Homam Gambieras",
         hands       =   "Dusk Gloves +1",
-        right_ring  =   "Blitz Ring"
+        left_ring  =    "Blitz Ring"
     }
  
  end
@@ -263,14 +269,30 @@
  echo a note to our chat log so we know it worked.
 ****************************************************** --]]
  
+-- pick between our idle set and engaged set, depending on
+-- whether we're currently engaged with a mob.
+function choose_set()
+    if player.status == "Engaged" then
+        equip_engaged()
+    else
+        equip_idle()
+    end
+	if fivehit == true then
+		windower.add_to_chat(8,'[Five-Hit DRK: ON]')
+		equip(sets.rosestrap)
+	else
+		equip(sets.polegrip)
+	end
+ end
+ 
  -- equip our idle set for standing around
  function equip_idle()
      windower.add_to_chat(8,'[Idle]')
      equip(sets.idle)
     if weapontype == "scythe" then
-         equip({main="Apocalypse",sub="Pole Grip"})
-    else 
-        equip({main="Algol",sub="Pole Grip"})
+        equip({main="Apocalypse"})
+    elseif weapontype == "greatsword" then
+        equip({main="Algol"})
     end
     if world.time <= 1080 and world.time >= 360 and player.hpp < 94 then
 		windower.add_to_chat(8,"[Daylight Regen - HP at " .. player.hpp .. "%]")
@@ -286,16 +308,20 @@ end
 -- procced and we need mp, throw that on as well.
 function equip_engaged()
     windower.add_to_chat(8,'[Engaged]')
-    equip(sets.engaged.haste)
-    if weapontype == "scythe" then
-         equip(sets.engaged.haste,{neck="Justice Torque"})
-    else 
-        equip(sets.engaged.haste,{neck="Prudence Torque"})
-    end
+	if fivehit == true then
+		equip(sets.engaged.fivehit)
+	else
+	    equip(sets.engaged.haste)
+		if weapontype == "scythe" then
+			equip({neck="Justice Torque"})
+		elseif weapontype == "greatsword" then	
+			equip({neck="Prudence Torque"})
+		end
+	end
     if world.time <= 1080 and world.time >= 360 then
 			windower.add_to_chat(8,"[Engaged - Daylight Bonus]")
 			equip({right_ear="Fenrir's Earring"})
-    end
+    end	
 end
 
  
@@ -316,32 +342,32 @@ end
         equip(sets.absorb)
     end
     if spell.element == world.day_element then
-            equip({waist="Hachirin-no-Obi"})
-            if spell.element == world.weather_element then
-                equip({right_ring="Diabolos's Ring"})
-                add_to_chat(8,'[Matching Day + Weather]')
-            else
-                add_to_chat(8,'[Matching Day]')
-            end
-        elseif spell.element == world.weather_element then  
-            add_to_chat(8,'[Matching Weather]')
-            equip({waist="Hachirin-no-Obi",right_ring="Diabolos's Ring"})
-        end
-        if spell.english:contains('Bio') then
-            if player.mp - spell.mp_cost < 0.51*player.max_mp then
-                windower.add_to_chat(8,'[Uggalepih Pendant boost]')
-                equip({neck="Uggalepih Pendant"})
-            end
-        end
-        if spell.english:contains 'Drain' or spell.english:contains 'Aspir' then
-            equip(sets.drain)
-            if player.status ~= "Engaged" and player.tp == 0 then
-                if spell.element == world.weather_element then
-                    windower.add_to_chat(8,"[Diabolos's Pole enhanced effect]")
-                    equip({main="Diabolos's Pole"})
-                end
-            end
-        end
+		equip({waist="Hachirin-no-Obi"})
+		if spell.element == world.weather_element then
+			equip({right_ring="Diabolos's Ring"})
+			add_to_chat(8,'[Matching Day + Weather]')
+		else
+			add_to_chat(8,'[Matching Day]')
+		end
+	elseif spell.element == world.weather_element then  
+		add_to_chat(8,'[Matching Weather]')
+		equip({waist="Hachirin-no-Obi",right_ring="Diabolos's Ring"})
+	end
+	if spell.english:contains('Bio') then
+		if player.mp - spell.mp_cost < 0.51*player.max_mp then
+			windower.add_to_chat(8,'[Uggalepih Pendant boost]')
+			equip({neck="Uggalepih Pendant"})
+		end
+	end
+	if spell.english:contains 'Drain' or spell.english:contains 'Aspir' then
+		equip(sets.drain)
+		if player.status ~= "Engaged" and player.tp == 0 then
+			if spell.element == world.weather_element then
+				windower.add_to_chat(8,"[Diabolos's Pole enhanced effect]")
+				equip({main="Diabolos's Pole"})
+			end
+		end
+	end
 end
  
  -- equip our hMP set
@@ -350,15 +376,6 @@ end
     equip(sets.rest)
 end
 
--- pick between our idle set and engaged set, depending on
--- whether we're currently engaged with a mob.
-function choose_set()
-    if player.status == "Engaged" then
-        equip_engaged()
-    else
-        equip_idle()
-    end
- end
  
  --[[ ******************************************************
   Casting functions - these functions run automatically when
@@ -373,6 +390,9 @@ function choose_set()
     elseif spell.name == 'Weapon Bash' then
         windower.add_to_chat(8,'[Weapon Bash]')
         equip(sets.engaged,sets.bash)
+		if player.hpp <= 75 and player.tp <= 1000 then
+			equip({ring2="Slayer's Ring"})
+		end
 	elseif spell.name == 'Souleater' then
 		equip(sets.engaged,sets.souleater)
 	elseif spell.name == 'Last Resort' then
@@ -496,7 +516,7 @@ end
         
     -- Dictates whether or not we want full evasion gear during combat.
     
-     elseif m == "EVA" then
+    elseif m == "EVA" then
         if ev == false then
             ev = true
             windower.add_to_chat(8,'[Evasion while engaged: ON]')
@@ -506,7 +526,21 @@ end
             windower.add_to_chat(8,'[Evasion while engaged: OFF]')
             choose_set()
         end
-     end
+	
+	elseif m == "fivehit" then
+        if fivehit == false then
+			enable('sub')
+			fivehit = true
+            choose_set()
+			disable('sub')
+        else
+			fivehit = false
+			enable('sub')
+			windower.add_to_chat(8,'[Five-Hit DRK: OFF]')
+            choose_set()
+			disable('sub')
+        end
+	end
  end
  
  --[[ ******************************************************
@@ -522,12 +556,16 @@ end
  
  ev = false
 
- -- ws determines which weapon skill we'll use. Guillotine by default.
+ -- ws determines which weapon skill we'll use. Catastrophe by default.
  
  ws = "Catastrophe"
  
+ -- fivehit mode is defaulted off
+ 
+ fivehit = false
+ 
  -- Puts on our fashion set, lockstyle it, then switch
  -- to our idle set.
- send_command('gs equip idle; wait 1; input /lockstyleset 8; wait 1; gs equip weapons')
+ send_command('gs enable all;wait 1;gs equip idle; wait 1; input /lockstyleset 8; wait 1; gs equip scythe;wait 1;gs equip polegrip')
  -- Set current macro book to book 8 and set 1
  send_command('input /macro book 8; wait 0.1; input /macro set 1')
