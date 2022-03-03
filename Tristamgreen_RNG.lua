@@ -144,6 +144,7 @@
     })
     
     -- Weapon Skill sets
+	-- nighttime: add +10 ranged attack for Fenrir's Earring
     
     sets.ws         = {
     -- Generic WS set for Rampage
@@ -161,7 +162,7 @@
         waist       = "Virtuoso Belt",
     }
             
-    sets.sidewinder = { -- RACC 524 with Fotia, RATTK 492
+    sets.sidewinder = { -- RACC 469 with Fotia, RATTK 463
 		head        = "Zha'Go's Barbut",
         body        = "Kyudogi +1",
 		hands       = "Blood Fng. Gnt.",
@@ -176,12 +177,12 @@
 		back        = "Amemet Mantle +1",
     }
     
-    sets.namas = {  -- RACC 517 with Fotia, RATTK 471
+    sets.namas 		= {  -- RACC 472 with Fotia, RATTK 447
 		head        = "Zha'Go's Barbut",
         body        = "Denali Jacket",
 		hands       = "Seiryu's Kote",
 		legs        = "Hachiryu Haidate",
-		feet        = "Enkidu's Leggings",
+		feet        = "Sct. Socks +1",
         neck        = "Fotia Gorget",
 		waist       = "Scout's Belt",
 		left_ring   = "Bellona's Ring",
@@ -191,7 +192,7 @@
 		back        = "Fowler's Mantle +1",
     }
     
-    sets.slugshot = {  -- RACC 506 with Fotia, RATTK 489
+    sets.slugshot 	= {  -- RACC 466 with Fotia, RATTK 455
         head        = "Zha'Go's Barbut",
         body        = "Kirin's Osode",
         hands       = "Seiryu's Kote",
@@ -205,8 +206,23 @@
         right_ring  = "Rajas Ring",
         back        = "Amemet Mantle +1",
     }
+	
+	sets.heavyshot = { -- Racc 479 / Rattk 458
+	    head        = "Zha'Go's Barbut",
+        body        = "Kirin's Osode",
+        hands       = "Seiryu's Kote",
+        legs        = "Hachiryu Haidate",
+        feet        = "Sct. Socks +1",
+        neck        = "Fotia Gorget",
+        waist       = "Scout's Belt",
+        left_ear    = "Altdorf's Earring",
+        right_ear   = "Wilhelm's Earring",
+        left_ring   = "Bellona's Ring",
+        right_ring  = "Jalzahn's Ring",
+        back        = "Amemet Mantle +1",	
+	}
     
-     sets.coronach = {  -- RACC 492 with Fotia, RATTK 484
+    sets.coronach 	= {  -- RACC 455 with Fotia, RATTK 461
         head        = "Maat's Cap",
         body        = "Kirin's Osode",
         hands       = "Blood Fng. Gnt.",
@@ -308,6 +324,8 @@ end
         equip(sets.sidewinder)
     elseif spell.name == 'Namas Arrow' then
         equip(sets.namas)
+	elseif spell.name == 'Heavy Shot' then
+		equip(sets.heavyshot)
     elseif spell.name == 'Slug Shot' then
         equip(sets.slugshot)
     elseif spell.name == 'Coronach' then   
@@ -508,6 +526,8 @@ function self_command(m)
         if rangedtype == false then
             if ws == "Coronach" then
                 ws = "Slug Shot"
+			elseif ws == "Slug Shot" then
+				ws = "Heavy Shot"
             else ws = "Coronach"
             end
         else
@@ -625,7 +645,7 @@ function self_command(m)
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Sub job select: NINJA')
  else
-	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
+	send_command('gs enable all;wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
