@@ -547,7 +547,7 @@ function self_command(m)
  
  
 -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
- send_command('wait 1; input /lockstyleset 6; wait 1; gs equip idle')
+ send_command('gs enable all;wait 1;gs equip idle;wait 1;input /lockstyleset 6')
  send_command('input /macro book 6; wait 0.1; input /macro set 1')
  send_command('wait 1; gs equip initial')
  send_command('input //dp height') -- sets distanceplus in height read mode
