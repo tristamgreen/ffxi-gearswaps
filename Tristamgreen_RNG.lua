@@ -338,7 +338,7 @@ end
         equip(sets.ranged.daylight)
     end
 	if world.day == "Firesday" then
-		windower.add_to_chat(8,"[Firesday - Fire Ring]")
+		windower.add_to_chat(8,"[Fire Ring - RATTK +15]")
 		equip({right_ring="Fire Ring"})
 	end
 end
@@ -359,7 +359,7 @@ end
 		else
 			equip(sets.ranged.hybrid,{legs="Hachiryu Haidate"})
 			if world.day == "Firesday" then
-				windower.add_to_chat(8,"[Firesday - Fire Ring]")
+				windower.add_to_chat(8,"[Fire Ring - RATTK +15]")
 				equip({right_ring="Fire Ring"})
 			end	
 		end
@@ -374,8 +374,12 @@ end
         end
     end
     if (buffactive['barrage'])then
-        equip(sets.ranged.acc,{hands="Hunter's Bracers +1"})
+		equip(sets.ranged.acc,{hands="Hunter's Bracers +1"})
         disable('hands')
+		if world.day == "Lightningday" then
+			windower.add_to_chat(8,"[Lightning Ring - RACC +15]")
+			equip({right_ring="Lightning Ring"})
+		end	
     end
 	if player.sub_job == "NIN" then
 		if staffmode == false then
@@ -457,10 +461,16 @@ end
 	elseif spell.name:contains('Corsair') or spell.name:contains('Monk') or spell.name:contains('Healer') or spell.name:contains('Chaos') or spell.name:contains('Choral') or spell.name:contains('Drachen') or spell.name:contains('Hunter') or spell.name:contains('Ninja') or spell.name:contains('Magus') or spell.name:contains('Beast') or spell.name:contains('Samurai') or spell.name:contains('Wizard') or spell.name:contains('Warlock') or spell.name:contains('Rogue') or spell.name:contains('Gallant') or spell.name:contains('Evoker') or spell.name:contains('Puppet') or spell.name:contains('Dancer') or spell.name:contains('Scholar') then
         equip({left_ring="Luzaf's Ring"})
 	end
-
-				-- Cancel status effects for spells that don't overwrite themselves
-			if spell.name:contains "Monomi" then send_command("cancel sneak") 
+	-- Cancel status effects for spells that don't overwrite themselves
+	if spell.name:contains "Monomi" then 
+		send_command("cancel sneak") 
 	end	
+	if spell.name == 'Barrage' then
+		if player.inventory[player.equipment.ammo].count < 8 then
+			windower.add_to_chat("[Not enough to maximize Barrage, cancelling]")
+			cancel_spell()
+		end
+	end
  end
  
  -- equip haste gear for ninjutsu
@@ -546,8 +556,8 @@ function self_command(m)
             windower.add_to_chat(8,'[Ranged Attack Mode: Archery]')
             windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip(sets.bow)
-            send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp bow')
+			send_command('input /lockstyle off;wait 10;input /lockstyleset 11')
             choose_set()
         else
             rangedtype = false
@@ -555,8 +565,8 @@ function self_command(m)
             windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
             windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip(sets.gun)
-            send_command('input /lockstyle off;wait 10;input /lockstyleset 9')
 			send_command('input //dp gun')
+            send_command('input /lockstyle off;wait 10;input /lockstyleset 11')
             choose_set()
         end
     elseif m == "accmode" then
@@ -641,11 +651,11 @@ function self_command(m)
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  if player.sub_job == "NIN" then
-	send_command('wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun')
+	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun;wait 1;input /lockstyleset 11')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Sub job select: NINJA')
  else
-	send_command('gs enable all;wait 1;input /lockstyleset 11;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun')
+	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun;wait 1;input /lockstyleset 11')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
