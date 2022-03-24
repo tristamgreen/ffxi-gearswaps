@@ -74,7 +74,7 @@
     -- racc 429
         head        ="Zha'Go's Barbut",
         body        ="Corsair's Frac",
-        legs        ="Dusk Leggings +1",
+        legs        ="Dusk Trousers +1",
         feet        ="Corsair's Bottes",
     })
     
