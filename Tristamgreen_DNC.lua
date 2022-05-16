@@ -29,7 +29,7 @@
         back        = "Boxer's Mantle",
         waist       = "Scouter's Rope",
         legs        = "Denali Kecks",
-        feet        = "Dancer's Shoes"
+        feet        = "Dancer's Toe Shoes"
     }
 	
 	sets.daylight = {
@@ -87,7 +87,7 @@
         back        = "Boxer's Mantle",
         waist       = "Scouter's Rope",
         legs        = "Denali Kecks",
-        feet        = "Dancer's Shoes"
+        feet        = "Dancer's Toe Shoes"
     }
          
      -- wsdex set is for dex-based weapon skills.
@@ -188,7 +188,7 @@
     
     sets.jig    =   {
         legs    =   "Etoile Tights +1",
-        feet    =   "Dancer's Shoes"
+        feet    =   "Dancer's Toe Shoes"
 	}
     
     sets.waltz  	=   { -- stack chr+vit for maximum healage

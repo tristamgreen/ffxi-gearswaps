@@ -18,7 +18,7 @@
         left_ear    = "Novia Earring",
         right_ear   = "Ethereal Earring",
 		head		= "Blood Mask",
-        body        = "Plastron +1",
+        body        = "Valhalla Breastplate",
         hands       = "Askar Manopolas",
         left_ring   = "Shadow Ring",
         right_ring  = "Patronus Ring",
@@ -82,7 +82,7 @@
 		waist	    = "Ninurta's Sash",
 		feet		= "Homam Gambieras",
 		ring1	    = "Blitz Ring",
-		ring2	    = "Mars's Ring",
+		ring2	    = "Rajas Ring",
 		ear1	    = "Brutal Earring",
 		ear2	    = "Ethereal Earring"
     }
@@ -157,6 +157,8 @@
         legs        = "Onyx Cuisses",
         feet        = "Hct. Leggings +1"
     }
+	
+	
      -- weapon bash set
 	 
     sets.bash = {
@@ -501,16 +503,16 @@ end
             ws = 'Guillotine'
             windower.add_to_chat(8,'[Weapon: Scythe]')
             windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
-            equip({main="Apocalypse"})
-            send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
+            equip(sets.scythe)
+            --send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
             choose_set()
         else
             weapontype = "gsword"
-            ws = 'Ground Strike'
+            ws = 'Scourge'
             windower.add_to_chat(8,'[Weapon Type: Great Sword]')
             windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
-            equip({main="Algol"})
-            send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
+            equip(sets.greatsword)
+            --send_command('input /lockstyle off;wait 10;input /lockstyleset 8')
             choose_set()
         end
         

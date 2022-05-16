@@ -15,19 +15,14 @@
     -- make sure you include your top-row equipment,
     -- especially if you use a ranged or throwing weapon.
     -- I like how the Hydra armor looks.
-    sets.fashion = {
+    sets.excal	= {
 		main		= "Excalibur",
 		sub			= "Aegis",
-        --head        = "Maat's Cap",
-        --body        = "Hydra Haubert",
-        --hands       = "Hydra Moufles",
-        --legs        = "Hydra Brayettes",
-        --feet        = "Hydra Sollerets"
     }
  
      -- idle set is worn when we're standing around doing
     -- nothing.  we want auto-refresh, movement
-    sets.idle = {
+    sets.idle	= {
 		ranged		= "Lamian Kaman +1",
 		head		= "Valhalla Helm",
 		body		= "Valhalla Breastplate",
@@ -240,7 +235,7 @@
 	}
 	
 	sets.cover		= {
-		head		= "Gallant Coronet",
+		head		= "Gallant Coronet +1",
 		body		= "Valor Surcoat +1"
 	}
  
@@ -682,6 +677,6 @@ ws = "Atonement"
 
  -- Puts on our fashion set, lockstyle it, then switch
  -- to our idle set.
- send_command('wait 1;gs equip fashion;wait 1;input /lockstyleset 7;wait 1;gs equip idle')
+ send_command('wait 1;input /lockstyleset 7;wait 1;gs equip idle;wait 1;gs equip excal')
  send_command('input /macro book 7; wait 0.1; input /macro set 1;wait 0.1;input /u !myth')
  send_command('input //dp height;wait 1;input //dp ja')

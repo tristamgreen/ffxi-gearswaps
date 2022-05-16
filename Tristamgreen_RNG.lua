@@ -74,7 +74,7 @@
         neck        = "Evasion Torque",
         left_ear    = "Triton Earring",
         right_ear   = "Triton Earring",
-        body        = "Kyudogi +1",
+        body        = "Kirin's Osode",
 		hands       = "Scout's Bracers +1",
         left_ring   = "Wivre Ring +1",
         right_ring  = "Wivre Ring +1",
@@ -84,12 +84,9 @@
         feet        = "Hunter's Socks"
     }
     
-   	sets.ranged     = {
-        -- Gun: R.Acc 452 / R.attk 554 / 20 sTP with Mekki-Shakki
-		-- 5-hit
-		
+   	sets.ranged     = {		
         head		="Zha'Go's Barbut",
-		body		="Kyudogi +1",
+		body		="Kirin's Osode",
 		hands		="Blood Fng. Gnt.",
 		legs		="Enkidu's Subligar",
 		feet		="Scout's Socks +1",
@@ -102,11 +99,8 @@
     }
 	
 	sets.ranged.hybrid = {
-		-- R.Acc 491 / R.Attk 553 / 0 sTP - on /nin with dual axes
-		-- R.Acc 476 / R.Attk 554 / 0 sTP - on /nin with staff/axe grip
-		-- 
 		head		="Zha'Go's Barbut",
-		body		="Kyudogi +1",
+		body		="Kirin's Osode",
 		hands		="Blood Fng. Gnt.",
 		legs		="Dusk Trousers +1",
 		feet		="Sct. Socks +1",
@@ -118,17 +112,20 @@
 		back		="Fowler's Mantle +1",
 	}
 
-    sets.ranged.acc = set_combine(sets.ranged,{
-        -- R.Acc 489 / R.Attk 530 / 0 sTP native
-		body		="Kyudogi +1",
-        legs		="Dusk Trousers +1",
-        feet        ="Scout's Socks +1",
-		left_ring	="Dragon Ring +1",
-		right_ring	="Dragon Ring +1",
-        left_ear    ="Altdorf's Earring",
-        right_ear   ="Wilhelm's Earring",    
-		back		="Mamool Ja Mantle",
-    })
+    sets.ranged.acc = {
+		head		="Zha'Go's Barbut",
+		body		="Kirin's Osode",
+		hands		="Blood Fng. Gnt.",
+		legs		="Dusk Trousers +1",
+		feet		="Sct. Socks +1",
+		neck		="Faith Torque",
+		waist		="Scout's Belt",
+		left_ear	="Altdorf's Earring",
+		right_ear	="Fenrir's Earring",
+		left_ring	="Bellona's Ring",
+		right_ring	="Cerberus Ring +1",
+		back		="Amemet Mantle +1",
+    }
 	
 	sets.ranged.daylight = {
 		left_ear	="L.bug Earring +1",
@@ -164,7 +161,7 @@
             
     sets.sidewinder = { -- RACC 469 with Fotia, RATTK 463
 		head        = "Zha'Go's Barbut",
-        body        = "Kyudogi +1",
+        body        = "Kirin's Osode",
 		hands       = "Blood Fng. Gnt.",
 		legs        = "Hachiryu Haidate",
 		feet        = "Scout's Socks +1",
@@ -236,7 +233,21 @@
         right_ring  = "Rajas Ring",
         back        = "Fowler's Mantle +1",
     }
-     
+	
+	sets.trueflight	= {
+		head		= "Maat's Cap",
+		body		= "Kirin's Osode",
+		hands		= "Rover's Gloves",
+		legs		= "Denali Kecks",
+		feet		= "Hachiryu Sune-Ate",
+		neck		= "Fotia Gorget",
+		waist		= "Scouter's Rope",
+		left_ear	= "Novio Earring",
+		right_ear	= "Novia Earring",
+		left_ring	= "Galdr Ring",
+		right_ring	= "Omega Ring",
+		back		= "Fowler's Mantle +1",
+	}
 	
 	sets.shadowbind = {
 		hands		= "Hunter's Bracers +1",
@@ -330,6 +341,13 @@ end
         equip(sets.slugshot)
     elseif spell.name == 'Coronach' then   
         equip(sets.coronach)
+	elseif spell.name == 'Trueflight' then
+		equip(sets.trueflight)
+		if world.day == "Firesday" then
+			equip({feet="Marabout Sandals"})
+		elseif world.moon == "full" then
+			equip({head="Diana Corona"})
+		end
     else
         equip(sets.ws)
     end
@@ -337,7 +355,7 @@ end
         windower.add_to_chat(8,"[Daylight - L.bug Earring +1]")
         equip(sets.ranged.daylight)
     end
-	if world.day == "Firesday" then
+	if world.day == "Firesday" and not spell.name == 'Trueflight' then
 		windower.add_to_chat(8,"[Fire Ring - RATTK +15]")
 		equip({right_ring="Fire Ring"})
 	end
@@ -368,13 +386,9 @@ end
         else 
             equip({neck="Faith Torque"})
         end
-        if world.time <= 1080 and world.time >= 360 then
-            windower.add_to_chat(8,"[Daylight - L.bug Earring +1]")
-            equip(sets.ranged.daylight)
-        end
     end
     if (buffactive['barrage'])then
-		equip(sets.ranged.acc,{hands="Hunter's Bracers +1"})
+		equip(sets.ranged.acc,{hands="Hunter's Bracers +1",right_ring="Jalzahn's Ring"})
         disable('hands')
 		if world.day == "Lightningday" then
 			windower.add_to_chat(8,"[Lightning Ring - RACC +15]")
@@ -386,6 +400,10 @@ end
 			equip({feet="Hachiryu Sune-ate"})
 		end
 	end
+	if world.time <= 1080 and world.time >= 360 then
+		windower.add_to_chat(8,"[Daylight - L.bug Earring +1]")
+		equip(sets.ranged.daylight)
+	end
     enable('ammo','hands')
 end
  
@@ -393,7 +411,6 @@ end
  -- mob or not, and passes control to the relevant function above.
  function choose_set()
     if player.status == "Engaged" then
-        windower.add_to_chat(8,'[Engaged]')
         equip_engaged()
     else 
         equip_idle()    
@@ -659,5 +676,5 @@ function self_command(m)
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
- send_command('input /macro book 11; wait 0.1; input /macro set 1')
+ send_command('input /macro book 11; wait 0.1; input /macro set 1; wait .5; input /u !myth')
  send_command('input /echo Gearswap loaded.')

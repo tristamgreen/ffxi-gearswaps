@@ -7,23 +7,12 @@
 ****************************************************** --]]
  
  function get_sets()
- 
-     -- fashion set is for looking nice while lockstyled.
-    -- make sure you include your top-row equipment,
-    -- especially if you use a ranged or throwing weapon.
-    sets.fashion    =   {
-        main        =   "Spharai",
-        head        =   "Maat's Cap",
-        body        =   "Hachiryu Haramaki",
-        hands       =   "Hachiryu Kote",
-        legs        =   "Hachiryu Haidate",
-        feet        =   "Denali Gamashes"
-    }
- 
+  
     -- idle set is worn when we're standing around doing
     -- nothing.  we want evasion, damage reduction and movement speed+.
 	
     sets.idle       =   {
+		main		= 	"Spharai",	
         ammo        =   "White Tathlum",
         head        =   "Gnole Crown",
         body        =   "Melee Cyclas +1",
@@ -312,11 +301,12 @@ function choose_set()
 			windower.add_to_chat(8,"[Engaged - Daylight Bonus]")
 			equip({right_ear="Fenrir's Earring"})
 		end
-        if (buffactive['footwork']) then
+		if (buffactive['counterstance']) then
+            equip(sets.counter)
+		end
+		if (buffactive['footwork']) then
             equip(sets.footwork)
         end
-    elseif (buffactive['counterstance']) then
-            equip(sets.counter)
     elseif player.status == 'Resting' then
 		equip_rest()
 	else
@@ -465,7 +455,7 @@ end
 
  -- Puts on our fashion set, lockstyle it, then switch
  -- to our idle set.
-    send_command('wait 1;gs equip fashion;wait 1;input /lockstyle on;wait 1;gs equip idle')
+    send_command('gs equip idle;wait 1;input /lockstyleset 2')
     send_command('input /macro book 2; wait 0.1; input /macro set 1')
     windower.add_to_chat(8,'[Evasion Mode: Deactivated]')
     windower.add_to_chat(8,'[Accuracy Mode: Deactivated]')

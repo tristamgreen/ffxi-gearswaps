@@ -93,7 +93,7 @@ function get_sets()
         feet		= "Herald's Gaiters",
         neck		= "Orochi Nodowa +1",
         waist		= "Hierarch Belt",
-        left_ear	= "Astral Earring",
+        left_ear	= "Novia Earring",
         right_ear	= "Loquacious Earring",
         left_ring	= "Shadow Ring",
         right_ring	= "Patronus Ring",
@@ -1280,5 +1280,5 @@ function setup_job()
 end
  
 enable('main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet')
-send_command('wait 1; gs equip idle;wait 1; input /lockstyleset 15;wait 1;input /macro book 15; wait 0.1; input /macro set 1; wait 1; input /echo Gearswap loaded.')
+send_command('gs enable all;wait 1; gs equip idle;wait 1; input /lockstyleset 15;wait 1;input /macro book 15; wait 0.1; input /macro set 1; wait 1; input /echo Gearswap loaded.')
 send_command('input //dp ja') -- activates distanceplus in job ability mode
