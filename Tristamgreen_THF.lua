@@ -158,7 +158,9 @@
 		ear2		= "Merman's Earring",
 		ring1		= "Merman's Ring",
 		ring2		= "Merman's Ring",
-		waist		= "Resolute Belt"
+		waist		= "Resolute Belt",
+		legs		= "Merman's Subligar",
+		feet		= "Merman's Leggings"
 	}
 	
 	sets.steal = {

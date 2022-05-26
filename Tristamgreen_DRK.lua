@@ -19,11 +19,11 @@
         right_ear   = "Ethereal Earring",
 		head		= "Blood Mask",
         body        = "Valhalla Breastplate",
-        hands       = "Askar Manopolas",
+        hands       = "Darksteel Mittens +1",
         left_ring   = "Shadow Ring",
         right_ring  = "Patronus Ring",
         back        = "Boxer's Mantle",
-        waist       = "Steppe Sash",
+        waist       = "Resolute Belt",
         legs        = "Blood Cuisses",
         feet        = "Askar Gambieras"
     }
@@ -294,7 +294,7 @@ function choose_set()
     if weapontype == "scythe" then
         equip({main="Apocalypse"})
     elseif weapontype == "greatsword" then
-        equip({main="Algol"})
+        equip({main="Ragnarok"})
     end
     if world.time <= 1080 and world.time >= 360 and player.hpp < 94 then
 		windower.add_to_chat(8,"[Daylight Regen - HP at " .. player.hpp .. "%]")
@@ -468,7 +468,7 @@ end
  
  -- a set of self commands that dictate various job functions
  -- self commands are called via macro, through the syntax /console gs c (command name)
- -- eg., /command gs c W+ cycles through weaponskills to call on for our generic WS macro
+ -- eg., /console gs c W+ cycles through weaponskills to call on for our generic WS macro
  
  function self_command(m)
  
@@ -500,7 +500,7 @@ end
     elseif m == "weapontype" then
         if weapontype == "gsword" then
             weapontype = "scythe"
-            ws = 'Guillotine'
+            ws = 'Catastrophe'
             windower.add_to_chat(8,'[Weapon: Scythe]')
             windower.add_to_chat(222,'[Current WS: ' .. ws .. ']')
             equip(sets.scythe)
