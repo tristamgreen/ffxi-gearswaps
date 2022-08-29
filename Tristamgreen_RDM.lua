@@ -143,7 +143,7 @@ Tristamgreen RDM Remix - 2020
         left_ear    = "Merman's Earring",
         right_ear   = "Merman's Earring",
         left_ring   = "Merman's Ring",
-        right_ring  = "Merman's Ring",
+        right_ring  = "Minerva's Ring",
 		back		= "Lamia Mantle +1"
     }
 	
@@ -834,6 +834,7 @@ end
 	
 function self_command(m)
 -- mode selectors are run by the macro command /console gs c [modename]
+
 -- modes included here are:
 -- W+ - cycles selected weaponskill between Vorpal Blade and Knights of Round; extensible for others.
 -- WS - executes currently selected WS defined in W+
@@ -949,7 +950,7 @@ setup_job()
 --Set Macro Book
  send_command('input /macro book 5; wait 0.1; input /macro set 1')
 -- Puts on lockstyle set, lockstyle it, then switch to idle
- send_command('wait 1; input /lockstyleset 5; wait 1; gs equip idle')
+ send_command('gs enable all;wait 1; input /lockstyleset 5; wait 1; gs equip idle')
 -- Equip Terra's Staff to begin
  send_command('wait 1; gs equip terra')
  send_command('input //dp magic; wait 1; input //dp height')

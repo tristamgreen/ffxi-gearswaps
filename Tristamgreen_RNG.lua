@@ -540,6 +540,10 @@ end
 
 function self_command(m)
 
+-- how to use modes:
+-- in a macro, use /console gs c mode_name
+-- example: for weaponskills: /console gs c WS  for changing the weaponskill: /console gs c W+
+
 -- modes:
 -- W+ - changes default weaponskill called between Coronach/Slug Shot or Namas Arrow/Sidewinder
 -- rangedtype - changes between gun and bow

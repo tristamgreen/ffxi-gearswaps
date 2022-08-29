@@ -81,17 +81,22 @@
     sets.quickdraw  = {
         head		="Corsair's Tricorne +1",
 		body		="Denali Jacket",
-		hands		="Blood Fng. Gnt.",
+		hands		="Rover's Gloves",
 		legs		="Denali Kecks",
 		feet		="Denali Gamashes",
 		neck		="Uggalepih Pendant",
-		waist		="Commodore Belt",
+		waist		="Scouter's Belt",
         left_ear    ="Novio Earring",
         right_ear   ="Moldavite Earring",
 		left_ring	="Galdr Ring",
 		right_ring	="Omega Ring",
 		back		="Fowler's Mantle +1",
     }
+	
+	sets.darklight	= {
+		left_ear	= "Incubus Earring +1",
+		right_ear	= "Incubus Earring +1",
+	}
 
     sets.archery    = set_combine({sets.ranged,
         neck        = "Hope Torque",
@@ -259,6 +264,7 @@ end
  -- begin casting a spell or job ability.  For our THF,
  -- we want to equip ws gear for weapon skills, and flee
  -- duration gear when fleeing.
+  
  function precast(spell)
     if spell.type == 'WeaponSkill' then
         equip_ws(spell)
@@ -266,22 +272,40 @@ end
         equip(sets.randomdeal)
 	elseif spell.action_type == 'Ranged Attack' then
         equip_racc()		
-    elseif spell.name:contains('Corsair') or spell.name:contains('Monk') or spell.name:contains('Healer') or spell.name:contains('Chaos') or spell.name:contains('Choral') or spell.name:contains('Drachen') or spell.name:contains('Hunter') or spell.name:contains('Ninja') or spell.name:contains('Magus') or spell.name:contains('Beast') or spell.name:contains('Samurai') or spell.name:contains('Wizard') or spell.name:contains('Warlock') or spell.name:contains('Rogue') or spell.name:contains('Gallant') or spell.name:contains('Evoker') or spell.name:contains('Puppet') or spell.name:contains('Dancer') or spell.name:contains('Scholar') then
+    elseif spell.name:contains('Roll') then
         equip(sets.phantomroll)
-    elseif spell.name:contains('Earth') or spell.name:contains('Water') or spell.name:contains('Wind') or spell.name:contains('Fire') or spell.name:contains('Ice') or spell.name:contains('Thunder') then
-        equip(sets.quickdraw)
-        if spell.element == world.day_element and spell.name:contains('Earth') or spell.name:contains('Water') or spell.name:contains('Wind') or spell.name:contains('Fire') or spell.name:contains('Ice') or spell.name:contains('Thunder') then
-			windower.add_to_chat(8,"Quick Draw with Hachirin-no-Obi")
-			equip({waist="Hachirin-no-Obi"})
-        end
+	-- Quick Draw
+    elseif
+		spell.name == "Earth Shot" or
+		spell.name == "Wind Shot" or
+		spell.name == "Ice Shot" or
+		spell.name == "Fire Shot" or
+		spell.name == "Water Shot" or
+		spell.name == "Thunder Shot" or
+		spell.name == "Light Shot" or
+		spell.name == "Dark Shot" then
+			if player.target.distance > 17.9 then add_to_chat(122,'You are too far to use Quick Draw.')
+				cancel_spell()
+			end	
+			equip(sets.quickdraw,{main="Chatoyant Staff",sub="Reaver Grip +1"})
+			if spell.name == "Dark Shot" or spell.name == "Light Shot" then
+				equip(sets.darklight)
+			end
 	end
  end
  
  -- equip haste gear for ninjutsu
  function midcast(spell)
-     if spell.type == 'Ninjutsu' then
+	if spell.type == 'Ninjutsu' then
         equip(sets.utsu)
     end
+	if spell.element == world.day_element then
+		windower.add_to_chat(8,"Quick Draw with Hachirin-no-Obi")
+		equip({waist="Hachirin-no-Obi"})
+	elseif spell.element == world.weather_element then  
+        add_to_chat(8,'[Matching Weather]')
+        equip({waist="Hachirin-no-Obi"})
+	end
  end
  
  -- after we JA or WS, we want to return either to our
@@ -321,6 +345,17 @@ end
 
 
 function self_command(m)
+
+-- how to use modes:
+-- in a macro, use /console gs c mode_name
+-- example: for weaponskills: /console gs c WS  for changing the weaponskill: /console gs c W+
+
+-- modes:
+-- RW+ - changes default weaponskill called between Coronach/Slug Shot
+-- WS - use selected Weaponskill
+-- accmode - changes between "normal" and "high" ranged accuracy modes
+-- EVA - equips evasion gear
+
     if m == "RW+" then
         if ws == "Coronach" then
 			ws = "Slug Shot"

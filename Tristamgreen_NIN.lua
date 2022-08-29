@@ -81,7 +81,7 @@ function get_sets()
 		hands		= "Denali Wristbands",
 		waist		= "Resolute Belt",
 		left_ring	= "Merman's Ring",
-		right_ring	= "Merman's Ring",
+		right_ring	= "Minerva's Ring",
 		left_ear	= "Merman's Earring",
 		right_ear	= "Merman's Earring"
 	}
@@ -432,9 +432,19 @@ function buff_change(new,old)
 	end
 end
 
--- the self_command function can be called from a Yush or
--- in-game macro.  We use it to toggle evasion on and off.
+
 function self_command(m)
+
+-- how to use modes:
+-- in a macro, use /console gs c mode_name
+-- example: for weaponskills: /console gs c WS  for changing the weaponskill: /console gs c W+
+
+-- modes:
+-- togglemdef Magical Damage Taken- mode MDT prioritized
+-- toggleEvasion - Evasion mode
+-- castElemental - cycle Elemental Wheel beginning with Raiton: San
+-- resetwheel - reset Wheel to Raiton: San
+
     if m == "toggleEvasion" then
         if eva == true then
             windower.add_to_chat(8,'[Evasion during combat: OFF]')
@@ -513,6 +523,6 @@ end
  setup_job()
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
- send_command('wait 1;input /lockstyleset 13;wait 1;gs equip idle;wait 1;gs equip initial')
+ send_command('gs enable all;wait 1;input /lockstyleset 13;wait 1;gs equip idle;wait 1;gs equip initial')
  send_command('input /macro book 13; wait 0.1; input /macro set 1; wait .5; input /u !myth')
  send_command('input //dp magic')

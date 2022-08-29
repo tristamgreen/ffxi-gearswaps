@@ -20,16 +20,7 @@ Tristamgreen BLU v2 - 2021
 ************ --]]
  
  function get_sets()
- 
-    -- lockstyle set 
-    sets.lockstyle = {
-        head        = "Mirage Keffiyeh +1",
-        body        = "Ebon Frock",
-        hands       = "Denali Wristbands",
-        legs        = "Mirage Shalwar +1",
-        feet        = "Mirage Charuqs +1"
-    }
- 
+
     -- idle sets 
 	
 	-- Generic Idle
@@ -118,7 +109,7 @@ Tristamgreen BLU v2 - 2021
         left_ear    = "Merman's Earring",
         right_ear   = "Merman's Earring",
         left_ring   = "Merman's Ring",
-        right_ring  = "Merman's Ring"
+        right_ring  = "Minerva's Ring"
     }
 	
 	sets.HPMP 	    = {
@@ -240,7 +231,7 @@ Tristamgreen BLU v2 - 2021
 	-- mind set for MND-based spells
 	sets.mnd		= {
 		ranged		= "Aureole",
-		head		= "Ree's Headgear",
+		head		= "Maat's Cap",
 		body		= "Blood Scale Mail",
 		hands		= "Mirage Bazubands +1",
 		legs		= "Mahatma Slops",
@@ -695,6 +686,18 @@ function setup_job()
 end
 	
 function self_command(m)
+
+-- mode selectors are run by the macro command /console gs c [modename]
+
+-- modes included here are:
+-- W+ - cycles selected weaponskill between Vorpal Blade and Knights of Round; extensible for others.
+-- WS - executes currently selected WS defined in W+
+-- EVA - equips Evasion Gearsets
+-- M+ - cycles Elemental Magic Mode between Damage and Accuracy
+-- mode - generic mode that toggles pure mage mode or melee mode for Red Mage
+-- tank - toggles sword/shield for Red Mage.  Must be activated when mode is set to MELEE
+-- defmode - toggles normal Red Mage and Magical Defense Mode
+
     if m == "W+" then
         if ws == "Knights of Round" then
 			ws = "Vorpal Blade"
@@ -779,7 +782,7 @@ setup_job()
  --Set Macro Book
  send_command('input /macro book 16; wait 0.1; input /macro set 1')
  -- Set up Style Lock, equip Idle set, and equip Terra's Staff for idle Damage Mitigation
- send_command('wait 1; input /lockstyleset 16; wait 1; gs equip idle')
+ send_command('gs enable all;wait 1; input /lockstyleset 16; wait 1; gs equip idle')
  send_command('input //dp magic; wait 1; input //dp height')
  
  -- below commands set azureset based entirely on subjob selection

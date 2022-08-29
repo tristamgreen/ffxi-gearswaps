@@ -415,6 +415,14 @@ function buff_change(new,old)
 end
  
 function self_command(m)
+
+-- mode selectors are run by the macro command /console gs c [modename]
+
+-- modes included here are:
+
+-- EVA - equips Evasion Gearsets
+-- acc - Accuracy Mode
+
 if m == "EVA" then
         if ev == false then
             ev = true

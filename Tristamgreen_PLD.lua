@@ -589,7 +589,20 @@ end
 -- hybrid, full PDT, full MDT, and Breath Dmg. Reduction sets
 
 function self_command(m)
+
+-- how to use modes:
+-- in a macro, use /console gs c mode_name
+-- example: for weaponskills: /console gs c WS  for changing the weaponskill: /console gs c W+
+
+-- modes:
 -- W+ changes weaponskills between Knights of Round and Atonement
+-- hybrid - Hybrid defense mode
+-- pdt - Physical Damage Taken- mode PDT prioritized
+-- mdt - Magical Damage Taken- mode MDT prioritized
+-- breath - Breath Damage Taken- mode
+-- highAcc - High Accuracy Mode
+
+
     if m == "W+" then
         if ws == "Knights of Round" then
 			ws = "Atonement"

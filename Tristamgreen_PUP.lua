@@ -514,11 +514,18 @@ function buff_change(new,old)
 	end
 end
 
--- Finally, SELF COMMAND functions to toggle TH4, EVA, ACC modes by turning
--- those modes on, through a Toggle check
--- PRESS the macro twice in game to turn the toggle/mode off
--- Ex: a macro in game [/console gs c TH]
+
 function self_command(m)
+
+-- how to use modes:
+-- in a macro, use /console gs c mode_name
+-- example: for weaponskills: /console gs c WS  for changing the weaponskill: /console gs c W+
+
+-- modes:
+-- EVA - Evasion toggle on or off
+-- HEAL - healer mode on/off
+-- MAGE - mage mode on/off
+
   		local debug_info = ''
 	if m == "EVA" then
         if eva == false then

@@ -145,7 +145,7 @@ sets.Hybrid         = {
         feet        = "Homam Gambieras"
     }
     
-sets.fivehit = {
+sets.rosestrap = {
     main        =   { name="Gungnir", augments={'Accuracy+15','Attack+15','"Triple Atk."+3',}},
     sub         =   "Rose Strap",
     ammo        =   "White Tathlum",
@@ -478,6 +478,13 @@ end
  
  
 function self_command(m)
+
+-- mode selectors are run by the macro command /console gs c [modename]
+
+-- modes included here are:
+-- M+ cycles between Hybrid mode and Evasion mode.
+-- fivehit toggles fivehit mode (never used, don't really need)
+
 if m == "M+" then
     if mode == "Hybrid" then
 		mode = "Evasion"

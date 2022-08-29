@@ -370,6 +370,18 @@ function buff_change(new,old)
 end
 
 function self_command(m)
+
+-- mode selectors are run by the macro command /console gs c [modename]
+
+-- modes included here are:
+-- W+ - cycles selected weaponskill between Vorpal Blade and Knights of Round; extensible for others.
+-- WS - executes currently selected WS defined in W+
+-- EVA - equips Evasion Gearsets
+-- step+ - change Step selection
+-- samba+ - change Samba selection
+-- step - use selected Step
+-- S - use selected Samba
+
     if m == "W+" then
         if ws == "Mercy Stroke" then
             ws = "Dancing Edge"
