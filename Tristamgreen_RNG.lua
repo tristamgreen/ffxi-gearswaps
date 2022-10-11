@@ -483,6 +483,12 @@ end
 		send_command("cancel sneak") 
 	end	
 	if spell.name == 'Barrage' then
+		enable('ammo')
+		if rangedtype == true then
+			equip({ammo="Kabura Arrow"})
+		else
+			equip({ammo="Silver Bullet"})
+		end
 		if player.inventory[player.equipment.ammo].count < 8 then
 			windower.add_to_chat("[Not enough to maximize Barrage, cancelling]")
 			cancel_spell()

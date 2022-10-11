@@ -67,7 +67,7 @@
 	sets.repair = {
 		ammo		= "Automat. Oil +2",
 		left_ear    = "Guignol Earring",
-        feet        = "Puppetry Babouches"
+        feet        = "Pup. Babouches +1"
     }
 -- MANEUVERS set focuses on AGI+ since I mostly use Wind Maneuvers for ranger Bot
     sets.maneuver = {
