@@ -202,7 +202,7 @@ Tristamgreen BLU v2 - 2021
 		legs		= "Enkidu's Subligar",
 		feet		= "Denali Gamashes",
 		neck		= "Ancient Torque",
-		waist		= "Warwolf Belt",
+		waist		= "Fierce Belt",
 		left_ear	= "Harmonius Earring",
 		right_ear	= "Harmonius Earring",
 		left_ring	= "Mars's Ring",
@@ -237,7 +237,7 @@ Tristamgreen BLU v2 - 2021
 		legs		= "Mahatma Slops",
 		feet		= "Denali Gamashes",
 		neck		= "Gnole Torque",
-		waist		= "Pythia Sash +1",
+		waist		= "Salire Belt",
 		left_ear	= "Novio Earring",
 		right_ear	= "Moldavite Earring",
 		left_ring	= "Celestial Ring",
@@ -275,7 +275,7 @@ Tristamgreen BLU v2 - 2021
         left_ring   = "Antica Ring",
         right_ring  = "Celestial Ring",
         back        = "Hecate's Cape",
-        waist       = "Ninurta's Sash",
+        waist       = "Salire Belt",
         legs        = "Homam Cosciales",
         feet        = "Homam Gambieras"
     }
@@ -298,7 +298,7 @@ Tristamgreen BLU v2 - 2021
         left_ring   = "Celestial Ring",
         right_ring  = "Celestial Ring",
         back        = "Altruistic Cape",
-        waist       = "Ninurta's Sash",
+        waist       = "Salire Belt",
         legs        = "Denali Kecks",
         feet        = "Homam Gambieras"
     }
@@ -324,7 +324,8 @@ Tristamgreen BLU v2 - 2021
 	{
         head        = "Mirage Keffiyeh +1",
         body        = "Magus Jubbah +1",
-        left_ring   = "Antica Ring"
+        left_ring   = "Antica Ring",
+		right_ear	= "Celestial Earring"
     })
     
     -- stack MND for Stoneskin potency
