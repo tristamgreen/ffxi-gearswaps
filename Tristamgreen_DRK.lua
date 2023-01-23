@@ -3,6 +3,8 @@
     rebuilt 2020
 ************************************************************* --]]
  
+ require("common_gs_functions")
+ 
  --[[ ******************************************************
   Gearsets - define the various sets of gear we'll wear.
 ****************************************************** --]]
@@ -30,7 +32,7 @@
 	
 	-- daylight idle set with lycopodium sash and feronia's bangles for super regen
 	
-	sets.dayidle 	= {
+	sets.dayregen	= {
 		waist		= "Lycopodium Sash",
 		hands		= "Feronia's Bangles"
 	}
@@ -289,17 +291,12 @@ function choose_set()
  
  -- equip our idle set for standing around
  function equip_idle()
-     windower.add_to_chat(8,'[Idle]')
-     equip(sets.idle)
+	common_idle_equip()
     if weapontype == "scythe" then
         equip({main="Apocalypse"})
     elseif weapontype == "greatsword" then
         equip({main="Ragnarok"})
     end
-    if world.time <= 1080 and world.time >= 360 and player.hpp < 94 then
-		windower.add_to_chat(8,"[Daylight Regen - HP at " .. player.hpp .. "%]")
-		equip(sets.idle,sets.dayidle)
-	end
     if player.hpp >= 85 and player.mpp <= 99 then
 		windower.add_to_chat(8,"[Parade Gorget - MP at " .. player.mpp .. "%]")
         equip(sets.parade)
@@ -444,26 +441,8 @@ function status_change(new,old)
     end
  end
  
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_item()
 end
  
  -- a set of self commands that dictate various job functions

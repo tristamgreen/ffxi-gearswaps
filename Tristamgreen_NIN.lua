@@ -2,6 +2,8 @@
 -- version whatever-the-fuck.06.29.2021 - comment out all ammo except koga shuriken, add magic def. mode
 -- version whatever-the-fuck.07.15.2021 - added peter parker mode for soultrapper
 
+require("common_gs_functions")
+
 function get_sets()
  
 	-- ***IDLE SETS***
@@ -33,7 +35,7 @@ function get_sets()
 	
 	--idle during daylight - adds +regen during daylight
 	
-	sets.idle.day 	= {
+	sets.dayregen 	= {
 		waist		= "Lycopodium Sash"
 		}
         
@@ -215,17 +217,12 @@ function get_sets()
  
  -- equip idle set (with feet at dusk to dawn)
  function equip_idle()
-	windower.add_to_chat(8,'[Idle]')
-    equip(sets.idle)                       	 					-- all times of day, equip idle set
-    if world.time <= 1020 and world.time >= 420 then                        -- if it isn't dusk
+	common_idle_equip()
+	if world.time <= 1020 and world.time >= 420 then                        -- if it isn't dusk
         windower.add_to_chat(8,'[Dawn to Dusk]')
         equip({legs="Hachiryu Haidate",feet="Rasetsu Sune-Ate +1"})
     else
         windower.add_to_chat(8,'[Dusk to Dawn: Movement +25%]')
-    end
-    if world.time <= 1080 and world.time >= 360 then                        -- if it isn't nighttime
-        windower.add_to_chat(8,'[Daylight: Regen +3]')                      -- Lycopodium Sash
-        equip(sets.idle.day)
     end
  end
  
@@ -410,26 +407,8 @@ function setup_job()
 		'Utsusemi: Ichi','Utsusemi: Ni','Monomi: Ichi','Tonko: Ichi','Tonko: Ni'}
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
 

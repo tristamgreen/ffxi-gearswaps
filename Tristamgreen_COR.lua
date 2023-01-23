@@ -1,6 +1,8 @@
 -- Tristamgreen Ranger LUA, 2019
 -- thanks to Wren and Enedin for bits and pieces of their own LUAs
  
+ require("common_gs_functions")
+ 
  function get_sets()
  
 	sets.idle = {
@@ -21,6 +23,11 @@
 		left_ring	= "Patronus Ring",
 		right_ring	= "Shadow Ring",
 		back		= "Shadow Mantle",
+	}
+	
+	sets.dayregen	= {
+		hands		= "Feronia's Bangles",
+		waist		= "Lycopodium Sash",
 	}
 	
 	-- Haste set
@@ -190,13 +197,7 @@
  
  -- equip our idle set
  function equip_idle()
-    if world.time <= 1080 and world.time >= 360 then
-			windower.add_to_chat(8,"[Idle - Daylight Regen ON]")
-			equip(sets.idle,{hands="Feronia's Bangles"},{waist="Lycopodium Sash"})
-	else 
-		windower.add_to_chat(8,'[Idle]')
-		equip(sets.idle)
-	end
+	common_idle_equip()
 end
 
 -- equip our engaged set
@@ -321,26 +322,8 @@ function status_change(new,old)
     choose_set()
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
 

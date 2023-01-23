@@ -3,13 +3,19 @@
  Save as windower/addons/GearSwap/data/PUP.lua
 
  REVISED BY ACROSS
-************************************************************* --]]
+ ************************************************************* --]]
+ 
+ 
+ require("common_gs_functions")
+ 
+
  --[[ ******************************************************
   Gearsets - define the various sets of gear we'll wear.
 ****************************************************** --]] 
  function get_sets()
 -- idle set is worn when we're standing around doing
 -- nothing.  we want movement speed and evasion.
+
     sets.idle = {
         main        = "Spharai",
 		range		= "Animator +1",
@@ -28,7 +34,7 @@
         feet        = "Hermes' Sandals +1"
     } 
     
-    sets.daylight = {
+    sets.dayregen	= {
         waist       = "Lycopodium Sash"
     }
     
@@ -492,26 +498,8 @@ function status_change(new,old)
     choose_set()
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
 

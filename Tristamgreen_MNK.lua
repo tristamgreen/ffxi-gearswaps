@@ -1,6 +1,8 @@
 --[[ *************************************************************
-	TG's WAR lua - 2019
+	TG's MNK lua - 2019
 ************************************************************* --]]
+ 
+ require("common_gs_functions")
  
  --[[ ******************************************************
   Gearsets - define the various sets of gear we'll wear.
@@ -30,7 +32,7 @@
 	
 	-- daylight idle set with lycopodium sash and feronia's bangles for super regen
 	
-	sets.daylight    =   {
+	sets.dayregen	=   {
         hands       = "Feronia's Bangles",
 		waist		= "Lycopodium Sash"
 	}
@@ -243,14 +245,8 @@
  
  -- equip our idle set for standing around
  function equip_idle()
-     windower.add_to_chat(8,'[Idle]')
-  	if world.time <= 1080 and world.time >= 360 then
-		windower.add_to_chat(8,"[Daylight Regen]")
-		equip(sets.idle,sets.daylight)
-    else
-        equip(sets.idle)
-		end
-	end
+	common_idle_equip()
+ end
 
 -- equip our engaged set. if footwork is not active, reset footwork flag and unequip that set.
 
@@ -384,26 +380,7 @@ function status_change(new,old)
     end
  end
  
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-    end
+function buff_change(name,gain)
 	-- footwork gone > do another choose_set
 	if buffactive['Footwork'] then
 		footwork = true
@@ -412,6 +389,7 @@ function buff_change(new,old)
         footwork = false
         choose_set()
 	end
+	debuff_items()
 end
  
 function self_command(m)

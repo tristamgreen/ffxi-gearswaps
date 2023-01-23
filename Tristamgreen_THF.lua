@@ -3,6 +3,8 @@
 ****************************************************** --]]
 
 -- v whatever.07.15.2021 - photographer mode for soultrapper added
+
+require("common_gs_functions")
  
  function get_sets()
  
@@ -314,18 +316,9 @@ end
 
  -- equip idle set (with daylight regen)
  function equip_idle()
-	windower.add_to_chat(8,'[Idle]')					                                -- all times of day, equip idle set
+	common_idle_equip()
 	if ev == true then
-		equip(sets.idle,sets.eva,{feet="Areion Boots +1"})
-	else
-		equip(sets.idle)
-	end
-    if world.time <= 1080 and world.time >= 360 then                    -- if it isn't nighttime
-        windower.add_to_chat(8,'[Daylight Regen]')                      -- Lycopodium Sash + Feronia's Bangles
-        equip(sets.daylight)
-    end
-	if mdt == true then
-		equip(sets.mdt)
+		equip({feet="Areion Boots +1"})
 	end
  end
  
@@ -342,25 +335,7 @@ end
 		end
 	end
 	-- status removers
-	if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+	debuff_items()
 end
 
  -- equip either our mercy stroke or dex set

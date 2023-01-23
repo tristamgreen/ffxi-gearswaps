@@ -1,5 +1,6 @@
 function get_sets()
 
+require("common_gs_functions")
 
 sets.idle       =   {
     main        =   "Amanomurakumo",
@@ -107,12 +108,7 @@ function choose_set()
 end
 
 function equip_idle()
-    equip(sets.idle)
-    windower.add_to_chat(8,'[Samurai - Idle]')
-    if world.time <= 1080 and world.time >= 360 then 
-		windower.add_to_chat(8,'[Daylight Bonus Regen]')
-		equip(sets.idle,sets.dayregen)
-    end
+	common_idle_equip()
 end
 
 function equip_engaged()
@@ -178,26 +174,8 @@ function status_change(new,old)
     choose_set()
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
 function self_command(m)

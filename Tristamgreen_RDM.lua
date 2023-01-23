@@ -8,6 +8,8 @@ Tristamgreen RDM Remix - 2020
  --[[ **********
   Gearsets 
 ************ --]]
+
+require("common_gs_functions")
  
  function get_sets()
  
@@ -22,7 +24,7 @@ Tristamgreen RDM Remix - 2020
 		hands		= "Duelist's Gloves +1",
 		legs		= "Blood Cuisses",
 		feet		= "Goliard Clogs",
-		neck		= "Beguiling Collar",
+		neck		= "Orochi Nodowa +1",
 		waist		= "Steppe Sash",
 		left_ear	= "Novia Earring",
 		right_ear	= "Triton Earring",
@@ -36,10 +38,6 @@ Tristamgreen RDM Remix - 2020
 		main		= "Terra's Staff",
 		sub			= "Magic Strap"
 	}
-    
-	sets.regen		= {
-		neck		= "Orochi Nodowa +1"
-	}			
 	
     -- Daylight Regen set
 	sets.dayregen	= {
@@ -346,7 +344,7 @@ Tristamgreen RDM Remix - 2020
 		right_ring	= "Merman's Ring",
 		feet		= "Karasutengu",
 		back		= "Umbra Cape",
-		neck		= "Beguiling Collar",
+		neck		= "Orochi Nodowa +1",
 		
 	}
     
@@ -472,17 +470,7 @@ end
  
  -- equip our idle set
  function equip_idle()
-    equip(sets.idle)
-    windower.add_to_chat(8,'[Red Mage - Idle]')
-	if player.hpp <= 95 then
-		if world.time <= 1080 and world.time >= 360 then 
-			windower.add_to_chat(8,'[Daylight Bonus Regen]')
-			equip(sets.idle,sets.regen,sets.dayregen)
-		else
-			windower.add_to_chat(8,'[Regen Set]')
-			equip(sets.idle,sets.regen)
-		end
-	end
+	common_idle_equip()
     if mode == "mage" then
         equip(sets.terra)
     end
@@ -810,26 +798,8 @@ function setup_job()
         'Enstone', 'Enwater', 'Enaero', 'Enfire', 'Enblizzard', 'Enthunder', 'Endark', 'Enlight'}
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-    end
+function buff_change(name,gain)
+	debuff_items()
 end
 	
 function self_command(m)

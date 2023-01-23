@@ -7,6 +7,8 @@ Tristamgreen BLM Remix - 2020
  
  -- Base MP for Uggalepih Pendant Calculation: 878MP
 
+require("common_gs_functions")
+
  --[[ **********
   Gearsets 
 ************ --]]
@@ -21,7 +23,7 @@ Tristamgreen BLM Remix - 2020
         -- ammo        = "Fenrir's Stone",
 		ranged		= "Aureole",
         head        = "Genie Tiara",
-        neck        = "Beguiling Collar",
+        neck        = "Orochi Nodowa +1",
         left_ear    = "Novia Earring",
         right_ear   = "Triton Earring",
         body        = "Dalmatica +1",
@@ -32,10 +34,6 @@ Tristamgreen BLM Remix - 2020
         waist       = "Pythia Sash +1",
         legs        = "Goliard Trews",
         feet        = "Herald's Gaiters"
-	}
-	
-	sets.regen 		= {
-		neck		= "Orochi Nodowa +1"
 	}
 
     -- Daylight Regen set
@@ -109,7 +107,7 @@ Tristamgreen BLM Remix - 2020
         left_ear    = "Merman's Earring",
         right_ear   = "Merman's Earring",
         left_ring   = "Merman's Ring",
-        right_ring  = "Merman's Ring"
+        right_ring  = "Minerva's Ring"
     }
 	
 	sets.HPMP 	    = {
@@ -413,17 +411,8 @@ end
  
  -- equip our idle set
  function equip_idle()
-    equip(sets.idle,sets.staff)
-    windower.add_to_chat(8,'[Black Mage - Idle]')
-	if player.hpp <= 75 then
-		if world.time <= 1080 and world.time >= 360 then 
-			windower.add_to_chat(8,'[Daylight Bonus Regen]')
-			equip(sets.dayregen)
-		else
-			windower.add_to_chat(8,'[Regen Set]')
-			equip(sets.idle,sets.regen)
-		end
-    end
+	common_idle_equip()
+	equip(sets.staff)
     if defmode == "magical" then
         equip(sets.mdef)
     end
@@ -657,26 +646,8 @@ function setup_job()
            
 end
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-    end
+function buff_change(name,gain)
+	debuff_items()
 end
 	
 function self_command(m)
@@ -768,7 +739,7 @@ melee = false
 --Set Macro Book
  send_command('input /macro book 4; wait 0.1; input /macro set 1')
 -- Puts on lockstyle set, lockstyle it, then switch to idle
- send_command('wait 1; input /lockstyleset 4; wait 1; gs equip idle; wait 1; gs equip staff')
+ send_command('gs enable all;wait 1; input /lockstyleset 4; wait 1; gs equip idle; wait 1; gs equip staff')
  send_command('input //dp magic; wait 1; input //dp height')
 	windower.add_to_chat(8,'[Magic Casting Mode: ' .. magicmode .. ']')
     windower.add_to_chat(8,'[Defense Mode: ' .. defmode .. ']')

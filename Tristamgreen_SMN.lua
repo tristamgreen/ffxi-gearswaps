@@ -70,6 +70,8 @@ CREDITS
 
 ]]--
 
+require("common_gs_functions")
+
 ----------
 -- Sets --
 ----------
@@ -100,7 +102,7 @@ function get_sets()
         back		= "Shadow Mantle"
 	}
     
-    sets.daylight = { -- idle with daylight refresh stuff. lyco sash, feronia's bangles...
+    sets.dayregen	= { -- idle with daylight refresh stuff. lyco sash, feronia's bangles...
         hands		= "Feronia's Bangles",
         waist		= "Lycopodium Sash"
     }
@@ -492,7 +494,7 @@ end
 function equip_idle(name)
     if world.time <= 1080 and world.time >= 360 then 
 			windower.add_to_chat(8,"[Bonus Regen ON]")
-			equip(sets.idle,sets.daylight)
+			equip(sets.idle,sets.dayregen)
 	else
         windower.add_to_chat(8,"[Summoner's Base Idle set]")
         equip(sets.idle)
@@ -1092,26 +1094,8 @@ function after_aftercast(name)
 	end
 end 
 
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
 ---------------------

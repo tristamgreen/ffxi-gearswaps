@@ -2,6 +2,8 @@
 -- Utility functions specific to this job.
 -------------------------------------------------------------------------------------------------------------------
  
+ require("common_gs_functions")
+ 
 -- Define sets and vars used by this job file.
 function get_sets()
    
@@ -27,6 +29,10 @@ function get_sets()
         back        = "Shadow Mantle"
 }
 
+ sets.dayregen		= {
+		waist		= "Lycopodium Sash",
+	}
+	
  sets.callwyvern    = {
         head        = "Wivre Mask +1",
         body        = "Askar Korazin",
@@ -235,6 +241,25 @@ sets.geirskogul     = {
         legs        = "Hct. Subligar +1",
         feet        = "Hct. Leggings +1"
     }
+	
+	-- Generic WS set
+sets.ws				= {
+        main        = "",
+        sub         = "",
+        ammo        = "Black Tathlum",
+        head        = "Hecatomb Cap +1",
+        neck        = "Fotia Gorget",        
+        left_ear    = "Harmonius Earring",
+        right_ear   = "Harmonius Earring",
+        body        = "Nocturnus Mail",
+        hands       = "Alkyoneus's Bracelets",
+        left_ring   = "Rajas Ring",
+        right_ring  = "Mars's Ring",
+        back        = "Cerb. Mantle +1",
+        waist       = "Warwolf Belt",
+        legs        = "Hct. Subligar +1",
+        feet        = "Hct. Leggings +1"
+    }
    
     -- Jump set
 sets.Jump           = {
@@ -285,13 +310,8 @@ end
          
 -- Handle equipping of idle set with/without Regen item(s), re-supply quiver
  function equip_idle()
- windower.add_to_chat(8,"[Dragoon's Base Idle set]")
- equip(sets.idle)
-    if world.time <= 1080 and world.time >= 360 then 
-        windower.add_to_chat(8,"[Daylight Regen]")
-		equip(sets.idle,{waist="Lycopodium Sash"})
-    end
-    if pet.isvalid then
+	common_idle_equip()
+	if pet.isvalid then
         equip({hands="Wym. Fng. Gnt. +1"})
     end
 end
@@ -312,6 +332,23 @@ end
 function equip_rest()
     windower.add_to_chat(8,'[Knight of the Holy Crest, now at rest...]')
     equip(sets.hhp)
+end
+
+function equip_ws(spell)
+     windower.add_to_chat(8,'[Weapon Skill]')
+    if spell.name == 'Drakesbane' then
+		equip(sets.drakesbane)	
+	elseif spell.name == 'Geirskogul' then
+		equip(sets.geirskogul)
+    else
+         equip(sets.ws)
+    end
+	if world.time <= 1080 and world.time >= 360 then
+		windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
+		equip({left_ear="Fenrir's Earring"})
+	else
+		windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
+	end
 end
  
 --[[ ********************
@@ -351,21 +388,9 @@ end
         windower.add_to_chat(8,"[- " .. spell.name .. " with " .. player.tp .. "TP -]")
         equip(sets.Angon)
     end
-        
-    if spell.name == 'Drakesbane' and world.time <= 1080 and world.time >= 360 then
-        windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-        equip(sets.drakesbane,{left_ear="Fenrir's Earring"})
-         elseif spell.name == 'Drakesbane' then
-             windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-             equip(sets.drakesbane)
-	end
-       
-    if spell.name == 'Geirskogul' and world.time <= 1080 and world.time >= 360 then
-        windower.add_to_chat(8,"[- " .. spell.name .. " with Fenrir's Earring using " .. player.tp .. "TP -]")
-        equip(sets.geirskogul,{left_ear="Fenrir's Earring"})
-         elseif spell.name == 'Geirskogul' then
-             windower.add_to_chat(8,"[- " .. spell.name .. " using " .. player.tp .. "TP -]")
-             equip(sets.geirskogul)
+	
+	if spell.type == 'WeaponSkill' then
+        equip_ws(spell)        
 	end
    
     if spell.name == 'Ancient Circle' then
@@ -452,26 +477,8 @@ function choose_set()
     end
 end 
  
-function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+function buff_change(name,gain)
+	debuff_items()
 end
 
  -- Melee mode selectorizer --
