@@ -1,6 +1,6 @@
 -- common gearswap functions used by all jobs
 
--- v1.0 reznor 2023
+-- v1.0 Tristamgreen 2023
 
 function common_idle_equip()
     equip(sets.idle)
