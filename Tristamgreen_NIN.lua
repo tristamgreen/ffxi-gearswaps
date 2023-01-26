@@ -317,6 +317,7 @@ function choose_set()
 		end	
         equip_ws()
     elseif spell.type == 'Ninjutsu' then
+		local magictype = get_magic_type(spell)
         local spell_recasts = windower.ffxi.get_spell_recasts()
         if spell_recasts[spell.recast_id] > 60 then -- 1s margin
             add_to_chat(167,spell.english .. ' is still on cooldown!')
@@ -340,7 +341,6 @@ function choose_set()
  
  function midcast(spell)
 	if spell.type == 'Ninjutsu' then
-	local magictype = get_magic_type(spell)
         if magictype == 'ninBuff' then
 -- debug			windower.add_to_chat(8,'[CHANGING TO ENHANCING SET FOR SPELL ' .. spell.english .. ']')
 			equip(sets.enhancing)

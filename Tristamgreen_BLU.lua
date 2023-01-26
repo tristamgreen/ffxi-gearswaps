@@ -491,7 +491,7 @@ function choose_set()
  -- begin casting a spell or job ability.
  function precast(spell)
  if spell.action_type == 'Magic' then
-	
+		local magictype = get_magic_type(spell)
 		-- Cancel magic when it is not up yet
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		if spell_recasts[spell.recast_id] > 60 then -- 1s margin
@@ -522,38 +522,37 @@ end
 -- Midcast is for all Blue Magic Spells and other spells.
  function midcast(spell)
     if spell.skill == "Blue Magic" then
-        local blutype = get_magic_type(spell)
-        if blutype == 'physBlu' then
+        if magictype == 'physBlu' then
             equip(sets.phys)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Wise Strap"})
             end
-        elseif blutype == 'intBlu' then
+        elseif magictype == 'intBlu' then
             equip(sets.int)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Wise Strap"})
             end
-        elseif blutype == 'mndBlu' then
+        elseif magictype == 'mndBlu' then
             equip(sets.mnd)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Reign Grip"})
             end
-        elseif blutype == 'breathBlu' then
+        elseif magictype == 'breathBlu' then
             equip(sets.breath)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Raptor Strap +1"})
             end
-        elseif blutype == 'healBlu' then
+        elseif magictype == 'healBlu' then
             equip(sets.healing)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Reign Grip"})
             end
-        elseif blutype == 'enfBlu' then
+        elseif magictype == 'enfBlu' then
             equip(sets.enfeeblu)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Reign Grip"})
             end
-        elseif blutype == 'enhBlu' then
+        elseif magictype == 'enhBlu' then
             equip(sets.enhancblu)
             if mode == 'mage' then
                 equip(sets.staff,{sub="Vivid Strap +1"})

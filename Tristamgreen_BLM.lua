@@ -475,8 +475,9 @@ function choose_set()
  -- the precast function runs automatically BEFORE we
  -- begin casting a spell or job ability.
  function precast(spell)
- if spell.action_type == 'Magic' then
 	
+	if spell.action_type == 'Magic' then
+		local magictype = get_magic_type(spell)
 		-- Cancel magic when it is not up yet
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		if spell_recasts[spell.recast_id] > 60 then -- 1s margin
@@ -505,7 +506,6 @@ end
  function midcast(spell)
     if spell.skill == 'Enfeebling Magic' then
 		windower.add_to_chat(8,'[Enf. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
-        local magictype = get_magic_type(spell)
         if magictype == 'mndEnf' then
             equip(sets.mnd,sets.staff,{sub="Reign Grip"})
         elseif magictype == 'intEnf' then
@@ -521,9 +521,8 @@ end
         equip(sets.healing,sets.staff,{sub="Reign Grip"})
         windower.add_to_chat(8,'[Healing Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
     elseif spell.skill == 'Elemental Magic' then
-        local magictype = get_magic_type(spell)
-        if magictype == "elementalDebuff" then
-            equip(sets[magictype],sets.staff,{sub="Wise Strap"})
+        if magictype == "eleDebuff" then
+            equip(sets[magictype],sets.staff,{sub="Vivid Strap +1"})
         else
             equip(sets[magicmode],sets.staff,{sub="Wise Strap"})
         end
@@ -613,7 +612,9 @@ end
 function get_magic_type(spell)
     if mndEnfMagic:contains(spell.english) then
         return 'mndEnf'
-    elseif
+    elseif elementalDebuff:contains(spell.english) then
+		return 'eleDebuff'
+	else
         return 'intEnf'
     end
 end

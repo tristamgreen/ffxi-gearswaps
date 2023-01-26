@@ -474,6 +474,7 @@ end
 		--	equip({head="Horror Head II"})
 		--end
     elseif spell.type:contains('Magic') or spell.type == 'Ninjutsu' then
+		local magictype = get_magic_type(spell)
 		if spell.english == 'Reprisal' then
 			if mdt then
 				add_to_chat(122,'in MDT mode, cancelling Reprisal.')

@@ -459,8 +459,8 @@ end
  -- the precast function runs automatically BEFORE we
  -- begin casting a spell or job ability.
  function precast(spell)
- if spell.action_type == 'Magic' then
-	
+	if spell.action_type == 'Magic' then
+		local magictype = get_magic_type(spell)
 		-- Cancel magic when it is not up yet
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		if spell_recasts[spell.recast_id] > 60 then -- 1s margin
@@ -480,7 +480,6 @@ end
 		end		
     end
 	if spell.skill == 'Enfeebling Magic' then
-        local magictype = get_magic_type(spell)
         if magictype == 'mndEnf' then
 			if buffactive['Light Arts'] then
 				equip(sets.grimoire)
@@ -515,7 +514,6 @@ end
 -- Midcast is for all Magic Spells
  function midcast(spell)
     if spell.skill == 'Enfeebling Magic' then
-        local magictype = get_magic_type(spell)
 		windower.add_to_chat(8,'[Enf. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
         if magictype == 'mndEnf' then
             equip(sets.mnd,sets.staff,{sub="Reign Grip"})
@@ -547,8 +545,7 @@ end
 		end
 		
     elseif spell.skill == 'Elemental Magic' then
-        local magictype = get_magic_type(spell)
-        if magictype == "helix" then
+        if magictype == 'helix' then
             equip(sets[magictype],sets.staff,{sub="Vivid Strap +1"})
         else
             equip(sets[magicmode],sets.staff,{sub="Wise Strap"})
@@ -649,7 +646,9 @@ end
 function get_magic_type(spell)
     if mndEnfMagic:contains(spell.english) then
         return 'mndEnf'
-    else
+	elseif helix:contains(spell.english) then
+		return 'helix'
+	else
         return 'intEnf'
     end
 end

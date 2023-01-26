@@ -568,8 +568,8 @@ function choose_set()
 	else
 		enable('main','sub')
     end
- if spell.action_type == 'Magic' then
-	
+	if spell.action_type == 'Magic' then
+		local magictype = get_magic_type(spell)
 		-- Cancel magic when it is not up yet
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		if spell_recasts[spell.recast_id] > 60 then -- 1s margin
@@ -602,7 +602,6 @@ end
  function midcast(spell)
     if spell.skill == 'Enfeebling Magic' then
 		-- windower.add_to_chat(8,'[Enf. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
-        local magictype = get_magic_type(spell)
         if magictype == 'mndEnf' then
             if mode == 'mage' then
                 equip({sub="Reign Grip"})
