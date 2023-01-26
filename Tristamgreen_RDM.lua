@@ -786,16 +786,7 @@ function status_change(new,old)
 end
 
 function setup_job()
-    elementalMagic = S{
-        'Stone','Water','Aero','Fire','Blizzard','Thunder',
-        'Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II',
-        'Stone III','Water III','Aero III','Fire III','Blizzard III','Thunder III'}
-        
-    mndEnfMagic = S{
-        'Slow','Silence','Paralyze','Dia','Dia II','Dia III','Diaga','Frazzle','Distract'}
-        
-    swordBuff = S{
-        'Enstone', 'Enwater', 'Enaero', 'Enfire', 'Enblizzard', 'Enthunder', 'Endark', 'Enlight'}
+	magic_define()
 end
 
 function buff_change(name,gain)

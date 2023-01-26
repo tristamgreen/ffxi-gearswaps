@@ -545,6 +545,9 @@ end
  
  fivehit = false
  
+ -- Runs the job setup function to populate list of spells 
+setup_job()
+ 
  -- Puts on our fashion set, lockstyle it, then switch
  -- to our idle set.
  send_command('gs enable all;wait 1;gs equip idle; wait 1; input /lockstyleset 8; wait 1; gs equip scythe;wait 1;gs equip polegrip')

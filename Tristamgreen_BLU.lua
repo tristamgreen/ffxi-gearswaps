@@ -15,6 +15,8 @@ Tristamgreen BLU v2 - 2021
  -- Jul 02 2021 - set up self_commands to help pre-select azure set for certain subjobs
  -- Jul 08 2021 - refine the initial gear loads via subjob
  
+ require("common_gs_functions")
+ 
  --[[ **********
   Gearsets 
 ************ --]]
@@ -632,58 +634,11 @@ function status_change(new,old)
 end
 
 function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-	end
+	debuff_items()
 end
 
-function setup_job()
-    physBlueMagic = S{
-        'Foot Kick','Wild Oats','Power Attack','Sprout Smack','Battle Dance','Head Butt','Helldive','Bludgeon',
-        'Claw Cyclone','Screwdriver','Grand Slam','Smite of Rage','Jet Stream','Uppercut','Terror Touch','Mandibular Bite',
-        'Sickle Slash','Death Scissors','Dimensional Death','Body Slam','Frypan','Frenetic Rip','Hydro Shot','Spinal Cleave',
-        'Hysteric Barrage','Tail Slap','Cannonball','Disseverment','Ram Charge','Vertical Cleave'}
-		
-	intBlueMagic = S{
-		'Sandspin','Blastbomb','Cursed Sphere','Bomb Toss','Death Ray','Blitzstrahl','Ice Break','Maelstrom','Firespit'}
-        
-    mndBlueMagic = S{
-        'Mind Blast','Magic Hammer'}
-    
-    chrBlueMagic = S{
-        'Mysterious Light','Eyes on Me'}
-        
-    brBlueMagic = S{
-        'Poison Breath','Magnetite Cloud','Hecatomb Wave','Radiant Breath','Flying Hip Press','Bad Breath','Frost Breath','Heat Breath'}
-        
-    enhBlueMagic = S{
-        'Metallic Body','Cocoon','Refueling','Feather Barrier','Memento Mori','Voracious Trunk','Diamondhide','Warm-Up','Triumphant Roar',
-        'Amplification','Saline Coat','Reactor Cool','Plasma Charge'}
-        
-    healBlueMagic = S{
-        'Pollen','Healing Breeze','Wild Carrot','Magic Fruit'}
-        
-    enfBlueMagic = S{
-        'Sheep Song','Soporific','Sound Blast','Chaotic Eye','Blank Gaze','Venom Shell','Stinking Gas','Geist Wall',
-        'Awful Eye,','Jettatura','Frightful Roar','Cold Wave','Filamented Hold','Light of Penance','Yawn','Feather Tickle',
-        'Infrasonics','Sandspray','Enervation','Lowing','Temporal Shift','Actinic Burst'}       
-    
+function setup_job()   
+	magic_define()
 end
 	
 function self_command(m)

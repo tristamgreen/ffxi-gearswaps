@@ -668,6 +668,9 @@ kitemsg = "INACTIVE"
 -- set initial weapon skill
 ws = "Atonement"
 
+-- Runs the job setup function to populate list of spells 
+setup_job()
+
  -- Puts on our fashion set, lockstyle it, then switch
  -- to our idle set.
  send_command('wait 1;input /lockstyleset 7;wait 1;gs equip idle;wait 1;gs equip excal')

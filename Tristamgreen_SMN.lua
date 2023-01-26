@@ -1214,53 +1214,7 @@ function self_command(command)
 ---------------
 
 function setup_job()
-
-    spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
-    avatars = S{"Carbuncle", "Fenrir", "Diabolos", "Ifrit", "Titan", "Leviathan", "Garuda", "Shiva", "Ramuh", "Odin", "Alexander"}
-
-	bptargets_stpc = S{'Healing Ruby', 'Healing Ruby II'}
-	bptargets_me = S{'Shining Ruby', 'Aerial Armor', 'Frost Armor', 'Rolling Thunder', 'Whispering Wind', 'Crimson Howl', 'Lightning Armor',
-		'Ecliptic Growl', 'Glittering Ruby', 'Earthen Ward', 'Spring Water', 'Hastega', 'Noctoshield', 'Ecliptic Howl', 'Dream Shroud'}
-	
-    magicalRagePacts = S{
-        'Inferno','Earthen Fury','Tidal Wave','Aerial Blast','Diamond Dust','Judgment Bolt','Searing Light','Howling Moon','Ruinous Omen',
-        'Fire II','Stone II','Water II','Aero II','Blizzard II','Thunder II',
-        'Fire IV','Stone IV','Water IV','Aero IV','Blizzard IV','Thunder IV',
-        'Thunderspark','Burning Strike','Meteorite','Nether Blast',
-        'Meteor Strike','Heavenly Strike','Wind Blade','Geocrush','Grand Fall','Thunderstorm'}
-		
-	physicalRagePacts = S{
-		'Punch','Rock Throw','Barracuda Dive','Claw','Axe Kick','Shock Strike','Camisado','Poison Nails','Moonlit Charge','Crescent Fang',
-		'Rock Buster','Burning Strike','Tail Whip','Double Punch','Megalith Throw','Double Slap','Meteorite',
-		'Eclipse Bite','Nether Blast','Flaming Crush','Mountain Buster','Spinning Dive','Predator Claws','Rush','Chaotic Strike'}
-		
-	debuffWardPacts = S{
-		'Somnolence','Lunar Cry','Nightmare','Lunar Roar','Slowga','Ultimate Terror','Sleepga'}
-	
-	buffWardPacts = S{
-		'Healing Ruby','Shining Ruby','Aerial Armor','Frost Armor','Rolling Thunder','Whispering Wind','Crimson Howl','Lightning Armor',
-		'Ecliptic Growl','Glittering Ruby','Earthen Ward','Spring Water','Hastega','Noctoshield','Ecliptic Howl','Dream Shroud','Healing Ruby II'}
-
-    pacts = {}
-	pacts.lowlv ={['Carbuncle']='Poison Nails', ['Ifrit']='Double Punch', ['Garuda']='Claw', ['Titan']='Rock Buster', ['Shiva']='Double Slap', ['Ramuh']='Shock Strike', ['Fenrir']='Crescent Fang', ['Diabolos']='Camisado'}
-    pacts.cure = {['Carbuncle']='Healing Ruby'}
-    pacts.curaga = {['Carbuncle']='Healing Ruby II', ['Garuda']='Whispering Wind', ['Leviathan']='Spring Water'}
-    pacts.buffoffense = {['Carbuncle']='Glittering Ruby', ['Ifrit']='Crimson Howl', ['Garuda']='Hastega', ['Ramuh']='Rolling Thunder',
-		['Fenrir']='Ecliptic Growl',['Diabolos']='Dream Shroud'}
-    pacts.buffdefense = {['Carbuncle']='Shining Ruby', ['Shiva']='Frost Armor', ['Garuda']='Aerial Armor', ['Titan']='Earthen Ward', ['Ramuh']='Lightning Armor',
-		['Fenrir']='Ecliptic Howl', ['Diabolos']='Noctoshield'}
-    pacts.debuff1 = {['Fenrir']='Lunar Cry', ['Diabolos']='Somnolence'}
-    pacts.debuff2 = {['Leviathan']='Slowga', ['Fenrir']='Lunar Roar'}
-    pacts.sleep = {['Shiva']='Sleepga', ['Diabolos']='Nightmare'}
-    pacts.nuke2 = {['Ifrit']='Fire II', ['Shiva']='Blizzard II', ['Garuda']='Aero II', ['Titan']='Stone II',['Ramuh']='Thunder II', ['Leviathan']='Water II'}
-    pacts.nuke4 = {['Ifrit']='Fire IV', ['Shiva']='Blizzard IV', ['Garuda']='Aero IV', ['Titan']='Stone IV',['Ramuh']='Thunder IV', ['Leviathan']='Water IV'}
-    pacts.lv70 = {['Ifrit']='Flaming Crush', ['Shiva']='Rush', ['Garuda']='Predator Claws', ['Titan']='Mountain Buster',
-        ['Ramuh']='Chaotic Strike', ['Leviathan']='Spinning Dive', ['Carbuncle']='Meteorite', ['Fenrir']='Eclipse Bite', ['Diabolos']='Nether Blast'}
-    pacts.lv75 = {['Ifrit']='Meteor Strike', ['Shiva']='Heavenly Strike', ['Garuda']='Wind Blade', ['Titan']='Geocrush',
-        ['Ramuh']='Thunderstorm', ['Leviathan']='Grand Fall'}
-    pacts.af = {['Ifrit']='Inferno', ['Shiva']='Diamond Dust', ['Garuda']='Aerial Blast', ['Titan']='Earthen Fury',
-        ['Ramuh']='Judgment Bolt', ['Leviathan']='Tidal Wave', ['Carbuncle']='Searing Light', ['Fenrir']='Howling Moon', ['Diabolos']='Ruinous Omen'}
-	
+	magic_define()
 end
  
 enable('main','sub','range','ammo','head','neck','left_ear','right_ear','body','hands','left_ring','right_ring','back','waist','legs','feet')

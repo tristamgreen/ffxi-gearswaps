@@ -10,6 +10,8 @@ Tristamgreen SCH Remix - 2021
   Gearsets 
 ************ --]]
  
+ require("common_gs_functions")
+ 
  function get_sets()
  
     -- idle sets 
@@ -44,7 +46,7 @@ Tristamgreen SCH Remix - 2021
 		waist		= "Steppe Sash",
 		left_ring	= "Bomb Queen Ring",
 		right_ring	= "Bloodbead Ring",
-		legs		= "Argute Pants +1",
+		legs		= "Prince's Slops",
 		feet		= "Creek M Clomps",
         back        = "Gigant Mantle"
 	}
@@ -119,7 +121,7 @@ Tristamgreen SCH Remix - 2021
         left_ear    = "Merman's Earring",
         right_ear   = "Merman's Earring",
         left_ring   = "Merman's Ring",
-        right_ring  = "Merman's Ring"
+        right_ring  = "Minerva's Ring"
     }
 	
 	sets.HPMP 	    = {
@@ -531,10 +533,10 @@ end
         windower.add_to_chat(8,'[Enh. Magic - ' .. spell.english .. ' - MP: ' .. player.mp .. ' / '.. player.mpp .. '%]')
         equip(sets.enhancing,sets.staff,{sub="Reign Grip"})
 		if buffactive['Light Arts'] then
-			equip({legs="Scholar's Pants +1"})
+			equip(sets.grimoire,{legs="Scholar's Pants +1"})
 		end
         if spell.name == 'Stoneskin' then
-            equip(sets.enhancing.stoneskin,{main="Alkalurops",sub="Reign Grip"})
+            equip(sets.enhancing.stoneskin,sets.grimoire,{main="Alkalurops",sub="Reign Grip"})
         end
 		
     elseif spell.skill == 'Healing Magic' then
@@ -664,42 +666,11 @@ function status_change(new,old)
 end
 
 function setup_job()
-    elementalMagic = S{
-        'Stone','Water','Aero','Fire','Blizzard','Thunder',
-        'Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II',
-        'Stone III','Water III','Aero III','Fire III','Blizzard III','Thunder III',
-		'Stone IV', 'Water IV', 'Aero IV', 'Fire IV', 'Blizzard IV', 'Thunder IV'}
-        
-    mndEnfMagic = S{
-        'Slow','Silence','Paralyze','Dia','Dia II','Dia III','Diaga','Frazzle','Distract'}
-        
-    helix = S{
-        'Geohelix', 'Hydrohelix', 'Anemohelix', 'Pyrohelix', 'Cryohelix', 'Ionohelix', 'Noctohelix', 'Luminohelix'}
-		
-	storm = S{
-        'Firestorm','Rainstorm','Windstorm','Hailstorm','Thunderstorm','Sandstorm','Aurorastorm','Voidstorm'}
+	magic_define()
 end
 
 function buff_change(new,old)
-    if buffactive['Silence'] then
-        send_command('@ input /item "Echo Drops" <me>')
-        windower.add_to_chat(256,'[Silence Removed!]')
-    elseif buffactive['Curse'] then
-        send_command('@ input /item "Holy Water" <me>')
-        windower.add_to_chat(201,'[Curse Removed!]')
-    elseif buffactive['Doom'] then
-        send_command('@ input /item "Hallowed Water" <me>')
-        windower.add_to_chat(002,'[Doom Removed!]')
-    elseif buffactive['Blindness'] then
-        send_command('@ input /item "Remedy" <me>')
-        windower.add_to_chat(160,'[Blindness Removed!]')
-    elseif buffactive['Poison'] then
-        send_command('@ input /item "Antidote" <me>')
-        windower.add_to_chat(259,'[Poison Removed!]')
-	elseif buffactive['Paralyzed'] then
-		send_command('@ input /item "Remedy" <me>')
-		windower.add_to_chat(259,'[Paralysis Removed!]')
-    end
+	debuff_items()
 end
 	
 function self_command(m)
@@ -777,7 +748,7 @@ melee = false
 --Set Macro Book
  send_command('input /macro book 20; wait 0.1; input /macro set 1')
 -- Puts on lockstyle set, lockstyle it, then switch to idle
- send_command('wait 1; input /lockstyleset 20; wait 1; gs equip idle; wait 1; gs equip staff')
+ send_command('gs enable all;wait 1; input /lockstyleset 20; wait 1; gs equip idle; wait 1; gs equip staff')
  send_command('input //dp magic; wait 1; input //dp height')
 	windower.add_to_chat(8,'[Magic Casting Mode: ' .. magicmode .. ']')
     windower.add_to_chat(8,'[Defense Mode: ' .. defmode .. ']')

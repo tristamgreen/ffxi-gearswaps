@@ -395,16 +395,7 @@ function get_magic_type(spell)
 end
 
 function setup_job()
-    ninElemental = S{
-        'Doton: Ichi','Huton: Ichi','Hyoton: Ichi','Katon: Ichi','Raiton: Ichi','Suiton: Ichi',
-	    'Doton: Ni','Huton: Ni','Hyoton: Ni','Katon: Ni','Raiton: Ni','Suiton: Ni',
-	    'Doton: San','Huton: San','Hyoton: San','Katon: San','Raiton: San','Suiton: San',}
-        
-    ninEnfeebling = S{
-        'Dokumori: Ichi','Hojo: Ichi','Hojo: Ni','Jubaku: Ichi','Kurayami: Ichi','Kurayami: Ni'}
-        
-    ninEnhancing = S{
-		'Utsusemi: Ichi','Utsusemi: Ni','Monomi: Ichi','Tonko: Ichi','Tonko: Ni'}
+	magic_define()
 end
 
 function buff_change(name,gain)

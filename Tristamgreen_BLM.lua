@@ -613,7 +613,7 @@ end
 function get_magic_type(spell)
     if mndEnfMagic:contains(spell.english) then
         return 'mndEnf'
-    else
+    elseif
         return 'intEnf'
     end
 end
@@ -630,20 +630,7 @@ function status_change(new,old)
 end
 
 function setup_job()
-    elementalMagic = S{
-        'Stone','Water','Aero','Fire','Blizzard','Thunder',
-        'Stone II','Water II','Aero II','Fire II','Blizzard II','Thunder II',
-        'Stone III','Water III','Aero III','Fire III','Blizzard III','Thunder III',
-		'Stone IV', 'Water IV', 'Aero IV', 'Fire IV', 'Blizzard IV', 'Thunder IV',
-		'Quake', 'Flood', 'Tornado', 'Flare', 'Freeze', 'Burst',
-		'Quake II', 'Flood II', 'Tornado II', 'Flare II', 'Freeze II', 'Burst II'}
-        
-    mndEnfMagic = S{
-        'Slow','Silence','Paralyze','Dia','Dia II','Dia III','Diaga','Frazzle','Distract'}
-        
-    elementalDebuff = S{
-        'Frost','Burn','Choke','Shock','Rasp','Drown'}
-           
+	magic_define()
 end
 
 function buff_change(name,gain)
