@@ -85,7 +85,10 @@ function magic_define()
 	--[[Enfeebling Magic]]--
         
     mndEnfMagic = S{
-        'Slow','Silence','Paralyze','Dia','Dia II','Dia III','Diaga','Frazzle','Distract'}
+        'Slow','Silence','Paralyze','Paralyze II','Slow II','Dia','Dia II','Dia III','Diaga','Frazzle','Distract'}
+		
+	intEnfMagic	= S{
+		'Blind','Sleep','Sleep II','Sleepga','Sleepga II','Poison','Poison II','Poisonga'}
 		
 	--[[Enhancing Magic]]--
 	
