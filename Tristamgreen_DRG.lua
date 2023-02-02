@@ -425,7 +425,7 @@ function midcast(spell)
 			windower.add_to_chat(8,'[Stoneskin Midcast]')
 			equip(sets.Stoneskin)
 		else
-			windower.add_to_chat(8,'[Wyvern Breath Activation Set in-use]')
+			windower.add_to_chat(8,'[Breath Activation]')
 			equip(sets.Breath) 
 		end
 	end
@@ -433,7 +433,9 @@ end
 
 function pet_midcast(spell)
 	if spell.name:contains('Breath') then
+		windower.add_to_chat(8,'[Breath Potency]')
 		equip(sets.Breath,sets.Breath.Wyvern)
+		send_command('gs disable all')
 	end
 end
  
@@ -447,20 +449,9 @@ end
 
 -- After pet breath
 function pet_aftercast(spell)
-	if spell.name:contains('Breath') then
-		choose_set()
-	end
+	send_command('gs enable all')
+	choose_set()
 end
- 
---function status_change(new,old)
---    if new == 'Engaged' then
---        equip_Attackmode(mode)
---    elseif new == 'Resting' then
---        equip_rest()
---    else
---        equip_idle()
---    end
--- end
 
 function status_change(new,old)
     choose_set()
