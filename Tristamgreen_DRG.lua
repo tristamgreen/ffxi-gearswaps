@@ -384,7 +384,7 @@ end
 		
     end
 
-    if spell.type:contains('Angon') then
+    if spell.english == 'Angon' then
         windower.add_to_chat(8,"[- " .. spell.name .. " with " .. player.tp .. "TP -]")
         equip(sets.Angon)
     end
