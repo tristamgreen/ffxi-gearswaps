@@ -521,8 +521,8 @@ end
  
 -- Midcast is for all Blue Magic Spells and other spells.
  function midcast(spell)
-    local magictype = get_magic_type(spell)
     if spell.skill == "Blue Magic" then
+        local magictype = get_magic_type(spell)
         if magictype == 'physBlu' then
             equip(sets.phys)
             if mode == 'mage' then
