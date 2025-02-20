@@ -441,8 +441,12 @@ function status_change(new,old)
     end
  end
  
+function setup_job()
+	magic_define()
+end
+ 
 function buff_change(name,gain)
-	debuff_item()
+	debuff_items()
 end
  
  -- a set of self commands that dictate various job functions

@@ -558,6 +558,10 @@ function status_change(new,old)
     end
  end
  
+function setup_job()
+	magic_define()
+end
+ 
 function buff_change(new,old)
 	debuff_items()
 end
