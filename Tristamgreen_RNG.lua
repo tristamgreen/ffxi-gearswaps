@@ -647,11 +647,11 @@ function self_command(m)
  
  -- Finally, puts on our fashion set, lockstyle it, then switch to our idle set.
  if player.sub_job == "NIN" then
-	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun;wait 1;input /lockstyleset 11')
+	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip axes;wait 1;gs equip gun;wait 1;input /lockstyleset 9')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Sub job select: NINJA')
  else
-	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun;wait 1;input /lockstyleset 11')
+	send_command('gs enable all;wait 1;gs equip idle;wait 1;gs equip staff;wait 1;gs equip gun;wait 1;input /lockstyleset 9')
 	windower.add_to_chat(8,'[Ranged Attack Mode: Marksmanship]')
 	send_command('input //dp gun;wait 1;input /echo Default Ranger Mode: Staff')
  end
