@@ -469,7 +469,10 @@ end
 		else
 
 			-- Fast cast for all spells	
-			equip(sets.fc)	
+			equip(sets.fc)    
+            if player.sub_job == 'RDM' then
+              equip({back="Warlock's Mantle"})
+            end	
 		
 			-- Cancel status effects for spells that don't overwrite themselves
 			if spell.name == "Sneak" then send_command("cancel sneak") end
