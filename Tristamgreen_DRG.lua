@@ -370,6 +370,9 @@ end
 			if spell.name == 'Stoneskin' then
 				windower.add_to_chat(8,'[Fast Cast]')
 				equip(sets.fastcast)
+                if player.sub_job == 'RDM' then
+                  equip({back="Warlock's Mantle"})
+                end
 			else
 				windower.add_to_chat(8,'[- Pre-Cast Set Active -]')
 				equip(sets.Breath)
