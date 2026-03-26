@@ -1,6 +1,6 @@
 --[[ *************************************************************
  Tristamgreen's DNC lua for Supernova FFXI
- Save as windower/addons/GearSwap/data/%username%_THF.lua
+ Save as windower/addons/GearSwap/data/%username%_DNC.lua
  
  2020-06-22 - first version
  2020-06-23 - revision 1.01, added modes and weaponskill change modes
